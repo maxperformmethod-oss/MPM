@@ -9,10 +9,10 @@ import type {
 } from "../../data/booking";
 import { useI18n } from "../../i18n/I18nContext";
 import { WizardStart } from "./WizardStart";
-import { BookingIntake } from "./BookingIntake";
-import { BookingArea } from "./BookingArea";
-import { BookingFormat } from "./BookingFormat";
-import { BookingSummary } from "./BookingSummary";
+import { BookingIntake } from "../booking/BookingIntake";
+import { BookingArea } from "../booking/BookingArea";
+import { BookingFormat } from "../booking/BookingFormat";
+import { BookingSummary } from "../booking/BookingSummary";
 
 type StepId = "start" | "intake" | "area" | "format" | "summary";
 

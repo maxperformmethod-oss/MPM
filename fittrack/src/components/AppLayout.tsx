@@ -75,8 +75,18 @@ export function AppLayout() {
         </div>
 
         <div className="border-t border-ink/10 px-4 py-5 text-center text-xs text-ink-soft sm:px-6">
-          © {new Date().getFullYear()} MPM™ — Max Perform Method.{" "}
-          {t.footer.rights}
+          <p>
+            © {new Date().getFullYear()} MPM™ — Max Perform Method.{" "}
+            {t.footer.rights}
+          </p>
+          <p className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <Link to="/terms" className="transition-colors hover:text-ink">
+              {t.footer.termsLink}
+            </Link>
+            <Link to="/privacy" className="transition-colors hover:text-ink">
+              {t.footer.privacyLink}
+            </Link>
+          </p>
         </div>
       </footer>
     </div>

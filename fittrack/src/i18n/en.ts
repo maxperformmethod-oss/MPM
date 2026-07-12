@@ -28,7 +28,6 @@ export const en = {
       "Individual Plan",
     ],
     ctaPrimary: "Book Assessment",
-    ctaSecondary: "Free 15-min Call",
   },
 
   home: {
@@ -70,6 +69,7 @@ export const en = {
         { value: 2, suffix: "×", label: "tested — baseline and retest" },
         { value: 1, suffix: "", label: "clear written report" },
       ],
+      chartLabels: ["Baseline", "Week 4", "Week 8", "Retest"],
     },
     testimonials: {
       eyebrow: "RESULTS",
@@ -83,19 +83,19 @@ export const en = {
       title: "Return to Sport",
       short: "Come back from injury with confidence, not guesswork.",
       description:
-        "A structured return-to-sport process after injury — from pain-free movement to full training load, guided by objective retesting.",
+        "A structured return-to-sport process after injury — from pain-free movement to full training load, guided by objective retesting. Including return after ACL reconstruction — most often with hockey and tennis players, where returning to full speed and explosiveness without compromise is a must.",
     },
     "post-op-rehab": {
       title: "Post-Operative Rehabilitation",
       short: "Rebuild after surgery with a clear, progressive plan.",
       description:
-        "Progressive rehabilitation after surgery that bridges the gap between physiotherapy discharge and real performance.",
+        "Progressive rehabilitation after surgery that bridges the gap between physiotherapy discharge and real performance. ACL is among the most common cases I handle — from physiotherapy discharge to full training load.",
     },
     "performance-coaching": {
       title: "Performance Coaching",
       short: "Train with structure. Progress with data.",
       description:
-        "Individual strength and performance coaching built on assessment data — for athletes and active people who want measurable progress.",
+        "Individual strength and performance coaching built on assessment data — for athletes and active people who want measurable progress. Specifically for hockey and tennis: explosiveness, change of direction and rotational power — not generic strength training.",
     },
   },
 
@@ -228,7 +228,7 @@ export const en = {
       },
       {
         q: "How soon after an injury or surgery can I come?",
-        a: "As soon as your doctor or surgeon has cleared you for active rehabilitation. If you're unsure, start with the free 15-minute call and we'll figure out the right timing together.",
+        a: "As soon as your doctor or surgeon has cleared you for active rehabilitation. If you're unsure about the right timing, send a message through the contact form and we'll figure it out together.",
       },
       {
         q: "What should I bring?",
@@ -248,25 +248,25 @@ export const en = {
     caseStudies: [
       {
         name: "Client A",
-        sport: "Football",
+        sport: "Tennis",
         situation: "Return after ACL reconstruction",
-        outcome: "Returned to full team training with symmetrical strength scores at retest.",
+        outcome: "Returned to competitive play with symmetrical strength scores and full change-of-direction speed.",
         quote:
           "For the first time I knew exactly where I stood — every phase had numbers behind it, not just feelings.",
       },
       {
         name: "Client B",
+        sport: "Hockey",
+        situation: "Pre-season prep — skating explosiveness and speed",
+        outcome: "Improved explosiveness and change-of-direction with no drop-off through the season.",
+        quote: "I trained by the numbers, not by feel — and it showed in the first games.",
+      },
+      {
+        name: "Client C",
         sport: "Recreational running",
         situation: "Recurring knee pain when training volume increased",
         outcome: "Completed a half-marathon block pain-free after a 12-week progressive plan.",
         quote: "The assessment found what three months of guessing didn't.",
-      },
-      {
-        name: "Client C",
-        sport: "Hockey",
-        situation: "Post-op shoulder rehabilitation",
-        outcome: "Progressed from physiotherapy discharge back to contact play, verified by retesting.",
-        quote: "The bridge between rehab and real training is exactly what I was missing.",
       },
     ],
     disclaimer:
@@ -336,34 +336,56 @@ export const en = {
   },
 
   contactPage: {
-    eyebrow: "CONTACT & BOOKING",
-    title: "Start with one short step.",
-    lead: "Choose how you want to start. You'll get a reply within 24 hours — the full intake form comes only after your booking is confirmed.",
-    typeAssessment: {
-      title: "Book Assessment",
-      body: "The full structured assessment — movement, strength and sport-specific testing, with a written report.",
-    },
-    typeCall: {
-      title: "Free 15-min Call",
-      body: "A short intro call to see if MPM™ is the right fit for your situation. No commitment.",
-    },
-    serviceLabel: "Selected path",
+    eyebrow: "CONTACT",
+    title: "Got a question?",
+    lead: "Send me a message — I'll reply within 24 hours. To book an assessment, head to the Booking page.",
     form: {
       name: "Name",
       contact: "Email or phone",
-      message: "What are you dealing with? (optional)",
-      submit: "Send request",
-      note: "Quick and simple on purpose — the detailed intake form arrives after confirmation and payment.",
+      message: "Message",
+      submit: "Send message",
+      note: "I'll reply within 24 hours to the email or phone you provide.",
     },
-    mailSubjectAssessment: "Assessment booking request",
-    mailSubjectCall: "Free 15-min call request",
+    mailSubject: "Question via MPM™ website",
+  },
+
+  booking: {
+    eyebrow: "BOOKING",
+    title: "Book your assessment.",
+    lead: "Three steps. Choose the area, the training format, and confirm payment.",
+    stepLabels: ["Area", "Format", "Summary"],
+    step1Tag: "STEP 1 — CHOOSE THE AREA",
+    step1Title: "Where exactly is the problem?",
+    areas: {
+      ankle: "Ankle",
+      knee: "Knee",
+      hip: "Hip",
+      shoulder: "Shoulder",
+    },
+    step2Tag: "STEP 2 — CHOOSE THE FORMAT",
+    step2Title: "How do you want to train?",
+    formats: {
+      online: "Online coaching",
+      "in-person": "Individual coaching (in person)",
+    },
+    step3Tag: "STEP 3 — SUMMARY & PAYMENT",
+    step3Title: "Review your selection and book.",
+    summaryLabel: "Selected",
+    priceLabel: "Indicative price",
+    pricePlaceholder: "TBD",
+    priceNote: "The price is indicative only — the final amount will be confirmed before payment.",
+    payCta: "Pay & Book",
+    testModeNote: "Payment runs through Stripe (test mode) until the site goes live.",
+    comingSoonNote:
+      "The payment gateway is still being set up — this option will be active soon. Send a message through the contact form and we'll arrange it directly.",
+    back: "Back",
+    startOver: "Start over",
   },
 
   ctaBand: {
     title: "Ready to know where you stand?",
-    lead: "Book your assessment, or start with a free 15-minute intro call to see if MPM™ is the right fit.",
+    lead: "Book your assessment and see if MPM™ is the right fit.",
     primary: "Book Assessment",
-    secondary: "Free 15-min Call",
   },
 
   footer: {
@@ -372,6 +394,8 @@ export const en = {
     contactTitle: "Contact",
     credentials: "Mgr. FTVŠ UK · Registered Sports Specialist",
     rights: "All rights reserved.",
+    termsLink: "Terms & Conditions",
+    privacyLink: "Privacy Policy",
   },
 };
 

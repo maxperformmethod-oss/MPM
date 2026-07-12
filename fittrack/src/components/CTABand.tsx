@@ -22,11 +22,8 @@ export function CTABand() {
           {t.ctaBand.lead}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <ButtonLink to="/contact" variant="inverse">
+          <ButtonLink to="/rezervacia" variant="inverse">
             {t.ctaBand.primary}
-          </ButtonLink>
-          <ButtonLink to="/contact?type=call" variant="inverseOutline">
-            {t.ctaBand.secondary}
           </ButtonLink>
         </div>
       </motion.div>

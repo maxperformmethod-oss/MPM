@@ -45,7 +45,7 @@ export function WizardResult({
       <p className="mx-auto mt-5 max-w-lg text-base text-ink-soft">{result.body}</p>
 
       <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-        <ButtonLink to={`/contact?service=${pillarId}`}>{result.cta}</ButtonLink>
+        <ButtonLink to="/rezervacia">{result.cta}</ButtonLink>
         <ButtonLink to="/approach" variant="secondary">
           {t.wizard.exploreApproach}
         </ButtonLink>

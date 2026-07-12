@@ -30,7 +30,6 @@ export const sk: Dict = {
       "Individuálny plán",
     ],
     ctaPrimary: "Rezervovať diagnostiku",
-    ctaSecondary: "15-min hovor zadarmo",
   },
 
   home: {
@@ -72,6 +71,7 @@ export const sk: Dict = {
         { value: 2, suffix: "×", label: "testovanie — vstupné a kontrolné" },
         { value: 1, suffix: "", label: "prehľadný písomný report" },
       ],
+      chartLabels: ["Vstup", "4. týždeň", "8. týždeň", "Pretest"],
     },
     testimonials: {
       eyebrow: "VÝSLEDKY",
@@ -85,19 +85,19 @@ export const sk: Dict = {
       title: "Návrat k športu",
       short: "Vráť sa po zranení s istotou, nie s odhadmi.",
       description:
-        "Štruktúrovaný proces návratu k športu po zranení — od pohybu bez bolesti až po plnú tréningovú záťaž, vedený objektívnym pretestovaním.",
+        "Štruktúrovaný proces návratu k športu po zranení — od pohybu bez bolesti až po plnú tréningovú záťaž, vedený objektívnym pretestovaním. Vrátane návratu po rekonštrukcii ACL — najčastejšie u hokejistov a tenistov, kde je návrat na plnú rýchlosť a explozivitu bez kompromisu nutnosťou.",
     },
     "post-op-rehab": {
       title: "Pooperačná rehabilitácia",
       short: "Znovu sa vybuduj po operácii s jasným plánom.",
       description:
-        "Progresívna rehabilitácia po operácii, ktorá preklenie medzeru medzi ukončením fyzioterapie a skutočným výkonom.",
+        "Progresívna rehabilitácia po operácii, ktorá preklenie medzeru medzi ukončením fyzioterapie a skutočným výkonom. ACL patrí medzi najčastejšie prípady, ktoré riešim — od ukončenia fyzioterapie až po plnú tréningovú záťaž.",
     },
     "performance-coaching": {
       title: "Výkonnostný koučing",
       short: "Trénuj so štruktúrou. Napreduj s dátami.",
       description:
-        "Individuálny silový a výkonnostný koučing postavený na dátach z diagnostiky — pre športovcov a aktívnych ľudí, ktorí chcú merateľný pokrok.",
+        "Individuálny silový a výkonnostný koučing postavený na dátach z diagnostiky — pre športovcov a aktívnych ľudí, ktorí chcú merateľný pokrok. Špecificky pre hokej a tenis: explozivita, zmena smeru a rotačná sila — nie generický silový tréning.",
     },
   },
 
@@ -230,7 +230,7 @@ export const sk: Dict = {
       },
       {
         q: "Ako skoro po zranení alebo operácii môžem prísť?",
-        a: "Hneď, ako ti lekár alebo chirurg povolí aktívnu rehabilitáciu. Ak si nie si istý/á, začni 15-minútovým hovorom zadarmo a správne načasovanie vyriešime spolu.",
+        a: "Hneď, ako ti lekár alebo chirurg povolí aktívnu rehabilitáciu. Ak si nie si istý/á správnym načasovaním, napíš mi cez kontaktný formulár a poradíme sa spolu.",
       },
       {
         q: "Čo si mám priniesť?",
@@ -250,25 +250,25 @@ export const sk: Dict = {
     caseStudies: [
       {
         name: "Klient A",
-        sport: "Futbal",
+        sport: "Tenis",
         situation: "Návrat po rekonštrukcii ACL",
-        outcome: "Návrat do plného tímového tréningu so symetrickými silovými hodnotami pri preteste.",
+        outcome: "Návrat na turnajovú úroveň so symetrickými silovými hodnotami a plnou rýchlosťou pri zmene smeru.",
         quote:
           "Prvýkrát som presne vedel, kde stojím — každá fáza mala za sebou čísla, nie len pocity.",
       },
       {
         name: "Klient B",
+        sport: "Hokej",
+        situation: "Príprava na sezónu — explozivita a rýchlosť korčuľovania",
+        outcome: "Zlepšenie výbušnosti a zmeny smeru bez poklesu výkonu počas celej sezóny.",
+        quote: "Trénoval som podľa čísel, nie podľa pocitu — bolo to cítiť už na prvých zápasoch.",
+      },
+      {
+        name: "Klient C",
         sport: "Rekreačný beh",
         situation: "Opakovaná bolesť kolena pri zvýšení tréningového objemu",
         outcome: "Polmaratónsky blok dokončený bez bolesti po 12-týždňovom progresívnom pláne.",
         quote: "Diagnostika našla to, čo tri mesiace hádania nie.",
-      },
-      {
-        name: "Klient C",
-        sport: "Hokej",
-        situation: "Pooperačná rehabilitácia ramena",
-        outcome: "Progres od ukončenia fyzioterapie späť ku kontaktnej hre, overený pretestovaním.",
-        quote: "Most medzi rehabilitáciou a skutočným tréningom je presne to, čo mi chýbalo.",
       },
     ],
     disclaimer:
@@ -338,34 +338,56 @@ export const sk: Dict = {
   },
 
   contactPage: {
-    eyebrow: "KONTAKT & REZERVÁCIA",
-    title: "Začni jedným krátkym krokom.",
-    lead: "Vyber si, ako chceš začať. Odpoveď dostaneš do 24 hodín — podrobný vstupný formulár príde až po potvrdení rezervácie.",
-    typeAssessment: {
-      title: "Rezervovať diagnostiku",
-      body: "Kompletná štruktúrovaná diagnostika — pohyb, sila a športovo-špecifické testovanie, s písomným reportom.",
-    },
-    typeCall: {
-      title: "15-min hovor zadarmo",
-      body: "Krátky úvodný hovor, aby sme zistili, či je MPM™ pre tvoju situáciu to pravé. Bez záväzkov.",
-    },
-    serviceLabel: "Vybraná cesta",
+    eyebrow: "KONTAKT",
+    title: "Máš otázku?",
+    lead: "Napíš mi — odpoviem do 24 hodín. Rezerváciu diagnostiky nájdeš na stránke Rezervácia.",
     form: {
       name: "Meno",
       contact: "E-mail alebo telefón",
-      message: "Čo riešiš? (nepovinné)",
-      submit: "Odoslať žiadosť",
-      note: "Zámerne rýchle a stručné — podrobný vstupný formulár príde po potvrdení a platbe.",
+      message: "Správa",
+      submit: "Odoslať správu",
+      note: "Odpoviem do 24 hodín na e-mail alebo telefón, ktorý uvedieš.",
     },
-    mailSubjectAssessment: "Žiadosť o rezerváciu diagnostiky",
-    mailSubjectCall: "Žiadosť o 15-min hovor zadarmo",
+    mailSubject: "Otázka cez web MPM™",
+  },
+
+  booking: {
+    eyebrow: "REZERVÁCIA",
+    title: "Rezervuj si diagnostiku.",
+    lead: "Tri kroky. Vyber oblasť, formu tréningu a potvrď platbu.",
+    stepLabels: ["Oblasť", "Forma", "Zhrnutie"],
+    step1Tag: "KROK 1 — VYBER OBLASŤ",
+    step1Title: "Kde presne riešiš problém?",
+    areas: {
+      ankle: "Členok",
+      knee: "Koleno",
+      hip: "Bedro",
+      shoulder: "Rameno",
+    },
+    step2Tag: "KROK 2 — VYBER FORMU",
+    step2Title: "Ako chceš trénovať?",
+    formats: {
+      online: "Online tréning",
+      "in-person": "Individuálny tréning (osobne)",
+    },
+    step3Tag: "KROK 3 — ZHRNUTIE A PLATBA",
+    step3Title: "Skontroluj výber a rezervuj.",
+    summaryLabel: "Vybrané",
+    priceLabel: "Orientačná cena",
+    pricePlaceholder: "DOPLNIŤ",
+    priceNote: "Cena je zatiaľ len orientačná — finálna suma bude potvrdená pred platbou.",
+    payCta: "Zaplatiť a rezervovať",
+    testModeNote: "Platba prebieha cez Stripe (testovací režim), kým nie je spustená ostrá prevádzka.",
+    comingSoonNote:
+      "Platobná brána sa ešte pripravuje — táto možnosť bude aktívna čoskoro. Napíš mi cez kontaktný formulár a dohodneme sa priamo.",
+    back: "Späť",
+    startOver: "Začať odznova",
   },
 
   ctaBand: {
     title: "Chceš vedieť, kde stojíš?",
-    lead: "Rezervuj si diagnostiku, alebo začni 15-minútovým hovorom zadarmo a zisti, či je MPM™ pre teba.",
+    lead: "Rezervuj si diagnostiku a zisti, či je MPM™ pre teba.",
     primary: "Rezervovať diagnostiku",
-    secondary: "15-min hovor zadarmo",
   },
 
   footer: {
@@ -374,5 +396,7 @@ export const sk: Dict = {
     contactTitle: "Kontakt",
     credentials: "Mgr. FTVŠ UK · Registrovaný športový odborník",
     rights: "Všetky práva vyhradené.",
+    termsLink: "Obchodné podmienky",
+    privacyLink: "Ochrana osobných údajov",
   },
 };

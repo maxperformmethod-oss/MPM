@@ -7,6 +7,8 @@ import { PillarCard } from "../components/PillarCard";
 import { StatCounter } from "../components/StatCounter";
 import { TestimonialCard } from "../components/TestimonialCard";
 import { CTABand } from "../components/CTABand";
+import { SectionDivider } from "../components/SectionDivider";
+import { DiagnosticsChart } from "../components/DiagnosticsChart";
 import { ButtonLink } from "../components/ui/Button";
 import { PILLARS } from "../data/pillars";
 import { useI18n } from "../i18n/I18nContext";
@@ -157,6 +159,7 @@ function AssessmentHighlightSection() {
           />
         ))}
       </div>
+      <DiagnosticsChart />
       <div className="mt-10 text-center">
         <ButtonLink to="/assessment" variant="secondary">
           {s.cta}
@@ -203,10 +206,15 @@ export function Home() {
   return (
     <>
       <Hero />
+      <SectionDivider />
       <WhoForSection />
+      <SectionDivider />
       <PillarsSection />
+      <SectionDivider />
       <MethodTeaserSection />
+      <SectionDivider />
       <AssessmentHighlightSection />
+      <SectionDivider />
       <TestimonialsSection />
       <CTABand />
     </>

@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Check, Activity } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Check } from "lucide-react";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer } from "../lib/motion";
 import { ButtonLink } from "./ui/Button";
@@ -13,6 +13,7 @@ const BADGE_POSITIONS = [
 
 export function Hero() {
   const { t } = useI18n();
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className="mx-auto grid max-w-6xl gap-14 px-4 pb-20 pt-12 sm:px-6 sm:pt-20 lg:grid-cols-2 lg:items-center lg:gap-10">
@@ -49,10 +50,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-3">
-          <ButtonLink to="/contact">{t.hero.ctaPrimary}</ButtonLink>
-          <ButtonLink to="/contact?type=call" variant="secondary">
-            {t.hero.ctaSecondary}
-          </ButtonLink>
+          <ButtonLink to="/rezervacia">{t.hero.ctaPrimary}</ButtonLink>
         </motion.div>
       </motion.div>
 
@@ -64,9 +62,24 @@ export function Hero() {
       >
         {/* TODO: replace gradient placeholder with real coaching photography */}
         <div className="animate-float-slow relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border-4 border-ink bg-gradient-to-br from-ink via-sage to-gold shadow-2xl">
-          <div className="absolute inset-0 flex items-center justify-center opacity-20">
-            <Activity size={140} className="text-cream" />
-          </div>
+          <svg
+            viewBox="0 0 300 375"
+            className="absolute inset-0 h-full w-full text-cream"
+            fill="none"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden="true"
+          >
+            <motion.path
+              d="M0,220 L55,220 L80,110 L105,300 L135,220 L170,220 Q195,180 220,220 T300,200"
+              stroke="currentColor"
+              strokeWidth={5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              initial={{ pathLength: reduceMotion ? 1 : 0, opacity: reduceMotion ? 0.85 : 0 }}
+              animate={{ pathLength: 1, opacity: 0.85 }}
+              transition={{ duration: reduceMotion ? 0 : 1.6, ease: "easeInOut", delay: 0.3 }}
+            />
+          </svg>
           <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
         </div>
 

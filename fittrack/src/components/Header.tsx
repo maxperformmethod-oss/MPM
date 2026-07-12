@@ -71,7 +71,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <ButtonLink to="/rezervacia" className="!px-5 !py-2.5 whitespace-nowrap">
+          <ButtonLink to="/find-your-path" className="!px-5 !py-2.5 whitespace-nowrap">
             {t.nav.bookAssessment}
           </ButtonLink>
           <LangToggle />
@@ -109,7 +109,7 @@ export function Header() {
             ))}
           </nav>
           <ButtonLink
-            to="/rezervacia"
+            to="/find-your-path"
             className="mt-3 w-full !py-2.5"
             onClick={() => setOpen(false)}
           >

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Footprints, Bone, Move, Dumbbell } from "lucide-react";
+import { ArrowLeft, Footprints, Bone, Move, Dumbbell } from "lucide-react";
 import { useI18n } from "../../i18n/I18nContext";
 import { BOOKING_AREAS, type BookingArea as BookingAreaId } from "../../data/booking";
 import { fadeUp, staggerContainer } from "../../lib/motion";
@@ -11,19 +11,28 @@ const AREA_ICONS: Record<BookingAreaId, typeof Footprints> = {
   shoulder: Dumbbell,
 };
 
-export function BookingArea({ onChoose }: { onChoose: (area: BookingAreaId) => void }) {
+export function BookingArea({
+  onChoose,
+  onBack,
+}: {
+  onChoose: (area: BookingAreaId) => void;
+  onBack: () => void;
+}) {
   const { t } = useI18n();
-  const s = t.booking;
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
-      <div className="mb-4 flex items-center justify-center gap-2">
-        <span className="h-px w-8 bg-gold" />
-        <span className="text-xs font-semibold tracking-[0.18em] text-gold">{s.eyebrow}</span>
-        <span className="h-px w-8 bg-gold" />
-      </div>
-      <p className="text-xs font-semibold tracking-[0.14em] text-ink-soft">{s.step1Tag}</p>
-      <h1 className="mt-3 font-serif text-3xl font-bold text-ink sm:text-4xl">{s.step1Title}</h1>
+      <button
+        onClick={onBack}
+        className="mb-8 flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink"
+      >
+        <ArrowLeft size={15} />
+        {t.wizard.back}
+      </button>
+
+      <h1 className="font-serif text-2xl font-bold text-ink sm:text-3xl">
+        {t.intake.areaTitle}
+      </h1>
 
       <motion.div
         variants={staggerContainer}
@@ -44,7 +53,7 @@ export function BookingArea({ onChoose }: { onChoose: (area: BookingAreaId) => v
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cream-dark text-ink">
                 <Icon size={20} />
               </div>
-              <p className="font-serif font-semibold text-ink">{s.areas[area]}</p>
+              <p className="font-serif font-semibold text-ink">{t.booking.areas[area]}</p>
             </motion.button>
           );
         })}

@@ -10,8 +10,8 @@ import { Assessment } from "./pages/Assessment";
 import { Results } from "./pages/Results";
 import { Research } from "./pages/Research";
 import { Nutrition } from "./pages/Nutrition";
+import { NutritionQuestionnaire } from "./pages/NutritionQuestionnaire";
 import { Contact } from "./pages/Contact";
-import { Rezervacia } from "./pages/Rezervacia";
 import { Terms } from "./pages/Terms";
 import { Privacy } from "./pages/Privacy";
 
@@ -30,8 +30,8 @@ function App() {
               <Route path="results" element={<Results />} />
               <Route path="research" element={<Research />} />
               <Route path="nutrition" element={<Nutrition />} />
+              <Route path="nutrition-questionnaire" element={<NutritionQuestionnaire />} />
               <Route path="contact" element={<Contact />} />
-              <Route path="rezervacia" element={<Rezervacia />} />
               <Route path="terms" element={<Terms />} />
               <Route path="privacy" element={<Privacy />} />
             </Route>

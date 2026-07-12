@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Video, MapPin } from "lucide-react";
 import { useI18n } from "../../i18n/I18nContext";
-import {
-  BOOKING_FORMATS,
-  type BookingArea as BookingAreaId,
-  type BookingFormat as BookingFormatId,
-} from "../../data/booking";
+import { BOOKING_FORMATS, type BookingFormat as BookingFormatId } from "../../data/booking";
+import type { PillarId } from "../../data/pillars";
 
 const FORMAT_ICONS: Record<BookingFormatId, typeof Video> = {
   online: Video,
@@ -13,16 +10,15 @@ const FORMAT_ICONS: Record<BookingFormatId, typeof Video> = {
 };
 
 export function BookingFormat({
-  area,
+  pillarId,
   onSelect,
   onBack,
 }: {
-  area: BookingAreaId;
+  pillarId: PillarId;
   onSelect: (format: BookingFormatId) => void;
   onBack: () => void;
 }) {
   const { t } = useI18n();
-  const s = t.booking;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
@@ -31,14 +27,14 @@ export function BookingFormat({
         className="mb-8 flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink"
       >
         <ArrowLeft size={15} />
-        {s.back}
+        {t.wizard.back}
       </button>
 
       <p className="text-xs font-semibold tracking-[0.14em] text-ink-soft">
-        {s.step2Tag} — {s.areas[area].toUpperCase()}
+        {t.pillars[pillarId].title.toUpperCase()}
       </p>
       <h1 className="mt-3 font-serif text-2xl font-bold text-ink sm:text-3xl">
-        {s.step2Title}
+        {t.booking.formatTitle}
       </h1>
 
       <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -57,7 +53,7 @@ export function BookingFormat({
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cream-dark text-ink">
                 <Icon size={18} />
               </div>
-              <span className="text-sm font-medium text-ink">{s.formats[format]}</span>
+              <span className="text-sm font-medium text-ink">{t.booking.formats[format]}</span>
             </motion.button>
           );
         })}

@@ -50,7 +50,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-3">
-          <ButtonLink to="/rezervacia">{t.hero.ctaPrimary}</ButtonLink>
+          <ButtonLink to="/find-your-path">{t.hero.ctaPrimary}</ButtonLink>
         </motion.div>
       </motion.div>
 

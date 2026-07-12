@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { HeartHandshake, Dumbbell, Repeat } from "lucide-react";
+import { HeartHandshake, Dumbbell, Repeat, ArrowRight } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { CTABand } from "../components/CTABand";
+import { ButtonLink } from "../components/ui/Button";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
@@ -40,6 +41,13 @@ export function Nutrition() {
             );
           })}
         </motion.div>
+
+        <div className="mt-10 text-center">
+          <ButtonLink to="/nutrition-questionnaire" className="!inline-flex">
+            {t.nutritionQuestionnaire.startCta}
+            <ArrowRight size={15} />
+          </ButtonLink>
+        </div>
       </section>
 
       <CTABand />

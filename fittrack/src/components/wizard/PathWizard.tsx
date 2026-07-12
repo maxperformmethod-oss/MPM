@@ -1,31 +1,34 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import type { Path } from "../../data/paths";
+import { isPillarId, type PillarId } from "../../data/pillars";
+import { useI18n } from "../../i18n/I18nContext";
 import { WizardStart } from "./WizardStart";
 import { WizardDetails } from "./WizardDetails";
 import { WizardResult } from "./WizardResult";
 
 type Step = 1 | 2 | 3;
 
-const STEP_LABELS: Record<Step, string> = {
-  1: "Starting Point",
-  2: "Details",
-  3: "Your Path",
-};
-
 export function PathWizard() {
-  const [step, setStep] = useState<Step>(1);
-  const [path, setPath] = useState<Path | null>(null);
+  const { t } = useI18n();
+  const [searchParams] = useSearchParams();
+
+  // Deep-link support: #/find-your-path?path=<pillar-id> skips step 1.
+  const linkedPath = searchParams.get("path");
+  const initialPillar = isPillarId(linkedPath) ? linkedPath : null;
+
+  const [step, setStep] = useState<Step>(initialPillar ? 2 : 1);
+  const [pillarId, setPillarId] = useState<PillarId | null>(initialPillar);
   const [option, setOption] = useState<string | null>(null);
 
   function reset() {
     setStep(1);
-    setPath(null);
+    setPillarId(null);
     setOption(null);
   }
 
-  function handleChoosePath(chosen: Path) {
-    setPath(chosen);
+  function handleChoose(id: PillarId) {
+    setPillarId(id);
     setStep(2);
   }
 
@@ -60,7 +63,7 @@ export function PathWizard() {
         ))}
       </div>
       <p className="mx-auto mt-2 max-w-md px-4 text-center text-[11px] font-medium tracking-wide text-ink-soft sm:px-6">
-        {STEP_LABELS[step]}
+        {t.wizard.stepLabels[step - 1]}
       </p>
 
       <AnimatePresence mode="wait">
@@ -72,10 +75,10 @@ export function PathWizard() {
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <WizardStart onChoose={handleChoosePath} />
+            <WizardStart onChoose={handleChoose} />
           </motion.div>
         )}
-        {step === 2 && path && (
+        {step === 2 && pillarId && (
           <motion.div
             key="details"
             initial={{ opacity: 0, x: 24 }}
@@ -84,13 +87,13 @@ export function PathWizard() {
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <WizardDetails
-              path={path}
+              pillarId={pillarId}
               onSelect={handleSelectOption}
-              onBack={() => setStep(1)}
+              onBack={reset}
             />
           </motion.div>
         )}
-        {step === 3 && path && option && (
+        {step === 3 && pillarId && option && (
           <motion.div
             key="result"
             initial={{ opacity: 0, x: 24 }}
@@ -98,7 +101,7 @@ export function PathWizard() {
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <WizardResult path={path} option={option} onRestart={reset} />
+            <WizardResult pillarId={pillarId} option={option} onRestart={reset} />
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import type { Path } from "../../data/paths";
+import { PILLARS, type PillarId } from "../../data/pillars";
+import { useI18n } from "../../i18n/I18nContext";
 
 export function WizardDetails({
-  path,
+  pillarId,
   onSelect,
   onBack,
 }: {
-  path: Path;
+  pillarId: PillarId;
   onSelect: (option: string) => void;
   onBack: () => void;
 }) {
-  const Icon = path.icon;
+  const { t } = useI18n();
+  const Icon = PILLARS.find((p) => p.id === pillarId)!.icon;
+  const path = t.wizard.paths[pillarId];
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
@@ -20,15 +23,15 @@ export function WizardDetails({
         className="mb-8 flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink"
       >
         <ArrowLeft size={15} />
-        Back
+        {t.wizard.back}
       </button>
 
       <p className="text-xs font-semibold tracking-[0.14em] text-ink-soft">
-        STEP 2 — {path.title.toUpperCase()}
+        {t.wizard.step2Tag} — {t.pillars[pillarId].title.toUpperCase()}
       </p>
 
       <div className="mt-4 flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cream-dark text-ink">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cream-dark text-ink">
           <Icon size={20} />
         </div>
         <h1 className="font-serif text-2xl font-bold text-ink sm:text-3xl">
@@ -45,7 +48,7 @@ export function WizardDetails({
             transition={{ duration: 0.35, delay: i * 0.06, ease: "easeOut" }}
             whileHover={{ y: -2 }}
             onClick={() => onSelect(option)}
-            className="rounded-xl border border-ink/10 bg-white px-5 py-4 text-left text-sm font-medium text-ink shadow-sm hover:border-gold hover:shadow-md"
+            className="rounded-xl border border-ink/10 bg-paper px-5 py-4 text-left text-sm font-medium text-ink shadow-sm hover:border-gold hover:shadow-md"
           >
             {option}
           </motion.button>

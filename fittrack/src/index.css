@@ -2,14 +2,16 @@
 
 @theme {
   --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
 
-  --color-cream: #f7f2ea;
-  --color-cream-dark: #efe7d8;
-  --color-ink: #1c1a16;
-  --color-ink-soft: #55524a;
-  --color-gold: #b08a4e;
-  --color-gold-light: #cfa863;
+  --color-cream: #f5f1e8;
+  --color-paper: #fbfaf6;
+  --color-cream-dark: #ece5d6;
+  --color-ink: #3a3a38;
+  --color-ink-soft: #5c4433;
+  --color-gold: #cc9544;
+  --color-terracotta: #c36f4e;
+  --color-sage: #7a7c4e;
 }
 
 :root {
@@ -41,6 +43,11 @@ select,
 textarea,
 button {
   font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -76,4 +83,10 @@ input[type="number"] {
 
 .animate-float-slow {
   animation: float-slow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow {
+    animation: none;
+  }
 }

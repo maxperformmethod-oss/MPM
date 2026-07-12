@@ -1,18 +1,21 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, RotateCcw } from "lucide-react";
-import { Link } from "react-router-dom";
-import type { Path } from "../../data/paths";
-import { Button } from "../ui/Button";
+import type { PillarId } from "../../data/pillars";
+import { useI18n } from "../../i18n/I18nContext";
+import { ButtonLink } from "../ui/Button";
 
 export function WizardResult({
-  path,
+  pillarId,
   option,
   onRestart,
 }: {
-  path: Path;
+  pillarId: PillarId;
   option: string;
   onRestart: () => void;
 }) {
+  const { t } = useI18n();
+  const result = t.wizard.paths[pillarId].result;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,7 +24,7 @@ export function WizardResult({
       className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6"
     >
       <p className="text-xs font-semibold tracking-[0.14em] text-ink-soft">
-        STEP 3 — YOUR RECOMMENDED PATH
+        {t.wizard.step3Tag}
       </p>
 
       <motion.div
@@ -34,22 +37,18 @@ export function WizardResult({
       </motion.div>
 
       <h1 className="mt-5 font-serif text-3xl font-bold text-ink sm:text-4xl">
-        {path.result.heading}
+        {result.heading}
       </h1>
       <p className="mx-auto mt-2 text-sm text-ink-soft">
-        Based on "{path.title}" → {option}
+        {t.wizard.basedOn}: {t.pillars[pillarId].title} → {option}
       </p>
-      <p className="mx-auto mt-5 max-w-lg text-base text-ink-soft">
-        {path.result.body}
-      </p>
+      <p className="mx-auto mt-5 max-w-lg text-base text-ink-soft">{result.body}</p>
 
       <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-        <Button className="!rounded-lg">{path.result.cta}</Button>
-        <Link to="/approach">
-          <Button variant="secondary" className="!rounded-lg">
-            Explore The MPM Approach
-          </Button>
-        </Link>
+        <ButtonLink to={`/contact?service=${pillarId}`}>{result.cta}</ButtonLink>
+        <ButtonLink to="/approach" variant="secondary">
+          {t.wizard.exploreApproach}
+        </ButtonLink>
       </div>
 
       <button
@@ -57,7 +56,7 @@ export function WizardResult({
         className="mx-auto mt-8 flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-ink"
       >
         <RotateCcw size={14} />
-        Start Over
+        {t.wizard.startOver}
       </button>
     </motion.div>
   );

@@ -37,7 +37,7 @@ export function AppLayout() {
               MPM<sup className="text-[0.5em]">™</sup>
             </p>
             <p className="mt-1 text-[9px] font-semibold tracking-[0.18em] text-ink-soft">
-              MALOVEC PERFORMANCE METHOD
+              MAX PERFORM METHOD
             </p>
             <p className="mt-4 max-w-xs text-sm text-ink-soft">{t.footer.tagline}</p>
             <p className="mt-4 text-xs text-ink-soft">{t.footer.credentials}</p>
@@ -75,7 +75,7 @@ export function AppLayout() {
         </div>
 
         <div className="border-t border-ink/10 px-4 py-5 text-center text-xs text-ink-soft sm:px-6">
-          © {new Date().getFullYear()} MPM™ — Malovec Performance Method.{" "}
+          © {new Date().getFullYear()} MPM™ — Max Perform Method.{" "}
           {t.footer.rights}
         </div>
       </footer>

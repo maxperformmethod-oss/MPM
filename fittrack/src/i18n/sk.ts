@@ -14,7 +14,7 @@ export const sk: Dict = {
   },
 
   hero: {
-    eyebrow: "MPM™ — MALOVEC PERFORMANCE METHOD",
+    eyebrow: "MPM™ — MAX PERFORM METHOD",
     titleLines: ["Hýb sa lepšie.", "Podávaj výkon.", "Zostaň v hre."],
     lead: "MPM™ pomáha športovcom a aktívnym ľuďom hýbať sa bez bolesti, znovu vybudovať silu a vrátiť sa k výkonu — cez koučing postavený na diagnostike.",
     checklist: [
@@ -278,15 +278,17 @@ export const sk: Dict = {
   aboutPage: {
     eyebrow: "O MNE",
     title: "Maxim Malovec",
-    lead: "Kouč a športový odborník prepájajúci rehabilitáciu a výkon.",
+    lead: "Kouč, ktorý ťa nevráti len do hry — vráti ťa tam silnejšieho, ako si bol pred zranením.",
     credentials: [
+      "Tréner V. kvalifikačného stupňa — najvyššia trénerská kvalifikácia na Slovensku",
       "Mgr. — Fakulta telesnej výchovy a športu, Univerzita Komenského (FTVŠ UK)",
-      "Registrovaný športový odborník",
-      "Prax založená na dôkazoch vo výkone & rehabilitácii",
+      "Registrovaný športový odborník — Ministerstvo školstva, vedy, výskumu a športu SR",
+      "3 roky praxe priamo so športovcami — hokej, tenis, návrat po zranení",
     ],
     story: [
+      "Tri roky pracujem priamo v teréne so športovcami, ktorí si prešli tým najnáročnejším — rekonštrukciou ACL, dlhými rehabilitáciami, neistotou, či sa vôbec vrátia na pôvodnú úroveň. Najviac skúseností mám s hokejistami a tenistami, kde je návrat k plnému výkonu bez kompromisu na rýchlosti, sile a explozivite absolútna nutnosť — nie len „bez bolesti“.",
       "MPM™ vzniklo z jednoduchého pozorovania: príliš veľa športovcov uviazne v medzere medzi fyzioterapiou a skutočným výkonom. Prepustení, ale nie pripravení. Bez bolesti, ale bez istoty.",
-      "Malovec Performance Method existuje preto, aby túto medzeru uzavrel — spája štruktúrovanú diagnostiku, rehabilitačné myslenie a prax silového a kondičného tréningu do jedného súvislého, merateľného procesu.",
+      "Max Perform Method existuje preto, aby túto medzeru uzavrel — spája štruktúrovanú diagnostiku, rehabilitačné myslenie a prax silového a kondičného tréningu do jedného súvislého, merateľného procesu.",
     ],
     philosophyTitle: "Filozofia",
     philosophy:

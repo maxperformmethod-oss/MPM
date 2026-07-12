@@ -12,7 +12,7 @@ export const en = {
   },
 
   hero: {
-    eyebrow: "MPM™ — MALOVEC PERFORMANCE METHOD",
+    eyebrow: "MPM™ — MAX PERFORM METHOD",
     titleLines: ["Move Better.", "Perform Better.", "Stay in the Game."],
     lead: "MPM™ helps athletes and active people move with less pain, rebuild strength and return to performance through assessment-based coaching.",
     checklist: [
@@ -276,15 +276,17 @@ export const en = {
   aboutPage: {
     eyebrow: "ABOUT",
     title: "Maxim Malovec",
-    lead: "Coach and sports specialist bridging rehabilitation and performance.",
+    lead: "A coach who won't just get you back in the game — he'll get you back stronger than you were before the injury.",
     credentials: [
+      "Level V certified coach — the highest coaching qualification in Slovakia",
       "Mgr. — Faculty of Physical Education and Sport, Comenius University (FTVŠ UK)",
-      "Registered Sports Specialist",
-      "Evidence-based practice in performance & rehabilitation",
+      "Registered Sports Specialist — Ministry of Education, Science, Research and Sport of the Slovak Republic",
+      "3 years of hands-on practice with athletes — hockey, tennis, return from injury",
     ],
     story: [
+      "For three years I've worked directly in the field with athletes who have been through the hardest part — ACL reconstruction, long rehabilitations, and the uncertainty of whether they'd ever return to their previous level. Most of my experience is with hockey and tennis players, where returning to full performance without compromising speed, strength and explosiveness is an absolute necessity — not just being “pain-free”.",
       "MPM™ grew out of a simple observation: too many athletes get stuck in the gap between physiotherapy and real performance. Discharged, but not ready. Pain-free, but not confident.",
-      "The Malovec Performance Method exists to close that gap — combining structured assessment, rehabilitation thinking and strength & conditioning practice into one continuous, measurable process.",
+      "The Max Perform Method exists to close that gap — combining structured assessment, rehabilitation thinking and strength & conditioning practice into one continuous, measurable process.",
     ],
     philosophyTitle: "Philosophy",
     philosophy:

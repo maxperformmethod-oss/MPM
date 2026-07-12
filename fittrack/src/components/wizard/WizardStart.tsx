@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { PILLARS, type PillarId } from "../../data/pillars";
 import { useI18n } from "../../i18n/I18nContext";
@@ -59,6 +60,14 @@ export function WizardStart({ onChoose }: { onChoose: (id: PillarId) => void }) 
           </motion.button>
         ))}
       </motion.div>
+
+      <Link
+        to="/approach"
+        className="mt-10 inline-flex items-center gap-1.5 text-sm font-medium text-gold transition-colors hover:text-ink"
+      >
+        {t.wizard.exploreApproach}
+        <ArrowRight size={15} />
+      </Link>
     </div>
   );
 }

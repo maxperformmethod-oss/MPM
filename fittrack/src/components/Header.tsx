@@ -5,11 +5,9 @@ import { ButtonLink } from "./ui/Button";
 import { useI18n, type Lang } from "../i18n/I18nContext";
 
 const NAV_ITEMS = [
-  { to: "/about", key: "about" },
-  { to: "/approach", key: "approach" },
   { to: "/find-your-path", key: "findYourPath" },
-  { to: "/assessment", key: "assessment" },
-  { to: "/results", key: "results" },
+  { to: "/about", key: "about" },
+  { to: "/nutrition", key: "nutrition" },
   { to: "/research", key: "research" },
   { to: "/contact", key: "contact" },
 ] as const;
@@ -50,7 +48,7 @@ export function Header() {
             MPM<sup className="text-[0.5em]">™</sup>
           </span>
           <span className="mt-0.5 text-[9px] font-semibold tracking-[0.18em] text-ink-soft">
-            MALOVEC PERFORMANCE METHOD
+            MAX PERFORM METHOD
           </span>
         </NavLink>
 
@@ -73,10 +71,10 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <LangToggle />
           <ButtonLink to="/contact" className="!px-5 !py-2.5 whitespace-nowrap">
             {t.nav.bookAssessment}
           </ButtonLink>
+          <LangToggle />
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">

@@ -290,7 +290,6 @@ export const sk: Dict = {
     philosophyTitle: "Filozofia",
     philosophy:
       "Diagnostikovať úprimne, plánovať individuálne, koučovať zblízka — a nechať pretestovanie, nie názor, rozhodnúť, kedy si pripravený. Žiadne skratky, žiadne generické šablóny, žiadne hádanie.",
-    photoNote: "Fotografia už čoskoro",
   },
 
   researchPage: {

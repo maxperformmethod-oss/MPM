@@ -1,8 +1,16 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Header } from "./Header";
 import { useI18n } from "../i18n/I18nContext";
 import { CONTACT_EMAIL } from "../data/site";
+
+function PageFallback() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center bg-cream">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-ink/15 border-t-gold" />
+    </div>
+  );
+}
 
 const FOOTER_LINKS = [
   { to: "/about", key: "about" },
@@ -27,7 +35,9 @@ export function AppLayout() {
     <div className="min-h-screen bg-cream text-ink">
       <Header />
       <main>
-        <Outlet />
+        <Suspense fallback={<PageFallback />}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <footer className="border-t border-ink/10 bg-paper">

@@ -1,19 +1,27 @@
+import { lazy } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 import { I18nProvider } from "./i18n/I18nContext";
 import { AppLayout } from "./components/AppLayout";
-import { Home } from "./pages/Home";
-import { About } from "./pages/About";
-import { Approach } from "./pages/Approach";
-import { FindYourPath } from "./pages/FindYourPath";
-import { Assessment } from "./pages/Assessment";
-import { Results } from "./pages/Results";
-import { Research } from "./pages/Research";
-import { Nutrition } from "./pages/Nutrition";
-import { NutritionQuestionnaire } from "./pages/NutritionQuestionnaire";
-import { Contact } from "./pages/Contact";
-import { Terms } from "./pages/Terms";
-import { Privacy } from "./pages/Privacy";
+
+const Home = lazy(() => import("./pages/Home").then((m) => ({ default: m.Home })));
+const About = lazy(() => import("./pages/About").then((m) => ({ default: m.About })));
+const Approach = lazy(() => import("./pages/Approach").then((m) => ({ default: m.Approach })));
+const FindYourPath = lazy(() =>
+  import("./pages/FindYourPath").then((m) => ({ default: m.FindYourPath })),
+);
+const Assessment = lazy(() =>
+  import("./pages/Assessment").then((m) => ({ default: m.Assessment })),
+);
+const Results = lazy(() => import("./pages/Results").then((m) => ({ default: m.Results })));
+const Research = lazy(() => import("./pages/Research").then((m) => ({ default: m.Research })));
+const Nutrition = lazy(() => import("./pages/Nutrition").then((m) => ({ default: m.Nutrition })));
+const NutritionQuestionnaire = lazy(() =>
+  import("./pages/NutritionQuestionnaire").then((m) => ({ default: m.NutritionQuestionnaire })),
+);
+const Contact = lazy(() => import("./pages/Contact").then((m) => ({ default: m.Contact })));
+const Terms = lazy(() => import("./pages/Terms").then((m) => ({ default: m.Terms })));
+const Privacy = lazy(() => import("./pages/Privacy").then((m) => ({ default: m.Privacy })));
 
 function App() {
   return (

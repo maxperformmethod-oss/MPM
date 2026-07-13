@@ -288,7 +288,6 @@ export const en = {
     philosophyTitle: "Philosophy",
     philosophy:
       "Assess honestly, plan individually, coach closely, and let retesting — not opinion — decide when you're ready. No shortcuts, no generic templates, no guesswork.",
-    photoNote: "Photo coming soon",
   },
 
   researchPage: {

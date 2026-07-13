@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { SectionHeading } from "../components/SectionHeading";
 import { CTABand } from "../components/CTABand";
+import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
@@ -11,7 +12,24 @@ export function Approach() {
   return (
     <>
       <section className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-        <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} align="center" />
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto aspect-[21/9] w-full max-w-4xl overflow-hidden rounded-[2rem] border border-ink/10 shadow-sm"
+        >
+          <Photo
+            name="approach"
+            alt="Kouč vedie klienta cez pohybové cvičenie pri stene s piatimi krokmi MPM metódy."
+            className="h-full w-full object-cover"
+            sizes="(min-width: 1024px) 896px, 100vw"
+          />
+        </motion.div>
+
+        <div className="mt-12">
+          <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} align="center" />
+        </div>
 
         <motion.ol
           variants={staggerContainer}

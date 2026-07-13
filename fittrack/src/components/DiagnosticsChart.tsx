@@ -1,44 +1,59 @@
 import { useRef } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
-import { Line, LineChart, ResponsiveContainer, YAxis } from "recharts";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useI18n } from "../i18n/I18nContext";
 
 const SCORES = [38, 62, 81, 100];
+
+function scoreToY(score: number) {
+  return 100 - score;
+}
+
+const POINTS = SCORES.map((score, i) => ({
+  x: (i / (SCORES.length - 1)) * 100,
+  y: scoreToY(score),
+}));
+
+const PATH = `M${POINTS.map((p) => `${p.x},${p.y}`).join(" L")}`;
 
 export function DiagnosticsChart() {
   const { t } = useI18n();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const reduceMotion = useReducedMotion();
-  const data = t.home.assessmentHighlight.chartLabels.map((label, i) => ({
-    label,
-    score: SCORES[i],
-  }));
+  const labels = t.home.assessmentHighlight.chartLabels;
 
   return (
     <div ref={ref} className="mx-auto mt-10 w-full max-w-md">
-      <div className="h-28 text-gold">
-        {inView && (
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: 8 }}>
-              <YAxis hide domain={[0, 110]} />
-              <Line
-                type="monotone"
-                dataKey="score"
-                stroke="currentColor"
-                strokeWidth={3}
-                dot={{ r: 4, fill: "currentColor", strokeWidth: 0 }}
-                isAnimationActive={!reduceMotion}
-                animationDuration={1200}
-                animationEasing="ease-out"
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        )}
-      </div>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="h-28 w-full text-gold">
+        <motion.path
+          d={PATH}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+          initial={{ pathLength: reduceMotion ? 1 : 0 }}
+          animate={inView ? { pathLength: 1 } : undefined}
+          transition={{ duration: reduceMotion ? 0 : 1.2, ease: "easeOut" }}
+        />
+        {POINTS.map((p, i) => (
+          <motion.circle
+            key={i}
+            cx={p.x}
+            cy={p.y}
+            r={2.2}
+            fill="currentColor"
+            vectorEffect="non-scaling-stroke"
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : undefined}
+            transition={{ duration: 0.3, delay: reduceMotion ? 0 : 0.9 + i * 0.1 }}
+          />
+        ))}
+      </svg>
       <div className="mt-2 flex justify-between text-[10px] font-medium uppercase tracking-wide text-ink-soft">
-        {data.map((d) => (
-          <span key={d.label}>{d.label}</span>
+        {labels.map((label) => (
+          <span key={label}>{label}</span>
         ))}
       </div>
     </div>

@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { BadgeCheck, ImageIcon } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { CTABand } from "../components/CTABand";
+import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, viewportOnce } from "../lib/motion";
 
@@ -60,16 +61,19 @@ export function About() {
             </motion.div>
           </div>
 
-          {/* TODO: replace placeholder with a real portrait photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={viewportOnce}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-3 rounded-[2rem] border border-ink/10 bg-cream-dark text-ink-soft"
+            className="aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-ink/10 shadow-sm"
           >
-            <ImageIcon size={40} />
-            <p className="text-sm font-medium">{s.photoNote}</p>
+            <Photo
+              name="about"
+              alt="Maxim Malovec počas konzultácie s klientkou v tréningovom priestore MPM."
+              className="h-full w-full object-cover"
+              sizes="(min-width: 1024px) 512px, 100vw"
+            />
           </motion.div>
         </div>
       </section>

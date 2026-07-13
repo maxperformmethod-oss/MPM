@@ -3,6 +3,7 @@ import { ClipboardCheck, Scale, Target, FileText, RefreshCcw, Info } from "lucid
 import { SectionHeading } from "../components/SectionHeading";
 import { FAQAccordion } from "../components/FAQAccordion";
 import { CTABand } from "../components/CTABand";
+import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
@@ -16,6 +17,21 @@ export function Assessment() {
     <>
       <section className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
         <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} align="center" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto mt-10 aspect-[21/9] w-full max-w-4xl overflow-hidden rounded-[2rem] border border-ink/10 shadow-sm"
+        >
+          <Photo
+            name="assessment"
+            alt="Priestor MPM s pruhovým behúňom, kde prebieha pohybová diagnostika."
+            className="h-full w-full object-cover"
+            sizes="(min-width: 1024px) 896px, 100vw"
+          />
+        </motion.div>
 
         <h2 className="mt-14 text-center font-serif text-2xl font-semibold text-ink">
           {s.includedTitle}

@@ -1,10 +1,10 @@
 import type { LucideIcon } from "lucide-react";
-import { Activity, Sprout, TrendingUp } from "lucide-react";
+import { Activity, Footprints, TrendingUp } from "lucide-react";
 
 export const PILLARS = [
   { id: "performance-coaching", icon: TrendingUp },
   { id: "return-to-sport", icon: Activity },
-  { id: "ltad", icon: Sprout },
+  { id: "ltad", icon: Footprints },
 ] as const satisfies readonly { id: string; icon: LucideIcon }[];
 
 export type PillarId = (typeof PILLARS)[number]["id"];

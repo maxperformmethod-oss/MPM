@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { InstagramIcon } from "../components/ui/InstagramIcon";
+import { TrustSealsRow } from "../components/ui/TrustSealsRow";
 import { CTABand } from "../components/CTABand";
 import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from "../data/site";
-import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
+import { fadeUp, viewportOnce } from "../lib/motion";
 
 function TrustSeals() {
   const { t } = useI18n();
@@ -17,52 +18,13 @@ function TrustSeals() {
       <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6">
         <p className="text-xs font-semibold tracking-[0.14em] text-gold">{s.eyebrow}</p>
         <motion.div
-          variants={staggerContainer}
+          variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-14 gap-y-8"
+          className="mx-auto mt-8 flex justify-center"
         >
-          <motion.img
-            variants={fadeUp}
-            src="/photos2/ministerstvo-sportu.webp"
-            alt={s.ministryAlt}
-            className="h-14 w-auto grayscale opacity-70 transition-opacity hover:opacity-100 sm:h-16"
-            loading="lazy"
-          />
-          <motion.img
-            variants={fadeUp}
-            src="/photos2/ftvs-uk.webp"
-            alt={s.ftvsAlt}
-            className="h-14 w-auto grayscale opacity-70 transition-opacity hover:opacity-100 sm:h-16"
-            loading="lazy"
-          />
-          <motion.div
-            variants={fadeUp}
-            role="img"
-            aria-label={s.mpmAlt}
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-ink/20 opacity-70 transition-opacity hover:opacity-100 sm:h-16 sm:w-16"
-          >
-            <span className="font-serif text-sm font-bold text-ink-soft">
-              MPM<sup className="text-[0.5em]">™</sup>
-            </span>
-          </motion.div>
-          <motion.div
-            variants={fadeUp}
-            role="img"
-            aria-label={s.signatureAlt}
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-ink/20 opacity-70 transition-opacity hover:opacity-100 sm:h-16 sm:w-16"
-          >
-            <svg viewBox="0 0 40 24" className="h-6 w-10 text-gold" fill="none">
-              <path
-                d="M2,12 L12,12 L16,3 L20,21 L24,12 L38,12"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </motion.div>
+          <TrustSealsRow />
         </motion.div>
       </div>
     </section>

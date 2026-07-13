@@ -31,6 +31,13 @@ export const en = {
   },
 
   home: {
+    credentialsStrip: [
+      "Mgr. FTVŠ UK",
+      "Registered Sports Specialist",
+      "Sports Science",
+      "Evidence-Based",
+      "Performance & Rehabilitation",
+    ],
     whoFor: {
       eyebrow: "WHO IT'S FOR",
       title: "Built for people who take their body seriously.",
@@ -64,9 +71,9 @@ export const en = {
       lead: "Every plan starts with a structured movement and performance assessment — so progress is measured, not assumed.",
       cta: "About the assessment",
       metrics: [
-        { text: "Movement & performance assessment" },
-        { text: "Baseline and follow-up testing" },
-        { text: "Clear, written report" },
+        { text: "Assessment", pending: false },
+        { text: "Check-in every 4 weeks", pending: false },
+        { text: "10–15 measured parameters", pending: false },
       ],
       stepCount: { value: 5, suffix: "", label: "steps in the MPM method" },
       chartLabels: ["Baseline", "Week 4", "Week 8", "Retest"],
@@ -304,7 +311,6 @@ export const en = {
       ministryAlt: "Emblem of the Ministry of Tourism and Sport of the Slovak Republic",
       ftvsAlt: "Seal of the Faculty of Physical Education and Sport, Comenius University (FTVŠ UK)",
       mpmAlt: "MPM™ personal seal",
-      signatureAlt: "MPM signature mark",
     },
   },
 
@@ -735,7 +741,6 @@ export const en = {
   },
 
   footer: {
-    tagline: "Assessment-based coaching for rehabilitation and performance.",
     navTitle: "Navigation",
     contactTitle: "Contact",
     credentials: "Mgr. FTVŠ UK · Registered Sports Specialist",

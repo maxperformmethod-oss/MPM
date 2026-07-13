@@ -33,6 +33,13 @@ export const sk: Dict = {
   },
 
   home: {
+    credentialsStrip: [
+      "Mgr. FTVŠ UK",
+      "Registrovaný športový odborník",
+      "Športová veda",
+      "Evidence-Based",
+      "Výkon & rehabilitácia",
+    ],
     whoFor: {
       eyebrow: "PRE KOHO TO JE",
       title: "Pre ľudí, ktorí to so svojím telom myslia vážne.",
@@ -66,9 +73,9 @@ export const sk: Dict = {
       lead: "Každý plán začína štruktúrovanou pohybovou a výkonnostnou diagnostikou — pokrok sa meria, nepredpokladá.",
       cta: "O diagnostike",
       metrics: [
-        { text: "Pohybová a výkonnostná diagnostika" },
-        { text: "Vstupné + kontrolné testovanie" },
-        { text: "Prehľadný písomný report" },
+        { text: "Diagnostika", pending: false },
+        { text: "Kontrola každé 4 týždne", pending: false },
+        { text: "10–15 meraných parametrov", pending: false },
       ],
       stepCount: { value: 5, suffix: "", label: "krokov MPM metódy" },
       chartLabels: ["Vstup", "4. týždeň", "8. týždeň", "Pretest"],
@@ -306,7 +313,6 @@ export const sk: Dict = {
       ministryAlt: "Erb Ministerstva cestovného ruchu a športu SR",
       ftvsAlt: "Pečať Fakulty telesnej výchovy a športu Univerzity Komenského (FTVŠ UK)",
       mpmAlt: "Osobná pečať MPM™",
-      signatureAlt: "MPM podpisová značka",
     },
   },
 
@@ -738,7 +744,6 @@ export const sk: Dict = {
   },
 
   footer: {
-    tagline: "Koučing založený na diagnostike — pre rehabilitáciu a výkon.",
     navTitle: "Navigácia",
     contactTitle: "Kontakt",
     credentials: "Mgr. FTVŠ UK · Registrovaný športový odborník",

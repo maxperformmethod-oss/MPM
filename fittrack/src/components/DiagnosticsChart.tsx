@@ -27,25 +27,25 @@ export function DiagnosticsChart() {
           d={PATH}
           fill="none"
           stroke="currentColor"
-          strokeWidth={2}
+          strokeWidth={1.5}
           strokeLinecap="round"
           strokeLinejoin="round"
           initial={{ pathLength: reduceMotion ? 1 : 0 }}
           whileInView={{ pathLength: 1 }}
           viewport={viewportOnce}
-          transition={{ duration: reduceMotion ? 0 : 1.2, ease: "easeOut" }}
+          transition={{ duration: reduceMotion ? 0 : 0.9, ease: "easeInOut" }}
         />
         {POINTS.map((p, i) => (
           <motion.circle
             key={i}
             cx={p.x}
             cy={p.y}
-            r={2.2}
+            r={1.8}
             fill="currentColor"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.3, delay: reduceMotion ? 0 : 0.9 + i * 0.1 }}
+            transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.8 }}
           />
         ))}
       </svg>

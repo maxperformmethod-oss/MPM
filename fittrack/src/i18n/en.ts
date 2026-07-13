@@ -5,7 +5,7 @@ export const en = {
     findYourPath: "Find Your Path",
     assessment: "Assessment",
     results: "Results",
-    research: "Research",
+    research: "What Actually Works",
     nutrition: "Nutrition",
     contact: "Contact",
     bookAssessment: "Booking",
@@ -63,12 +63,12 @@ export const en = {
       title: "Decisions built on data.",
       lead: "Every plan starts with a structured movement and performance assessment — so progress is measured, not assumed.",
       cta: "About the assessment",
-      stats: [
-        { value: 20, suffix: "+", label: "metrics tracked per assessment" },
-        { value: 5, suffix: "", label: "steps in the MPM method" },
-        { value: 2, suffix: "×", label: "tested — baseline and retest" },
-        { value: 1, suffix: "", label: "clear written report" },
+      metrics: [
+        { text: "Movement & performance assessment" },
+        { text: "Baseline and follow-up testing" },
+        { text: "Clear, written report" },
       ],
+      stepCount: { value: 5, suffix: "", label: "steps in the MPM method" },
       chartLabels: ["Baseline", "Week 4", "Week 8", "Retest"],
     },
     testimonials: {
@@ -193,26 +193,37 @@ export const en = {
     title: "Know exactly where you stand.",
     lead: "Every MPM™ path starts with a structured assessment. It removes the guesswork from training and return-to-sport decisions.",
     includedTitle: "What the assessment includes",
+    comingSoonBadge: "Coming soon",
     included: [
       {
         title: "Movement screen",
         body: "A structured look at how you move — mobility, control and compensation patterns across fundamental positions.",
+        comingSoon: false,
       },
       {
         title: "Strength & asymmetry testing",
         body: "Objective strength measures with side-to-side comparison, so imbalances are quantified instead of estimated.",
+        comingSoon: false,
       },
       {
         title: "Sport-specific baselines",
         body: "Tests selected for the demands of your sport and goals — power, capacity and tolerance where it matters.",
+        comingSoon: false,
       },
       {
         title: "Written report",
         body: "You leave with a clear written summary: what was measured, what it means, and what the plan is.",
+        comingSoon: false,
       },
       {
         title: "Retesting",
         body: "The same tests are repeated at key milestones, so progress and return decisions are grounded in your own data.",
+        comingSoon: false,
+      },
+      {
+        title: "Force-plate asymmetry testing",
+        body: "Precise side-to-side strength asymmetry measurement using dynamometric force plates — for even more precise load-distribution data.",
+        comingSoon: true,
       },
     ],
     dataNote:
@@ -277,7 +288,7 @@ export const en = {
     credentials: [
       "Level V certified coach — the highest coaching qualification in Slovakia",
       "Mgr. — Faculty of Physical Education and Sport, Comenius University (FTVŠ UK)",
-      "Registered Sports Specialist — Ministry of Education, Science, Research and Sport of the Slovak Republic",
+      "Registered Sports Specialist — Ministry of Tourism and Sport of the Slovak Republic",
       "3 years of hands-on practice with athletes — hockey, tennis, return from injury",
     ],
     story: [
@@ -288,6 +299,13 @@ export const en = {
     philosophyTitle: "Philosophy",
     philosophy:
       "Assess honestly, plan individually, coach closely, and let retesting — not opinion — decide when you're ready. No shortcuts, no generic templates, no guesswork.",
+    trustSeals: {
+      eyebrow: "TRUST & CREDENTIALS",
+      ministryAlt: "Emblem of the Ministry of Tourism and Sport of the Slovak Republic",
+      ftvsAlt: "Seal of the Faculty of Physical Education and Sport, Comenius University (FTVŠ UK)",
+      mpmAlt: "MPM™ personal seal",
+      signatureAlt: "MPM signature mark",
+    },
   },
 
   researchPage: {
@@ -480,6 +498,8 @@ export const en = {
     eyebrow: "NUTRITION",
     title: "Fuel the process.",
     lead: "Nutrition at MPM™ is a supporting pillar — practical guidance that serves your rehabilitation and performance goals, not a standalone diet program.",
+    whoNote:
+      "Meal plans are built in line with the recommendations and classifications of the World Health Organization (WHO).",
     points: [
       {
         title: "Recovery-first",

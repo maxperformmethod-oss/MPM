@@ -1,6 +1,6 @@
-import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useI18n } from "../i18n/I18nContext";
+import { viewportOnce } from "../lib/motion";
 
 const SCORES = [38, 62, 81, 100];
 
@@ -17,13 +17,11 @@ const PATH = `M${POINTS.map((p) => `${p.x},${p.y}`).join(" L")}`;
 
 export function DiagnosticsChart() {
   const { t } = useI18n();
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
   const reduceMotion = useReducedMotion();
   const labels = t.home.assessmentHighlight.chartLabels;
 
   return (
-    <div ref={ref} className="mx-auto mt-10 w-full max-w-md">
+    <div className="mx-auto mt-10 w-full max-w-md">
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="h-28 w-full text-gold">
         <motion.path
           d={PATH}
@@ -32,9 +30,9 @@ export function DiagnosticsChart() {
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
-          vectorEffect="non-scaling-stroke"
           initial={{ pathLength: reduceMotion ? 1 : 0 }}
-          animate={inView ? { pathLength: 1 } : undefined}
+          whileInView={{ pathLength: 1 }}
+          viewport={viewportOnce}
           transition={{ duration: reduceMotion ? 0 : 1.2, ease: "easeOut" }}
         />
         {POINTS.map((p, i) => (
@@ -44,9 +42,9 @@ export function DiagnosticsChart() {
             cy={p.y}
             r={2.2}
             fill="currentColor"
-            vectorEffect="non-scaling-stroke"
             initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : undefined}
+            whileInView={{ opacity: 1 }}
+            viewport={viewportOnce}
             transition={{ duration: 0.3, delay: reduceMotion ? 0 : 0.9 + i * 0.1 }}
           />
         ))}

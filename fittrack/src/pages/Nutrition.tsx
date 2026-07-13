@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { HeartHandshake, Dumbbell, Repeat, ArrowRight } from "lucide-react";
+import { HeartHandshake, Dumbbell, Repeat, ArrowRight, Info } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { CTABand } from "../components/CTABand";
 import { ButtonLink } from "../components/ui/Button";
@@ -40,6 +40,17 @@ export function Nutrition() {
               </motion.div>
             );
           })}
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-2xl border border-gold/30 bg-gold/10 p-5"
+        >
+          <Info size={18} className="mt-0.5 shrink-0 text-gold" />
+          <p className="text-sm text-ink">{s.whoNote}</p>
         </motion.div>
 
         <div className="mt-10 text-center">

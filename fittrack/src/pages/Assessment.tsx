@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ClipboardCheck, Scale, Target, FileText, RefreshCcw, Info } from "lucide-react";
+import { ClipboardCheck, Scale, Target, FileText, RefreshCcw, Gauge, Info } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { FAQAccordion } from "../components/FAQAccordion";
 import { CTABand } from "../components/CTABand";
@@ -7,7 +7,7 @@ import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
-const INCLUDED_ICONS = [ClipboardCheck, Scale, Target, FileText, RefreshCcw];
+const INCLUDED_ICONS = [ClipboardCheck, Scale, Target, FileText, RefreshCcw, Gauge];
 
 export function Assessment() {
   const { t } = useI18n();
@@ -49,8 +49,13 @@ export function Assessment() {
               <motion.div
                 key={item.title}
                 variants={fadeUp}
-                className="rounded-2xl border border-ink/10 bg-paper p-5 shadow-sm"
+                className="relative rounded-2xl border border-ink/10 bg-paper p-5 shadow-sm"
               >
+                {item.comingSoon && (
+                  <span className="absolute right-4 top-4 rounded-full bg-gold/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-ink-soft">
+                    {s.comingSoonBadge}
+                  </span>
+                )}
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cream-dark text-ink">
                   <Icon size={18} />
                 </div>

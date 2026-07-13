@@ -6,7 +6,6 @@ import { SectionHeading } from "../components/SectionHeading";
 import { PillarCard } from "../components/PillarCard";
 import { StatCounter } from "../components/StatCounter";
 import { TestimonialCard } from "../components/TestimonialCard";
-import { CTABand } from "../components/CTABand";
 import { SectionDivider } from "../components/SectionDivider";
 import { DiagnosticsChart } from "../components/DiagnosticsChart";
 import { ButtonLink } from "../components/ui/Button";
@@ -142,6 +141,14 @@ function MethodTeaserSection() {
   );
 }
 
+function MetricTile({ text }: { text: string }) {
+  return (
+    <div className="flex flex-col items-center justify-center text-center">
+      <p className="font-serif text-base font-bold leading-snug text-ink sm:text-lg">{text}</p>
+    </div>
+  );
+}
+
 function AssessmentHighlightSection() {
   const { t } = useI18n();
   const s = t.home.assessmentHighlight;
@@ -150,14 +157,14 @@ function AssessmentHighlightSection() {
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} align="center" />
       <div className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-8 sm:grid-cols-4">
-        {s.stats.map((stat) => (
-          <StatCounter
-            key={stat.label}
-            value={stat.value}
-            suffix={stat.suffix}
-            label={stat.label}
-          />
-        ))}
+        <MetricTile text={s.metrics[0].text} />
+        <StatCounter
+          value={s.stepCount.value}
+          suffix={s.stepCount.suffix}
+          label={s.stepCount.label}
+        />
+        <MetricTile text={s.metrics[1].text} />
+        <MetricTile text={s.metrics[2].text} />
       </div>
       <DiagnosticsChart />
       <div className="mt-10 text-center">
@@ -216,7 +223,6 @@ export function Home() {
       <AssessmentHighlightSection />
       <SectionDivider />
       <TestimonialsSection />
-      <CTABand />
     </>
   );
 }

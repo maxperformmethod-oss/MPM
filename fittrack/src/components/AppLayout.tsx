@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { Suspense, useEffect } from "react";
-import { Eye } from "lucide-react";
+import { Eye, Mail } from "lucide-react";
 import { Header } from "./Header";
 import { InstagramIcon } from "./ui/InstagramIcon";
 import { useI18n } from "../i18n/I18nContext";
@@ -45,9 +45,11 @@ export function AppLayout() {
       </main>
 
       <footer className="border-t border-ink/10 bg-paper">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
-          <div>
-            <p className="font-serif text-lg font-bold text-ink">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 text-center sm:px-6 sm:text-left md:grid-cols-3">
+          <div className="flex flex-col items-center sm:items-start">
+            <p className="font-serif text-xl font-bold text-ink">
               MPM<sup className="text-[0.5em]">™</sup>
             </p>
             <p className="mt-1 text-[9px] font-semibold tracking-[0.18em] text-ink-soft">
@@ -61,7 +63,7 @@ export function AppLayout() {
             <p className="text-xs font-semibold tracking-[0.14em] text-gold">
               {t.footer.navTitle.toUpperCase()}
             </p>
-            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2">
+            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2.5 sm:inline-grid">
               {FOOTER_LINKS.map(({ to, key }) => (
                 <li key={to}>
                   <Link
@@ -75,14 +77,15 @@ export function AppLayout() {
             </ul>
           </nav>
 
-          <div>
+          <div className="flex flex-col items-center sm:items-start">
             <p className="text-xs font-semibold tracking-[0.14em] text-gold">
               {t.footer.contactTitle.toUpperCase()}
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="mt-4 block text-sm text-ink-soft transition-colors hover:text-ink"
+              className="mt-4 flex items-center gap-2 text-sm text-ink-soft transition-colors hover:text-ink"
             >
+              <Mail size={16} className="shrink-0 text-gold" />
               {CONTACT_EMAIL}
             </a>
             <a

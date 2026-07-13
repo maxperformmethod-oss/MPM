@@ -7,7 +7,7 @@ export const sk: Dict = {
     findYourPath: "Nájdi svoju cestu",
     assessment: "Diagnostika",
     results: "Výsledky",
-    research: "Výskum",
+    research: "Čo pre teba funguje",
     nutrition: "Výživa",
     contact: "Kontakt",
     bookAssessment: "Rezervácia",
@@ -65,12 +65,12 @@ export const sk: Dict = {
       title: "Rozhodnutia postavené na dátach.",
       lead: "Každý plán začína štruktúrovanou pohybovou a výkonnostnou diagnostikou — pokrok sa meria, nepredpokladá.",
       cta: "O diagnostike",
-      stats: [
-        { value: 20, suffix: "+", label: "metrík sledovaných v diagnostike" },
-        { value: 5, suffix: "", label: "krokov MPM metódy" },
-        { value: 2, suffix: "×", label: "testovanie — vstupné a kontrolné" },
-        { value: 1, suffix: "", label: "prehľadný písomný report" },
+      metrics: [
+        { text: "Pohybová a výkonnostná diagnostika" },
+        { text: "Vstupné + kontrolné testovanie" },
+        { text: "Prehľadný písomný report" },
       ],
+      stepCount: { value: 5, suffix: "", label: "krokov MPM metódy" },
       chartLabels: ["Vstup", "4. týždeň", "8. týždeň", "Pretest"],
     },
     testimonials: {
@@ -195,26 +195,37 @@ export const sk: Dict = {
     title: "Vedz presne, kde stojíš.",
     lead: "Každá MPM™ cesta začína štruktúrovanou diagnostikou. Odstraňuje odhady z tréningu aj z rozhodnutí o návrate k športu.",
     includedTitle: "Čo diagnostika obsahuje",
+    comingSoonBadge: "Čoskoro",
     included: [
       {
         title: "Pohybový skríning",
         body: "Štruktúrovaný pohľad na to, ako sa hýbeš — mobilita, kontrola a kompenzačné vzorce v základných pozíciách.",
+        comingSoon: false,
       },
       {
         title: "Testovanie sily a asymetrií",
         body: "Objektívne meranie sily s porovnaním strán — nerovnováhy sa kvantifikujú, nie odhadujú.",
+        comingSoon: false,
       },
       {
         title: "Športovo-špecifické východiská",
         body: "Testy vybrané podľa nárokov tvojho športu a cieľov — výbušnosť, kapacita a tolerancia tam, kde na tom záleží.",
+        comingSoon: false,
       },
       {
         title: "Písomný report",
         body: "Odchádzaš s prehľadným písomným zhrnutím: čo sa meralo, čo to znamená a aký je plán.",
+        comingSoon: false,
       },
       {
         title: "Pretestovanie",
         body: "Rovnaké testy sa opakujú v kľúčových míľnikoch — pokrok aj rozhodnutia o návrate stoja na tvojich vlastných dátach.",
+        comingSoon: false,
+      },
+      {
+        title: "Testovanie asymetrie s dynamometrickými platňami",
+        body: "Presné meranie silovej asymetrie medzi končatinami na dynamometrických platniach — pre ešte presnejšie dáta o rozložení sily a záťaži.",
+        comingSoon: true,
       },
     ],
     dataNote:
@@ -279,7 +290,7 @@ export const sk: Dict = {
     credentials: [
       "Tréner V. kvalifikačného stupňa — najvyššia trénerská kvalifikácia na Slovensku",
       "Mgr. — Fakulta telesnej výchovy a športu, Univerzita Komenského (FTVŠ UK)",
-      "Registrovaný športový odborník — Ministerstvo školstva, vedy, výskumu a športu SR",
+      "Registrovaný športový odborník — Ministerstvo cestovného ruchu a športu SR",
       "3 roky praxe priamo so športovcami — hokej, tenis, návrat po zranení",
     ],
     story: [
@@ -290,6 +301,13 @@ export const sk: Dict = {
     philosophyTitle: "Filozofia",
     philosophy:
       "Diagnostikovať úprimne, plánovať individuálne, koučovať zblízka — a nechať pretestovanie, nie názor, rozhodnúť, kedy si pripravený. Žiadne skratky, žiadne generické šablóny, žiadne hádanie.",
+    trustSeals: {
+      eyebrow: "PEČATE DÔVERY",
+      ministryAlt: "Erb Ministerstva cestovného ruchu a športu SR",
+      ftvsAlt: "Pečať Fakulty telesnej výchovy a športu Univerzity Komenského (FTVŠ UK)",
+      mpmAlt: "Osobná pečať MPM™",
+      signatureAlt: "MPM podpisová značka",
+    },
   },
 
   researchPage: {
@@ -482,6 +500,8 @@ export const sk: Dict = {
     eyebrow: "VÝŽIVA",
     title: "Palivo pre proces.",
     lead: "Výživa je v MPM™ podporný pilier — praktické vedenie v službách tvojich rehabilitačných a výkonnostných cieľov, nie samostatný diétny program.",
+    whoNote:
+      "Jedálničky zostavené v súlade s odporúčaniami a klasifikáciami Svetovej zdravotníckej organizácie (WHO).",
     points: [
       {
         title: "Najprv regenerácia",

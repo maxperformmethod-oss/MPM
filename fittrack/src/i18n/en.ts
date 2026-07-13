@@ -167,7 +167,6 @@ export const en = {
     ltadTitle: "Select an age group.",
     ltadLead:
       "Every age has its sensitive development windows — training adapts to what the body is best primed for right now.",
-    ltadVerify: "verify",
     ltadStages: {
       "6-9": {
         range: "~6 – 9 years",

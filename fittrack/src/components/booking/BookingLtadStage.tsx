@@ -42,11 +42,8 @@ export function BookingLtadStage({
               variants={fadeUp}
               onClick={() => onChoose(stage)}
               whileHover={{ y: -4 }}
-              className="relative flex flex-col items-start gap-1.5 rounded-2xl border border-ink/10 bg-paper p-5 text-left shadow-sm transition-shadow hover:border-gold hover:shadow-md"
+              className="flex flex-col items-start gap-1.5 rounded-2xl border border-ink/10 bg-paper p-5 text-left shadow-sm transition-shadow hover:border-gold hover:shadow-md"
             >
-              <span className="absolute right-4 top-4 rounded-full bg-terracotta/15 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-terracotta">
-                [{t.booking.ltadVerify}]
-              </span>
               <p className="font-serif text-lg font-bold text-gold">{s.range}</p>
               <p className="font-semibold text-ink">{s.title}</p>
               <p className="text-sm text-ink-soft">{s.desc}</p>

@@ -169,7 +169,6 @@ export const sk: Dict = {
     ltadTitle: "Vyber vekovú kategóriu.",
     ltadLead:
       "Každý vek má svoje citlivé obdobia rozvoja — tréning sa prispôsobuje tomu, na čo je telo práve najlepšie nastavené.",
-    ltadVerify: "overiť",
     ltadStages: {
       "6-9": {
         range: "~6 – 9 rokov",

@@ -1,8 +1,11 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { Suspense, useEffect } from "react";
+import { Eye } from "lucide-react";
 import { Header } from "./Header";
+import { InstagramIcon } from "./ui/InstagramIcon";
 import { useI18n } from "../i18n/I18nContext";
-import { CONTACT_EMAIL } from "../data/site";
+import { usePreview } from "../lib/usePreview";
+import { CONTACT_EMAIL, INSTAGRAM_URL, INSTAGRAM_HANDLE } from "../data/site";
 
 function PageFallback() {
   return (
@@ -26,6 +29,7 @@ const FOOTER_LINKS = [
 export function AppLayout() {
   const { t } = useI18n();
   const { pathname } = useLocation();
+  const preview = usePreview();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -81,6 +85,15 @@ export function AppLayout() {
             >
               {CONTACT_EMAIL}
             </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex items-center gap-2 text-sm text-ink-soft transition-colors hover:text-ink"
+            >
+              <InstagramIcon size={16} className="shrink-0 text-gold" />
+              {INSTAGRAM_HANDLE}
+            </a>
           </div>
         </div>
 
@@ -99,6 +112,13 @@ export function AppLayout() {
           </p>
         </div>
       </footer>
+
+      {preview && (
+        <div className="fixed bottom-4 left-4 z-50 flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 text-[11px] font-semibold tracking-wide text-cream shadow-lg">
+          <Eye size={13} className="text-gold" />
+          ADMIN PREVIEW
+        </div>
+      )}
     </div>
   );
 }

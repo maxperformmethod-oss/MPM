@@ -297,6 +297,8 @@ export const sk: Dict = {
     title: "Dôkazy, zrozumiteľne.",
     lead: "Praktické zhrnutia výskumu, ktorý formuje MPM™ proces — písané pre športovcov, nie pre akademikov.",
     comingSoon: "Článok už čoskoro",
+    draftLabel: "DRAFT — len admin náhľad",
+    draftTitle: "Rozpracované články",
     articles: [
       {
         title: "Návrat k športu po rekonštrukcii ACL: čo kritériá naozaj hovoria",
@@ -309,6 +311,169 @@ export const sk: Dict = {
       {
         title: "Manažment záťaže: rozdiel medzi tvrdým tréningom a tréningom naslepo",
         tag: "Výkon",
+      },
+    ],
+  },
+
+  researchFaq: {
+    title: "Mýty a fakty",
+    lead: "20 najčastejších mýtov o bolesti, rehabilitácii a tréningu — a čo o nich naozaj hovorí výskum.",
+    verdictMyth: "MÝTUS",
+    verdictFact: "FAKT",
+    evidenceTitle: "Čo hovorí výskum",
+    takeawayTitle: "Praktický záver",
+    referencesTitle: "Referencie",
+    readCta: "Prečítať výskum",
+    disclaimer:
+      "Obsah tejto stránky má vzdelávací charakter a nenahrádza lekársku diagnostiku, liečbu ani individuálne poradenstvo. Pri zdravotných ťažkostiach sa poraď s lekárom.",
+    items: [
+      {
+        question: "Znamená bolesť vždy poškodenie tkaniva?",
+        short: "Nie. Bolesť je ochranný signál mozgu, nie presný merač poškodenia.",
+        evidence:
+          "Podľa modernej definície bolesti (IASP) je bolesť komplexný zážitok ovplyvnený biologickými, psychologickými aj sociálnymi faktormi. Intenzita bolesti často nekorešponduje s rozsahom nálezu na tkanive — bolesť môže pretrvávať aj po zahojení a naopak.",
+        takeaway:
+          "Bolesť ber vážne, ale nerovná sa automaticky poškodeniu — dôležitý je kontext a postupná záťaž.",
+      },
+      {
+        question: "Dokáže MRI vždy určiť príčinu bolesti?",
+        short: "Nie. „Nálezy“ na MRI sú bežné aj u ľudí bez akejkoľvek bolesti.",
+        evidence:
+          "Systematické review ukázalo degeneratívne zmeny platničiek u 37 % bezpríznakových dvadsiatnikov a až 96 % osemdesiatnikov. Podobné nálezy (meniskus, chrupavka) sú časté aj v kolenách ľudí, ktorých nič nebolí.",
+        takeaway:
+          "MRI nález vyhodnocuj vždy spolu s klinickým vyšetrením — obraz sám o sebe nie je diagnóza.",
+      },
+      {
+        question: "Máš prestať cvičiť, keď niečo bolí?",
+        short: "Väčšinou nie. Tolerovateľná bolesť pri cvičení nie je prekážkou zotavenia.",
+        evidence:
+          "Meta-analýza ukázala, že cvičenie s tolerovateľnou bolesťou prinášalo pri chronických muskuloskeletálnych ťažkostiach krátkodobo lepšie výsledky než cvičenie striktne bez bolesti.",
+        takeaway:
+          "Pracuj s pravidlom tolerovateľnej bolesti (napr. do 3–4/10, ktorá do rána odznie) namiesto úplného vyhýbania sa pohybu.",
+      },
+      {
+        question: "Je odpočinok lepší než pohyb?",
+        short: "Pri väčšine bolestí pohybového aparátu nie — aktivita zotavenie urýchľuje.",
+        evidence:
+          "Cochrane review pri akútnej bolesti chrbta ukázalo, že rada „zostať aktívny“ vedie k lepším výsledkom než pokoj na lôžku. Moderné klinické odporúčania konzistentne stavajú na aktívnom prístupe ako prvej voľbe.",
+        takeaway:
+          "Uprav záťaž, nevynuluj ju — relatívny odpočinok a postupný návrat fungujú lepšie ako pasívne čakanie.",
+      },
+      {
+        question: "Znamená „žiadna bolesť“, že si pripravený na šport?",
+        short: "Nie. Absencia bolesti nehovorí nič o sile, výbušnosti ani kontrole pohybu.",
+        evidence:
+          "Len 55 % športovcov po rekonštrukcii ACL sa vráti k súťažnému športu — a mnohí sa vracajú bez splnenia objektívnych kritérií, s výrazne vyšším rizikom opätovného zranenia.",
+        takeaway: "Pripravenosť sa meria testami (sila, symetria, výkon), nie len pocitom.",
+      },
+      {
+        question: "Stačí čas po rekonštrukcii ACL?",
+        short: "Nie. Kalendár nie je kritérium — rozhoduje splnenie objektívnych parametrov.",
+        evidence:
+          "V Delaware-Oslo kohorte malo 38,2 % športovcov, ktorí nesplnili kritériá návratu, opätovné zranenie — oproti 5,6 % u tých, ktorí kritériá splnili. Návrat pred 9. mesiacom bol navyše spojený s približne 7× vyšším rizikom nového zranenia.",
+        takeaway: "Čas je nutná, nie postačujúca podmienka — testuj, netipuj.",
+      },
+      {
+        question: "Má byť návrat k športu založený na testovaní?",
+        short: "Áno. Objektívne kritériá preukázateľne znižujú riziko opätovného zranenia.",
+        evidence:
+          "Splnenie jednoduchých kritérií (sila, hop testy, čas) znížilo v Delaware-Oslo štúdii riziko opätovného zranenia o 84 %. Nesplnenie šiestich kritérií pred návratom bolo v ďalšej kohorte spojené so 4× vyšším rizikom ruptúry štepu.",
+        takeaway: "Presne toto je jadro MPM prístupu — pretestovanie rozhoduje, nie pocit.",
+      },
+      {
+        question: "Existuje jedna dokonalá technika cvičenia?",
+        short: "Nie. Telo je adaptabilné a „ideálna“ technika sa líši podľa človeka a cieľa.",
+        evidence:
+          "Systematické review nenašlo jasný vzťah medzi flexiou chrbtice pri dvíhaní a bolesťou chrbta — „vždy rovný chrbát“ nie je magická ochrana. Variabilita pohybu je normálna a často žiaduca.",
+        takeaway: "Techniku prispôsob štruktúre, cieľu a záťaži — a toleranciu buduj postupne.",
+      },
+      {
+        question: "Sú hlboké drepy zlé pre kolená?",
+        short: "Nie. Pri postupnej adaptácii sú hlboké drepy bezpečné a efektívne.",
+        evidence:
+          "Prehľad biomechanických štúdií nepotvrdil, že hlboký drep poškodzuje zdravé kolená — obavy o väzy a chrupavku sa pri rozumnej progresii záťaže nepotvrdili.",
+        takeaway: "Rozhoduje dávkovanie a progresia, nie hĺbka sama o sebe.",
+      },
+      {
+        question: "Je beh zlý pre kolená?",
+        short: "Nie. Rekreačný beh je spájaný s nižším výskytom artrózy než sedavý život.",
+        evidence:
+          "Meta-analýza ukázala artrózu bedra/kolena u 3,5 % rekreačných bežcov oproti 10,2 % u nebežcov; riziko rástlo len pri extrémnych súťažných objemoch.",
+        takeaway: "Beh v rozumnom objeme kolená skôr chráni — kľúčom je postupné budovanie záťaže.",
+      },
+      {
+        question: "Je silový tréning nebezpečný pre deti?",
+        short: "Nie. Pod odborným dohľadom je bezpečný a odporúčaný medzinárodným konsenzom.",
+        evidence:
+          "Medzinárodný konsenzus (2014) aj pozičný dokument NSCA potvrdzujú, že správne vedený silový tréning u detí a mládeže zlepšuje silu, zdravie kostí a znižuje riziko zranení — poškodenie rastových platničiek pri odbornom vedení nebolo potvrdené.",
+        takeaway:
+          "Odborne vedený silový tréning je pre mladých športovcov prínos, nie riziko — presne na tom stojí LTAD pilier.",
+      },
+      {
+        question: "Je silový tréning nebezpečný pre starších?",
+        short: "Nie. Je jednou z najúčinnejších intervencií proti strate svalov a funkcie.",
+        evidence:
+          "Pozičný dokument NSCA pre starších dospelých aj Cochrane review potvrdzujú, že progresívny silový tréning zlepšuje silu, fyzickú funkciu a kvalitu života aj vo vysokom veku.",
+        takeaway: "Vek nie je kontraindikácia — je to dôvod začať.",
+      },
+      {
+        question: "Je slabý core hlavná príčina bolesti chrbta?",
+        short: "Nie. Bolesť chrbta je multifaktoriálna a „slabý core“ ju nevysvetľuje.",
+        evidence:
+          "Cochrane review ukázalo, že špecifické „motor control“ cvičenia nie sú účinnejšie než iné formy cvičenia. Kritické prehľady koncept core stability ako hlavnej príčiny bolesti spochybnili.",
+        takeaway:
+          "Cvič core, ak chceš byť silnejší — ale bolesť chrbta rieš komplexne (záťaž, spánok, stres, kondícia).",
+      },
+      {
+        question: "Zabráni dokonalé držanie tela bolesti?",
+        short: "Nie. Neexistuje jedna „správna“ postura, ktorá by chránila pred bolesťou.",
+        evidence:
+          "Systematický prehľad prehľadov nenašiel konzistentný kauzálny vzťah medzi posturou a bolesťou chrbta. Pohodlná, variabilná pozícia a pravidelný pohyb sú dôležitejšie než „vojenské“ držanie.",
+        takeaway: "Najlepšia postura je tá ďalšia — meň pozície a hýb sa.",
+      },
+      {
+        question: "Zabráni strečing zraneniam?",
+        short: "Sám o sebe nie. Na prevenciu zranení má strečing minimálny efekt.",
+        evidence:
+          "Meta-analýza randomizovaných štúdií ukázala, že silový tréning výrazne znížil riziko zranení (preťaženia takmer o polovicu až dve tretiny), zatiaľ čo strečing preventívny efekt nepreukázal.",
+        takeaway: "Prevenciu stavaj na sile a rozumnom dávkovaní — strečing má iné využitie.",
+      },
+      {
+        question: "Rozbíja foam rolling fasciu?",
+        short: "Nie. Mechanická „prestavba“ fascie valcom je prakticky nemožná.",
+        evidence:
+          "Matematické modely ukazujú, že na deformáciu hustej fascie by boli potrebné sily ďaleko presahujúce manuálny tlak. Efekty rollingu sú krátkodobé a pravdepodobne neurofyziologické (vnímanie, tolerancia), nie štrukturálne.",
+        takeaway: "Roller pokojne používaj na krátkodobú úľavu — ale neočakávaj zmenu tkaniva.",
+      },
+      {
+        question: "Sú svalové dysbalancie vždy problém?",
+        short: "Nie. Určitá asymetria je normálna — najmä v asymetrických športoch.",
+        evidence:
+          "Prehľady vzťahu medzi asymetriami a výkonom či zraneniami ukazujú nekonzistentné výsledky; mnohí zdraví aj elitní športovci majú merateľné asymetrie bez ťažkostí.",
+        takeaway:
+          "Meraj a sleduj trend — zasahuj, keď asymetria súvisí s výkonom alebo návratom po zranení, nie pri každom rozdiele.",
+      },
+      {
+        question: "Znamená pukanie kĺbov poškodenie?",
+        short: "Nie. Pukanie je kavitácia plynu v kĺbovej tekutine, nie deštrukcia.",
+        evidence:
+          "Zobrazovanie v reálnom čase ukázalo, že zvuk vzniká tvorbou bubliny v synoviálnej tekutine. Dlhodobé sledovania nezistili u „pukačov“ vyšší výskyt artrózy — vrátane slávneho 60-ročného sebaexperimentu.",
+        takeaway: "Bezbolestné pukanie je neškodné — rieš ho, len ak ho sprevádza bolesť či opuch.",
+      },
+      {
+        question: "Sú pasívne terapie nutné?",
+        short: "Nie sú základ. Kvalitné klinické odporúčania stavajú na aktívnom prístupe.",
+        evidence:
+          "Systematický prehľad kvalitných klinických guidelines pre muskuloskeletálnu bolesť konzistentne odporúča edukáciu, aktivitu a cvičenie ako prvú líniu; pasívne procedúry majú nanajvýš doplnkovú úlohu.",
+        takeaway: "Masáž či prístroje môžu uľaviť — ale výsledok stavia aktívna práca.",
+      },
+      {
+        question: "Je rehabilitácia skončená, keď zmizne bolesť?",
+        short: "Nie. „Bez bolesti“ ešte neznamená „pripravený na záťaž“.",
+        evidence:
+          "Konsenzus o návrate k športu (Bern 2016) definuje návrat ako kontinuum riadené kritériami, nie symptómami. Kohortové dáta ukazujú, že práve po odznení bolesti bez splnenia kritérií je riziko opätovného zranenia najvyššie.",
+        takeaway:
+          "Rehabilitácia končí, keď zvládneš nároky svojho športu — potvrdené pretestom. Presne túto medzeru MPM™ zapĺňa.",
       },
     ],
   },

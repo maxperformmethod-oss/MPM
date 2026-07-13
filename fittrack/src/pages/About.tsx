@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
+import { InstagramIcon } from "../components/ui/InstagramIcon";
 import { CTABand } from "../components/CTABand";
 import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
+import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from "../data/site";
 import { fadeUp, viewportOnce } from "../lib/motion";
 
 export function About() {
@@ -59,6 +61,20 @@ export function About() {
               <p className="font-serif font-semibold text-ink">{s.philosophyTitle}</p>
               <p className="mt-2 text-sm text-ink">{s.philosophy}</p>
             </motion.div>
+
+            <motion.a
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewportOnce}
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+            >
+              <InstagramIcon size={16} className="text-gold" />
+              {INSTAGRAM_HANDLE}
+            </motion.a>
           </div>
 
           <motion.div

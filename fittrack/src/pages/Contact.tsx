@@ -1,10 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { SectionHeading } from "../components/SectionHeading";
+import { InstagramIcon } from "../components/ui/InstagramIcon";
 import { Button } from "../components/ui/Button";
 import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
-import { CONTACT_EMAIL } from "../data/site";
+import { CONTACT_EMAIL, INSTAGRAM_URL, INSTAGRAM_HANDLE } from "../data/site";
 import { fadeUp, viewportOnce } from "../lib/motion";
 
 export function Contact() {
@@ -94,6 +95,15 @@ export function Contact() {
             {t.contactPage.form.submit}
           </Button>
           <p className="text-center text-xs text-ink-soft">{t.contactPage.form.note}</p>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto mt-2 flex items-center gap-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+          >
+            <InstagramIcon size={16} className="text-gold" />
+            {INSTAGRAM_HANDLE}
+          </a>
         </motion.form>
       </div>
     </section>

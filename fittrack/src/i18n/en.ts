@@ -295,6 +295,8 @@ export const en = {
     title: "Evidence, explained.",
     lead: "Practical breakdowns of the research that shapes the MPM™ process — written for athletes, not academics.",
     comingSoon: "Article coming soon",
+    draftLabel: "DRAFT — admin preview only",
+    draftTitle: "Articles in progress",
     articles: [
       {
         title: "Return to sport after ACL reconstruction: what the criteria actually say",
@@ -307,6 +309,169 @@ export const en = {
       {
         title: "Load management: the difference between training hard and training blindly",
         tag: "Performance",
+      },
+    ],
+  },
+
+  researchFaq: {
+    title: "Myths & Facts",
+    lead: "The 20 most common myths about pain, rehabilitation and training — and what the research actually says.",
+    verdictMyth: "MYTH",
+    verdictFact: "FACT",
+    evidenceTitle: "What the research says",
+    takeawayTitle: "Practical takeaway",
+    referencesTitle: "References",
+    readCta: "Read the research",
+    disclaimer:
+      "The content on this page is educational and does not replace medical diagnosis, treatment or individual advice. If you have health problems, consult a doctor.",
+    items: [
+      {
+        question: "Does pain always mean tissue damage?",
+        short: "No. Pain is a protective signal from the brain, not a precise damage meter.",
+        evidence:
+          "Under the modern IASP definition, pain is a complex experience shaped by biological, psychological and social factors. Pain intensity often does not match the extent of tissue findings — pain can persist after healing, and vice versa.",
+        takeaway:
+          "Take pain seriously, but it does not automatically equal damage — context and gradual loading matter.",
+      },
+      {
+        question: "Can MRI always identify the cause of pain?",
+        short: "No. MRI “findings” are common in people with no pain at all.",
+        evidence:
+          "A systematic review found disc degeneration in 37% of asymptomatic 20-year-olds and up to 96% of 80-year-olds. Similar findings (meniscus, cartilage) are common in the knees of pain-free people.",
+        takeaway:
+          "Always interpret an MRI finding together with a clinical exam — the image alone is not a diagnosis.",
+      },
+      {
+        question: "Should you stop exercising when something hurts?",
+        short: "Usually not. Tolerable pain during exercise is not a barrier to recovery.",
+        evidence:
+          "A meta-analysis showed that exercising into tolerable pain produced better short-term outcomes in chronic musculoskeletal conditions than strictly pain-free exercise.",
+        takeaway:
+          "Use a tolerable-pain rule (e.g. up to 3–4/10 that settles by morning) instead of avoiding movement entirely.",
+      },
+      {
+        question: "Is rest better than movement?",
+        short: "For most musculoskeletal pain, no — activity speeds up recovery.",
+        evidence:
+          "A Cochrane review of acute low back pain showed that advice to stay active leads to better outcomes than bed rest. Modern clinical guidelines consistently recommend an active approach as the first choice.",
+        takeaway:
+          "Adjust the load, don't zero it — relative rest and a gradual return work better than passive waiting.",
+      },
+      {
+        question: "Does “no pain” mean you're ready for sport?",
+        short: "No. Absence of pain says nothing about strength, power or movement control.",
+        evidence:
+          "Only 55% of athletes return to competitive sport after ACL reconstruction — and many return without meeting objective criteria, carrying a much higher risk of re-injury.",
+        takeaway: "Readiness is measured by tests (strength, symmetry, performance), not just by feel.",
+      },
+      {
+        question: "Is time alone enough after ACL reconstruction?",
+        short: "No. The calendar is not a criterion — meeting objective benchmarks is.",
+        evidence:
+          "In the Delaware-Oslo cohort, 38.2% of athletes who failed return-to-sport criteria were re-injured versus 5.6% of those who passed. Returning before 9 months was also associated with roughly 7 times the rate of new injury.",
+        takeaway: "Time is a necessary but not sufficient condition — test, don't guess.",
+      },
+      {
+        question: "Should return to sport be based on testing?",
+        short: "Yes. Objective criteria demonstrably reduce re-injury risk.",
+        evidence:
+          "Passing simple criteria (strength, hop tests, time) reduced re-injury risk by 84% in the Delaware-Oslo study. Failing six discharge criteria before return was associated with a 4 times greater risk of graft rupture in another cohort.",
+        takeaway: "This is the core of the MPM approach — retesting decides, not feelings.",
+      },
+      {
+        question: "Is there one perfect exercise technique?",
+        short: "No. The body is adaptable and the “ideal” technique differs by person and goal.",
+        evidence:
+          "A systematic review found no clear relationship between lumbar flexion during lifting and low back pain — “always lift with a straight back” is not magic protection. Movement variability is normal and often desirable.",
+        takeaway: "Fit technique to the person, goal and load — and build tolerance gradually.",
+      },
+      {
+        question: "Are deep squats bad for your knees?",
+        short: "No. With gradual adaptation, deep squats are safe and effective.",
+        evidence:
+          "A review of biomechanical studies did not confirm that deep squatting damages healthy knees — concerns about ligaments and cartilage were not supported when load progresses sensibly.",
+        takeaway: "Dosage and progression decide, not depth itself.",
+      },
+      {
+        question: "Is running bad for your knees?",
+        short: "No. Recreational running is associated with less osteoarthritis than a sedentary life.",
+        evidence:
+          "A meta-analysis found hip/knee osteoarthritis in 3.5% of recreational runners versus 10.2% of non-runners; risk increased only at extreme competitive volumes.",
+        takeaway: "Sensible running volumes tend to protect knees — the key is gradual load building.",
+      },
+      {
+        question: "Is strength training dangerous for children?",
+        short: "No. Properly supervised, it is safe and endorsed by international consensus.",
+        evidence:
+          "The 2014 International Consensus and the NSCA position statement confirm that well-coached resistance training in youth improves strength, bone health and reduces injury risk — growth plate damage under qualified supervision has not been substantiated.",
+        takeaway:
+          "Professionally coached strength training is a benefit for young athletes, not a risk — this is what the LTAD pillar is built on.",
+      },
+      {
+        question: "Is strength training dangerous for older adults?",
+        short: "No. It is one of the most effective interventions against muscle and function loss.",
+        evidence:
+          "The NSCA position statement for older adults and a Cochrane review confirm that progressive resistance training improves strength, physical function and quality of life even at advanced age.",
+        takeaway: "Age is not a contraindication — it's a reason to start.",
+      },
+      {
+        question: "Is a weak core the main cause of back pain?",
+        short: "No. Back pain is multifactorial and a “weak core” doesn't explain it.",
+        evidence:
+          "A Cochrane review showed that specific motor control exercises are no more effective than other forms of exercise. Critical reviews have challenged core stability as a primary cause of back pain.",
+        takeaway:
+          "Train your core to get stronger — but address back pain comprehensively (load, sleep, stress, fitness).",
+      },
+      {
+        question: "Will perfect posture prevent pain?",
+        short: "No. There is no single “correct” posture that protects against pain.",
+        evidence:
+          "A systematic review of reviews found no consistent causal relationship between posture and back pain. A comfortable, variable position and regular movement matter more than a “military” hold.",
+        takeaway: "The best posture is the next one — change positions and keep moving.",
+      },
+      {
+        question: "Does stretching prevent injuries?",
+        short: "On its own, no. Stretching has minimal effect on injury prevention.",
+        evidence:
+          "A meta-analysis of randomised trials showed strength training substantially reduced injury risk (overuse injuries almost halved or better), while stretching showed no preventive effect.",
+        takeaway: "Build prevention on strength and sensible loading — stretching has other uses.",
+      },
+      {
+        question: "Does foam rolling break up fascia?",
+        short: "No. Mechanically “remodelling” fascia with a roller is practically impossible.",
+        evidence:
+          "Mathematical models show that deforming dense fascia would require forces far beyond manual pressure. Rolling effects are short-term and likely neurophysiological (perception, tolerance), not structural.",
+        takeaway: "Use the roller for short-term relief — just don't expect tissue change.",
+      },
+      {
+        question: "Are muscle imbalances always a problem?",
+        short: "No. Some asymmetry is normal — especially in asymmetric sports.",
+        evidence:
+          "Reviews of the relationship between asymmetries and performance or injury show inconsistent results; many healthy and elite athletes carry measurable asymmetries without problems.",
+        takeaway:
+          "Measure and track the trend — intervene when asymmetry relates to performance or return from injury, not at every difference.",
+      },
+      {
+        question: "Does joint cracking mean damage?",
+        short: "No. Cracking is gas cavitation in joint fluid, not destruction.",
+        evidence:
+          "Real-time imaging showed the sound comes from bubble formation in synovial fluid. Long-term observations found no higher arthritis rates in habitual crackers — including the famous 60-year self-experiment.",
+        takeaway: "Painless cracking is harmless — address it only if pain or swelling comes with it.",
+      },
+      {
+        question: "Are passive therapies necessary?",
+        short: "They are not the foundation. Quality guidelines build on an active approach.",
+        evidence:
+          "A systematic review of high-quality clinical guidelines for musculoskeletal pain consistently recommends education, activity and exercise as first-line care; passive modalities play at most a supporting role.",
+        takeaway: "Massage or machines can bring relief — but active work builds the outcome.",
+      },
+      {
+        question: "Is rehabilitation finished when pain disappears?",
+        short: "No. “Pain-free” does not yet mean “ready for load”.",
+        evidence:
+          "The 2016 Bern consensus defines return to sport as a criteria-driven continuum, not a symptom-driven one. Cohort data show the highest re-injury risk comes precisely after pain resolves but criteria go unmet.",
+        takeaway:
+          "Rehabilitation ends when you can handle the demands of your sport — confirmed by retesting. This is exactly the gap MPM™ closes.",
       },
     ],
   },

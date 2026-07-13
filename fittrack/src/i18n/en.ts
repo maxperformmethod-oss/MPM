@@ -118,6 +118,9 @@ export const en = {
       start: "Path",
       intake: "About you",
       area: "Area",
+      sport: "Sport",
+      age: "Age",
+      ltadStage: "Age group",
       format: "Format",
       summary: "Summary",
     },
@@ -145,6 +148,47 @@ export const en = {
       knee: "Knee",
       hip: "Hip",
       shoulder: "Shoulder",
+    },
+    sportTitle: "Which sport do you play?",
+    sports: {
+      hockey: "Hockey",
+      tennis: "Tennis",
+      football: "Football",
+      running: "Running",
+      other: "Other sport",
+    },
+    ageTitle: "Select your age group.",
+    ages: {
+      "under-12": "under 12",
+      "12-15": "12 – 15",
+      "16-18": "16 – 18",
+      adult: "18+",
+    },
+    ltadTitle: "Select an age group.",
+    ltadLead:
+      "Every age has its sensitive development windows — training adapts to what the body is best primed for right now.",
+    ltadVerify: "verify",
+    ltadStages: {
+      "6-9": {
+        range: "~6 – 9 years",
+        title: "Movement literacy",
+        desc: "Fundamental movement literacy — coordination, balance, spatial awareness and enjoyment of movement.",
+      },
+      "9-12": {
+        range: "~9 – 12 years",
+        title: "Golden age of learning",
+        desc: "The most sensitive window for motor learning — speed, agility, reaction speed and the technique of new movements.",
+      },
+      "12-16": {
+        range: "~12 – 16 years",
+        title: "Building capacity",
+        desc: "Developing strength and endurance in line with the growth spurt, with gradual movement specialisation.",
+      },
+      "16-plus": {
+        range: "16+ years",
+        title: "Performance preparation",
+        desc: "Individualised performance preparation — strength, power and the specific demands of the sport.",
+      },
     },
     formatTitle: "How do you want to train?",
     formats: {

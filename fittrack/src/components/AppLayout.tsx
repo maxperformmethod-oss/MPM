@@ -46,7 +46,7 @@ export function AppLayout() {
 
       <footer className="bg-ink text-cream">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div className="grid gap-12 sm:grid-cols-[3fr_2fr] sm:gap-10 md:gap-16">
+          <div className="flex flex-col gap-12 sm:flex-row sm:justify-between sm:gap-10">
             <div>
               <p className="font-serif text-2xl font-bold text-cream">
                 MPM<sup className="text-[0.5em]">™</sup>
@@ -59,10 +59,30 @@ export function AppLayout() {
                 <TrustSealsRow compact />
               </div>
 
-              <p className="mt-8 text-[11px] font-semibold tracking-[0.18em] text-cream/40">
+              <nav aria-label={t.footer.navTitle} className="mt-10">
+                <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
+                  {t.footer.navTitle.toUpperCase()}
+                </p>
+                <ul className="mt-4 flex flex-col gap-2.5">
+                  {FOOTER_LINKS.map(({ to, key }) => (
+                    <li key={to}>
+                      <Link
+                        to={to}
+                        className="text-sm text-cream/70 transition-colors hover:text-cream"
+                      >
+                        {t.nav[key]}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+
+            <div className="sm:text-right">
+              <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
                 {t.footer.contactTitle.toUpperCase()}
               </p>
-              <div className="mt-4 flex flex-col gap-2.5">
+              <div className="mt-4 flex flex-col gap-2.5 sm:items-end">
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
                   className="group flex items-center gap-3 text-sm text-cream/70 transition-colors hover:text-cream"
@@ -88,24 +108,6 @@ export function AppLayout() {
                 {t.footer.credentials}
               </p>
             </div>
-
-            <nav aria-label={t.footer.navTitle}>
-              <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
-                {t.footer.navTitle.toUpperCase()}
-              </p>
-              <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3">
-                {FOOTER_LINKS.map(({ to, key }) => (
-                  <li key={to}>
-                    <Link
-                      to={to}
-                      className="text-sm text-cream/70 transition-colors hover:text-cream"
-                    >
-                      {t.nav[key]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
           </div>
         </div>
 

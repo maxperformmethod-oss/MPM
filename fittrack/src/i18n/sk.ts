@@ -120,6 +120,9 @@ export const sk: Dict = {
       start: "Cesta",
       intake: "O tebe",
       area: "Oblasť",
+      sport: "Šport",
+      age: "Vek",
+      ltadStage: "Veková kategória",
       format: "Forma",
       summary: "Zhrnutie",
     },
@@ -147,6 +150,47 @@ export const sk: Dict = {
       knee: "Koleno",
       hip: "Bedro",
       shoulder: "Rameno",
+    },
+    sportTitle: "Ktorý šport robíš?",
+    sports: {
+      hockey: "Hokej",
+      tennis: "Tenis",
+      football: "Futbal",
+      running: "Beh",
+      other: "Iný šport",
+    },
+    ageTitle: "Vyber vekovú kategóriu.",
+    ages: {
+      "under-12": "do 12 rokov",
+      "12-15": "12 – 15 rokov",
+      "16-18": "16 – 18 rokov",
+      adult: "18+",
+    },
+    ltadTitle: "Vyber vekovú kategóriu.",
+    ltadLead:
+      "Každý vek má svoje citlivé obdobia rozvoja — tréning sa prispôsobuje tomu, na čo je telo práve najlepšie nastavené.",
+    ltadVerify: "overiť",
+    ltadStages: {
+      "6-9": {
+        range: "~6 – 9 rokov",
+        title: "Pohybová gramotnosť",
+        desc: "Základná pohybová gramotnosť — koordinácia, rovnováha, priestorové vnímanie a radosť z pohybu.",
+      },
+      "9-12": {
+        range: "~9 – 12 rokov",
+        title: "Zlatý vek učenia",
+        desc: "Najcitlivejšie obdobie motorického učenia — rýchlosť, obratnosť, reakčná rýchlosť a technika nových pohybov.",
+      },
+      "12-16": {
+        range: "~12 – 16 rokov",
+        title: "Budovanie kapacity",
+        desc: "Rozvoj sily a vytrvalosti v súlade s rastovým špurtom, postupná špecializácia pohybu.",
+      },
+      "16-plus": {
+        range: "16+ rokov",
+        title: "Výkonnostná príprava",
+        desc: "Individualizovaná výkonnostná príprava — sila, výkon a špecifické nároky športu.",
+      },
     },
     formatTitle: "Ako chceš trénovať?",
     formats: {

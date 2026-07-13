@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Check, X } from "lucide-react";
+import { ArrowRight, CalendarCheck, Check, ClipboardCheck, Gauge, X, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Hero } from "../components/Hero";
 import { SectionHeading } from "../components/SectionHeading";
@@ -161,9 +161,20 @@ function MethodTeaserSection() {
   );
 }
 
-function MetricTile({ text, pending }: { text: string; pending?: boolean }) {
+function MetricTile({
+  icon: Icon,
+  text,
+  pending,
+}: {
+  icon: LucideIcon;
+  text: string;
+  pending?: boolean;
+}) {
   return (
-    <div className="flex flex-col items-center justify-center text-center">
+    <div className="flex flex-col items-center justify-start gap-3 text-center">
+      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cream-dark text-ink">
+        <Icon size={20} />
+      </div>
       <p className="font-serif text-base font-bold leading-snug text-ink sm:text-lg">
         {text}
         {pending && (
@@ -184,14 +195,14 @@ function AssessmentHighlightSection() {
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} align="center" />
       <div className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-8 sm:grid-cols-4">
-        <MetricTile text={s.metrics[0].text} pending={s.metrics[0].pending} />
+        <MetricTile icon={ClipboardCheck} text={s.metrics[0].text} pending={s.metrics[0].pending} />
         <StatCounter
           value={s.stepCount.value}
           suffix={s.stepCount.suffix}
           label={s.stepCount.label}
         />
-        <MetricTile text={s.metrics[1].text} pending={s.metrics[1].pending} />
-        <MetricTile text={s.metrics[2].text} pending={s.metrics[2].pending} />
+        <MetricTile icon={CalendarCheck} text={s.metrics[1].text} pending={s.metrics[1].pending} />
+        <MetricTile icon={Gauge} text={s.metrics[2].text} pending={s.metrics[2].pending} />
       </div>
       <DiagnosticsChart />
       <div className="mt-10 text-center">

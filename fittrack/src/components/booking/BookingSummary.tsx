@@ -5,8 +5,11 @@ import { useI18n } from "../../i18n/I18nContext";
 import {
   PAYMENT_LINKS,
   paymentLinkKey,
+  type AgeCategory,
   type BookingArea as BookingAreaId,
   type BookingFormat as BookingFormatId,
+  type CoachingSport,
+  type LtadStage,
   type TimeSinceOption,
 } from "../../data/booking";
 import type { PillarId } from "../../data/pillars";
@@ -16,6 +19,9 @@ export function BookingSummary({
   hasPain,
   timeSince,
   area,
+  sport,
+  ageCategory,
+  ltadStage,
   format,
   onBack,
   onRestart,
@@ -24,6 +30,9 @@ export function BookingSummary({
   hasPain: boolean | null;
   timeSince: TimeSinceOption | null;
   area: BookingAreaId | null;
+  sport: CoachingSport | null;
+  ageCategory: AgeCategory | null;
+  ltadStage: LtadStage | null;
   format: BookingFormatId;
   onBack: () => void;
   onRestart: () => void;
@@ -32,6 +41,13 @@ export function BookingSummary({
   const s = t.booking;
   const paymentLink = PAYMENT_LINKS[paymentLinkKey(pillarId, format, area)] ?? "";
   const isConnected = Boolean(paymentLink);
+
+  const detailParts = [
+    area ? s.areas[area] : null,
+    sport ? s.sports[sport] : null,
+    ageCategory ? s.ages[ageCategory] : null,
+    ltadStage ? s.ltadStages[ltadStage].range : null,
+  ].filter(Boolean);
 
   return (
     <motion.div
@@ -67,7 +83,7 @@ export function BookingSummary({
         </p>
         <p className="mt-2 font-serif text-lg font-semibold text-ink">
           {t.pillars[pillarId].title}
-          {area ? ` · ${s.areas[area]}` : ""} · {s.formats[format]}
+          {detailParts.map((part) => ` · ${part}`).join("")} · {s.formats[format]}
         </p>
         {hasPain !== null && timeSince && (
           <p className="mt-2 text-xs text-ink-soft">

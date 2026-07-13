@@ -48,18 +48,7 @@ export function AppLayout() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="flex flex-col gap-12 sm:flex-row sm:justify-between sm:gap-10">
             <div>
-              <p className="font-serif text-2xl font-bold text-cream">
-                MPM<sup className="text-[0.5em]">™</sup>
-              </p>
-              <p className="mt-1.5 text-[10px] font-semibold tracking-[0.22em] text-gold">
-                MAX PERFORM METHOD
-              </p>
-
-              <div className="mt-6">
-                <TrustSealsRow compact />
-              </div>
-
-              <nav aria-label={t.footer.navTitle} className="mt-10">
+              <nav aria-label={t.footer.navTitle}>
                 <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
                   {t.footer.navTitle.toUpperCase()}
                 </p>
@@ -79,7 +68,18 @@ export function AppLayout() {
             </div>
 
             <div className="sm:text-right">
-              <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
+              <p className="font-serif text-2xl font-bold text-cream">
+                MPM<sup className="text-[0.5em]">™</sup>
+              </p>
+              <p className="mt-1.5 text-[10px] font-semibold tracking-[0.22em] text-gold">
+                MAX PERFORM METHOD
+              </p>
+
+              <div className="mt-6 flex sm:justify-end">
+                <TrustSealsRow compact />
+              </div>
+
+              <p className="mt-10 text-[11px] font-semibold tracking-[0.18em] text-cream/40">
                 {t.footer.contactTitle.toUpperCase()}
               </p>
               <div className="mt-4 flex flex-col gap-2.5 sm:items-end">

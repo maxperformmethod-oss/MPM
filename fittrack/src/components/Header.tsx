@@ -6,6 +6,7 @@ import { useI18n, type Lang } from "../i18n/I18nContext";
 
 const NAV_ITEMS = [
   { to: "/find-your-path", key: "findYourPath" },
+  { to: "/approach", key: "approach" },
   { to: "/nutrition", key: "nutrition" },
   { to: "/research", key: "research" },
   { to: "/about", key: "about" },

@@ -1,15 +1,26 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CalendarCheck, Check, ClipboardCheck, Gauge, X, type LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarCheck,
+  Check,
+  ClipboardCheck,
+  FileText,
+  Gauge,
+  RefreshCcw,
+  Star,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { Hero } from "../components/Hero";
 import { SectionHeading } from "../components/SectionHeading";
 import { PillarCard } from "../components/PillarCard";
 import { StatCounter } from "../components/StatCounter";
-import { TestimonialCard } from "../components/TestimonialCard";
 import { SectionDivider } from "../components/SectionDivider";
 import { DiagnosticsChart } from "../components/DiagnosticsChart";
 import { ButtonLink } from "../components/ui/Button";
 import { PILLARS } from "../data/pillars";
+import { REVIEWS } from "../data/reviews";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
@@ -194,7 +205,7 @@ function AssessmentHighlightSection() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} align="center" />
-      <div className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-8 sm:grid-cols-4">
+      <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-8 sm:grid-cols-3">
         <MetricTile icon={ClipboardCheck} text={s.metrics[0].text} pending={s.metrics[0].pending} />
         <StatCounter
           value={s.stepCount.value}
@@ -203,6 +214,8 @@ function AssessmentHighlightSection() {
         />
         <MetricTile icon={CalendarCheck} text={s.metrics[1].text} pending={s.metrics[1].pending} />
         <MetricTile icon={Gauge} text={s.metrics[2].text} pending={s.metrics[2].pending} />
+        <MetricTile icon={RefreshCcw} text={s.metrics[3].text} pending={s.metrics[3].pending} />
+        <MetricTile icon={FileText} text={s.metrics[4].text} pending={s.metrics[4].pending} />
       </div>
       <DiagnosticsChart />
       <div className="mt-10 text-center">
@@ -214,8 +227,22 @@ function AssessmentHighlightSection() {
   );
 }
 
+function ReviewStars({ rating }: { rating: number }) {
+  return (
+    <div className="flex items-center gap-0.5" aria-label={`${rating}/5`}>
+      {[1, 2, 3, 4, 5].map((i) => (
+        <Star
+          key={i}
+          size={14}
+          className={i <= rating ? "fill-gold text-gold" : "fill-ink/10 text-ink/10"}
+        />
+      ))}
+    </div>
+  );
+}
+
 function TestimonialsSection() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const s = t.home.testimonials;
 
   return (
@@ -227,10 +254,29 @@ function TestimonialsSection() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mt-10 grid gap-4 sm:grid-cols-3"
+          className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {t.resultsPage.caseStudies.map((cs) => (
-            <TestimonialCard key={cs.name} quote={cs.quote} name={cs.name} sport={cs.sport} />
+          {REVIEWS.map((review) => (
+            <motion.article
+              key={review.id}
+              variants={fadeUp}
+              className="flex flex-col gap-3 rounded-2xl border border-ink/10 bg-cream p-6 shadow-sm"
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${review.tone} text-sm font-semibold text-cream`}
+                >
+                  {review.initials}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-ink">{review.name}</p>
+                  <p className="text-xs text-ink-soft">{review.context[lang]}</p>
+                </div>
+              </div>
+              <ReviewStars rating={review.rating} />
+              <p className="text-sm leading-relaxed text-ink-soft">{review.text[lang]}</p>
+            </motion.article>
           ))}
         </motion.div>
         <div className="mt-8 text-center">

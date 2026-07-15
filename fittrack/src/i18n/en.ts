@@ -1,8 +1,8 @@
 export const en = {
   nav: {
     about: "About",
-    approach: "The MPM Approach",
-    findYourPath: "Find Your Path",
+    approach: "How It Works",
+    findYourPath: "Train With Us",
     assessment: "Assessment",
     results: "Results",
     research: "What Actually Works",
@@ -54,7 +54,7 @@ export const en = {
       ],
     },
     pillars: {
-      eyebrow: "FIND YOUR PATH",
+      eyebrow: "TRAIN WITH US",
       title: "Three paths. One method.",
       lead: "Every path starts with the same objective assessment — then follows the process your situation needs.",
       choose: "Explore this path",
@@ -71,15 +71,18 @@ export const en = {
       lead: "Every plan starts with a structured movement and performance assessment — so progress is measured, not assumed.",
       cta: "About the assessment",
       metrics: [
-        { text: "Assessment", pending: false },
+        { text: "30–60 min assessment with consultation", pending: false },
         { text: "Check-in every 4 weeks", pending: false },
         { text: "10–15 measured parameters", pending: false },
+        { text: "Baseline · check-in · exit testing", pending: false },
+        { text: "Clear written report", pending: false },
       ],
       stepCount: { value: 5, suffix: "", label: "steps in the MPM method" },
       chartLabels: ["Baseline", "Week 4", "Week 8", "Retest"],
+      chartCaption: "Illustrative readiness-score progression",
     },
     testimonials: {
-      eyebrow: "RESULTS",
+      eyebrow: "REVIEWS",
       title: "What clients say.",
       cta: "See all results",
     },
@@ -93,21 +96,21 @@ export const en = {
         "Individual strength and performance coaching built on assessment data — for athletes and active people who want measurable progress. Specifically for hockey and tennis: explosiveness, change of direction and rotational power — not generic strength training.",
     },
     "return-to-sport": {
-      title: "Return to Sport",
+      title: "Pain",
       short: "Come back from injury or surgery with confidence, not guesswork.",
       description:
         "A structured return-to-sport process after injury or surgery — from pain-free movement, through progressive rehabilitation, to full training load, guided by objective retesting. Including return after ACL reconstruction — most often with hockey and tennis players, where returning to full speed and explosiveness without compromise is a must.",
     },
     ltad: {
-      title: "LTAD / Movement Development",
+      title: "Youth Athlete Development",
       short: "Build movement foundations systematically, not randomly.",
       description:
-        "Long-term, structured development of movement foundations — strength, coordination, speed and stability built systematically, not randomly.",
+        "Long-term, structured development of movement foundations — strength, coordination, speed and stability built systematically, not randomly. Built on the LTAD (Long-Term Athlete Development) model.",
     },
   },
 
   wizard: {
-    eyebrow: "FIND YOUR PATH",
+    eyebrow: "TRAIN WITH US",
     title: "Tell us what you're dealing with.",
     lead: "Choose the path closest to your situation. MPM™ will guide you toward the right assessment and coaching process.",
     choose: "Choose",

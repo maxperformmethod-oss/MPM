@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
+import { ClipboardCheck, Search, Map, Users, RefreshCcw } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { CTABand } from "../components/CTABand";
 import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
+
+const STEP_ICONS = [ClipboardCheck, Search, Map, Users, RefreshCcw];
 
 export function Approach() {
   const { t } = useI18n();
@@ -38,23 +41,29 @@ export function Approach() {
           viewport={viewportOnce}
           className="mx-auto mt-14 flex max-w-3xl flex-col gap-6"
         >
-          {s.steps.map((step, i) => (
-            <motion.li
-              key={step.title}
-              variants={fadeUp}
-              className="flex gap-5 rounded-2xl border border-ink/10 bg-paper p-6 shadow-sm"
-            >
-              <span className="font-serif text-3xl font-bold text-gold">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h2 className="font-serif text-xl font-semibold text-ink">
-                  {step.title}
-                </h2>
-                <p className="mt-2 text-sm text-ink-soft">{step.body}</p>
-              </div>
-            </motion.li>
-          ))}
+          {s.steps.map((step, i) => {
+            const Icon = STEP_ICONS[i];
+            return (
+              <motion.li
+                key={step.title}
+                variants={fadeUp}
+                className="flex gap-5 rounded-2xl border border-ink/10 bg-paper p-6 shadow-sm"
+              >
+                <span className="font-serif text-3xl font-bold text-gold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex-1">
+                  <h2 className="font-serif text-xl font-semibold text-ink">
+                    {step.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-ink-soft">{step.body}</p>
+                </div>
+                <div className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cream-dark text-ink sm:flex">
+                  <Icon size={20} />
+                </div>
+              </motion.li>
+            );
+          })}
         </motion.ol>
       </section>
 

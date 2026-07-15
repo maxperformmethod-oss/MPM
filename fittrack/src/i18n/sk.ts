@@ -3,8 +3,8 @@ import type { Dict } from "./en";
 export const sk: Dict = {
   nav: {
     about: "O mne",
-    approach: "MPM Metóda",
-    findYourPath: "Nájdi svoju cestu",
+    approach: "Ako to funguje",
+    findYourPath: "Trénuj s nami",
     assessment: "Diagnostika",
     results: "Výsledky",
     research: "Čo pre teba funguje",
@@ -56,7 +56,7 @@ export const sk: Dict = {
       ],
     },
     pillars: {
-      eyebrow: "NÁJDI SVOJU CESTU",
+      eyebrow: "TRÉNUJ S NAMI",
       title: "Tri cesty. Jedna metóda.",
       lead: "Každá cesta začína rovnakou objektívnou diagnostikou — a pokračuje procesom, ktorý tvoja situácia potrebuje.",
       choose: "Preskúmať túto cestu",
@@ -73,15 +73,18 @@ export const sk: Dict = {
       lead: "Každý plán začína štruktúrovanou pohybovou a výkonnostnou diagnostikou — pokrok sa meria, nepredpokladá.",
       cta: "O diagnostike",
       metrics: [
-        { text: "Diagnostika", pending: false },
+        { text: "30–60 min diagnostika s konzultáciou", pending: false },
         { text: "Kontrola každé 4 týždne", pending: false },
         { text: "10–15 meraných parametrov", pending: false },
+        { text: "Vstupné · kontrolné · výstupné testovanie", pending: false },
+        { text: "Prehľadný písomný report", pending: false },
       ],
       stepCount: { value: 5, suffix: "", label: "krokov MPM metódy" },
       chartLabels: ["Vstup", "4. týždeň", "8. týždeň", "Pretest"],
+      chartCaption: "Ilustračný priebeh skóre pripravenosti",
     },
     testimonials: {
-      eyebrow: "VÝSLEDKY",
+      eyebrow: "RECENZIE",
       title: "Čo hovoria klienti.",
       cta: "Všetky výsledky",
     },
@@ -95,21 +98,21 @@ export const sk: Dict = {
         "Individuálny silový a výkonnostný koučing postavený na dátach z diagnostiky — pre športovcov a aktívnych ľudí, ktorí chcú merateľný pokrok. Špecificky pre hokej a tenis: explozivita, zmena smeru a rotačná sila — nie generický silový tréning.",
     },
     "return-to-sport": {
-      title: "Návrat k športu",
+      title: "Bolesť",
       short: "Vráť sa po zranení alebo operácii s istotou, nie s odhadmi.",
       description:
         "Štruktúrovaný proces návratu k športu po zranení alebo operácii — od pohybu bez bolesti, cez progresívnu rehabilitáciu, až po plnú tréningovú záťaž, vedený objektívnym pretestovaním. Vrátane návratu po rekonštrukcii ACL — najčastejšie u hokejistov a tenistov, kde je návrat na plnú rýchlosť a explozivitu bez kompromisu nutnosťou.",
     },
     ltad: {
-      title: "LTAD / Pohybová príprava",
+      title: "Rozvoj mladých športovcov",
       short: "Buduj pohybové základy systematicky, nie náhodne.",
       description:
-        "Dlhodobý, štruktúrovaný rozvoj pohybových základov — sila, koordinácia, rýchlosť a stabilita budované systematicky, nie náhodne.",
+        "Dlhodobý, štruktúrovaný rozvoj pohybových základov — sila, koordinácia, rýchlosť a stabilita budované systematicky, nie náhodne. Postavené na LTAD modeli dlhodobého rozvoja športovca.",
     },
   },
 
   wizard: {
-    eyebrow: "NÁJDI SVOJU CESTU",
+    eyebrow: "TRÉNUJ S NAMI",
     title: "Povedz nám, čo riešiš.",
     lead: "Vyber cestu najbližšiu tvojej situácii. MPM™ ťa nasmeruje k správnej diagnostike a koučingovému procesu.",
     choose: "Vybrať",

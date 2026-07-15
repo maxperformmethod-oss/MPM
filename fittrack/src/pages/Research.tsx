@@ -1,12 +1,60 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { BookOpen, ChevronDown, ExternalLink, Info } from "lucide-react";
+import { BookOpen, ChevronDown, ExternalLink, Info, Search } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { CTABand } from "../components/CTABand";
 import { useI18n } from "../i18n/I18nContext";
 import { usePreview } from "../lib/usePreview";
 import { RESEARCH_FAQ_META } from "../data/researchFaq";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
+
+// Client-side fuzzy search over the 20 myth/fact cards — no AI, no API,
+// no extra dependency. Diacritics-insensitive ("bolest" matches "bolesť"),
+// fields weighted so question matches rank above body-text matches, and a
+// 4-char prefix fallback covers Slovak inflection ("cvičení" → "cvičiť").
+const STOPWORDS = new Set([
+  // SK function words that would only add noise as substrings
+  "pri", "ked", "ako", "aby", "ale", "cez", "mam", "mas", "moj", "moja", "aku", "aky", "aka", "pre", "bez", "este", "uz", "ci", "co", "sa", "so", "za", "na", "do", "od", "po", "je", "su", "to", "ta", "ten",
+  // EN
+  "the", "and", "for", "why", "how", "what", "does", "is", "are", "my", "when", "can", "should", "you", "your",
+]);
+
+function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "");
+}
+
+function scoreItem(
+  query: string,
+  item: { question: string; short: string; evidence: string; takeaway: string },
+): number {
+  const tokens = normalize(query)
+    .split(/[^a-z0-9]+/)
+    .filter((token) => token.length >= 3 && !STOPWORDS.has(token));
+  if (tokens.length === 0) return 0;
+
+  const fields: [string, number][] = [
+    [normalize(item.question), 4],
+    [normalize(item.short), 3],
+    [normalize(item.takeaway), 2],
+    [normalize(item.evidence), 1],
+  ];
+
+  let score = 0;
+  for (const token of tokens) {
+    const prefix = token.length > 4 ? token.slice(0, 4) : null;
+    for (const [field, weight] of fields) {
+      if (field.includes(token)) {
+        score += weight;
+      } else if (prefix && field.includes(prefix)) {
+        score += weight * 0.6;
+      }
+    }
+  }
+  return score;
+}
 
 function MythCard({
   index,
@@ -114,6 +162,32 @@ export function Research() {
   const faq = t.researchFaq;
   const preview = usePreview();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [query, setQuery] = useState("");
+
+  const searching = query.trim().length >= 2;
+  const visibleIndices = useMemo(() => {
+    const all = faq.items.map((_, i) => i);
+    if (!searching) return all;
+    return all
+      .map((i) => ({ i, score: scoreItem(query, faq.items[i]) }))
+      .filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map(({ i }) => i);
+  }, [faq.items, query, searching]);
+
+  // While searching, auto-open the best match so the answer + study links
+  // are immediately visible without an extra click. A manual click still
+  // wins: openIndex === null means "no manual choice yet" (-1 = explicitly
+  // closed), anything else is the user's own selection.
+  const effectiveOpen = searching
+    ? openIndex === null
+      ? (visibleIndices[0] ?? null)
+      : openIndex === -1
+        ? null
+        : openIndex
+    : openIndex === -1
+      ? null
+      : openIndex;
 
   return (
     <>
@@ -125,6 +199,24 @@ export function Research() {
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-sm text-ink-soft">{faq.lead}</p>
 
+        <div className="relative mx-auto mt-8 max-w-3xl">
+          <Search
+            size={17}
+            className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-soft/60"
+          />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setOpenIndex(null);
+            }}
+            placeholder={faq.searchPlaceholder}
+            aria-label={faq.searchPlaceholder}
+            className="w-full rounded-xl border border-ink/15 bg-paper py-3 pl-11 pr-4 text-sm text-ink placeholder:text-ink-soft/50 focus:border-gold focus:outline-none"
+          />
+        </div>
+
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -132,14 +224,19 @@ export function Research() {
           viewport={viewportOnce}
           className="mx-auto mt-8 flex max-w-3xl flex-col gap-3"
         >
-          {faq.items.map((item, i) => (
+          {visibleIndices.map((i) => (
             <MythCard
-              key={item.question}
+              key={faq.items[i].question}
               index={i}
-              open={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+              open={effectiveOpen === i}
+              onToggle={() => setOpenIndex(effectiveOpen === i ? -1 : i)}
             />
           ))}
+          {searching && visibleIndices.length === 0 && (
+            <p className="rounded-2xl border border-ink/10 bg-paper px-5 py-8 text-center text-sm text-ink-soft">
+              {faq.searchNoResults}
+            </p>
+          )}
         </motion.div>
 
         <motion.div

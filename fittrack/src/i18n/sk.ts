@@ -7,7 +7,7 @@ export const sk: Dict = {
     findYourPath: "Trénuj s nami",
     assessment: "Diagnostika",
     results: "Výsledky",
-    research: "Čo pre teba funguje",
+    research: "Časté otázky",
     nutrition: "Výživa",
     contact: "Kontakt",
     bookAssessment: "Rezervácia",
@@ -93,19 +93,22 @@ export const sk: Dict = {
   pillars: {
     "performance-coaching": {
       title: "Výkonnostný koučing",
-      short: "Trénuj so štruktúrou. Napreduj s dátami.",
+      short:
+        "Individuálny silový a kondičný tréning vedený dátami z diagnostiky. Pre športovcov a aktívnych ľudí, ktorí chcú merateľný pokrok.",
       description:
         "Individuálny silový a výkonnostný koučing postavený na dátach z diagnostiky — pre športovcov a aktívnych ľudí, ktorí chcú merateľný pokrok. Špecificky pre hokej a tenis: explozivita, zmena smeru a rotačná sila — nie generický silový tréning.",
     },
     "return-to-sport": {
       title: "Bolesť",
-      short: "Vráť sa po zranení alebo operácii s istotou, nie s odhadmi.",
+      short:
+        "Štruktúrovaný návrat k tréningu po zranení, operácii alebo pri opakovanej bolesti. Pre každého, koho bolesť brzdí v pohybe či športe.",
       description:
         "Štruktúrovaný proces návratu k športu po zranení alebo operácii — od pohybu bez bolesti, cez progresívnu rehabilitáciu, až po plnú tréningovú záťaž, vedený objektívnym pretestovaním. Vrátane návratu po rekonštrukcii ACL — najčastejšie u hokejistov a tenistov, kde je návrat na plnú rýchlosť a explozivitu bez kompromisu nutnosťou.",
     },
     ltad: {
       title: "Rozvoj mladých športovcov",
-      short: "Buduj pohybové základy systematicky, nie náhodne.",
+      short:
+        "Dlhodobý rozvoj koordinácie, rýchlosti a sily podľa veku a citlivých období. Pre deti a mládež, ktoré chcú rásť systematicky, nie náhodne.",
       description:
         "Dlhodobý, štruktúrovaný rozvoj pohybových základov — sila, koordinácia, rýchlosť a stabilita budované systematicky, nie náhodne. Postavené na LTAD modeli dlhodobého rozvoja športovca.",
     },
@@ -363,8 +366,8 @@ export const sk: Dict = {
   },
 
   researchPage: {
-    eyebrow: "VÝSKUM",
-    title: "Dôkazy, zrozumiteľne.",
+    eyebrow: "ČASTÉ OTÁZKY",
+    title: "Odpovede na tvoje otázky.",
     lead: "Praktické zhrnutia výskumu, ktorý formuje MPM™ proces — písané pre športovcov, nie pre akademikov.",
     comingSoon: "Článok už čoskoro",
     draftLabel: "DRAFT — len admin náhľad",
@@ -394,6 +397,9 @@ export const sk: Dict = {
     takeawayTitle: "Praktický záver",
     referencesTitle: "Referencie",
     readCta: "Prečítať výskum",
+    searchPlaceholder: "Napíš svoj problém alebo otázku — napr. „bolesť chrbta pri cvičení“",
+    searchNoResults:
+      "Na túto otázku tu zatiaľ odpoveď nemáme — skús iné slová, alebo mi napíš cez kontakt a odpoviem priamo.",
     disclaimer:
       "Obsah tejto stránky má vzdelávací charakter a nenahrádza lekársku diagnostiku, liečbu ani individuálne poradenstvo. Pri zdravotných ťažkostiach sa poraď s lekárom.",
     items: [
@@ -767,6 +773,52 @@ export const sk: Dict = {
       confirmationBody:
         "Skontroluj si e-mailového klienta a odošli pripravenú správu. Maxim sa ti ozve do 48 hodín s ďalším postupom.",
     },
+  },
+
+  weightLossPage: {
+    cardTitle: "Optimalizácia telesnej hmotnosti",
+    cardShort:
+      "Individuálny prístup k telesnej hmotnosti — či už potrebuješ zdravo zredukovať, nabrať alebo optimalizovať zloženie tela.",
+    eyebrow: "OPTIMALIZÁCIA TELESNEJ HMOTNOSTI",
+    title: "Telo v rovnováhe. Zdravo a natrvalo.",
+    lead: "Individuálny prístup k telesnej hmotnosti — či už potrebuješ zdravo zredukovať, nabrať alebo optimalizovať zloženie tela. Postavené na jedálničku a udržateľných návykoch, bez extrémov a rýchlych sľubov.",
+    points: [
+      {
+        title: "Individuálny jedálniček",
+        body: "Jedálniček zostavený z potravín, ktoré máš rád — podľa tvojho cieľa (redukcia, nabratie či udržanie), preferencií a alergií z dotazníka.",
+      },
+      {
+        title: "Zdravé tempo",
+        body: "Žiadne extrémne deficity ani nárazové priberanie — postupná, udržateľná zmena, ktorú telo zvládne a udržíš ju aj po skončení programu.",
+      },
+      {
+        title: "Merateľný pokrok",
+        body: "Pravidelné kontroly a úpravy plánu podľa toho, ako tvoje telo reaguje — rozhodujú dáta, nie odhady.",
+      },
+    ],
+    disclaimer:
+      "Program nie je náhradou lekárskej ani odbornej výživovej starostlivosti. Pri zdravotných ťažkostiach, poruchách príjmu potravy, podvýžive, tehotenstve alebo chronických ochoreniach sa pred začatím poraď s lekárom. Zdravotné údaje z dotazníka sa spracúvajú len s tvojím súhlasom v súlade s Ochranou osobných údajov.",
+    cta: "Vyplniť dotazník",
+    ctaNote: "Dotazník zisťuje tvoje ciele, preferencie a zdravotné údaje — na ich základe dostaneš individuálny plán.",
+  },
+
+  contactWidget: {
+    buttonLabel: "Otvoriť kontakt",
+    title: "Kontakt",
+    welcome: "Ahoj! Napíš mi a ozvem sa ti — aj keď už nebudeš na stránke.",
+    quickDiagnostics: "Chcem diagnostiku",
+    quickHow: "Ako to funguje",
+    formTitle: "Napíš správu",
+    name: "Meno",
+    email: "E-mail",
+    message: "Správa",
+    send: "Odoslať",
+    sending: "Odosielam…",
+    mailSubject: "Správa z webu MPM™ (widget)",
+    mailtoNote: "Správa sa odošle cez tvoju e-mailovú aplikáciu.",
+    successTitle: "Ďakujem!",
+    success: "Správa je odoslaná — ozvem sa čo najskôr.",
+    error: "Nepodarilo sa odoslať. Skús to znova alebo napíš priamo na maximmalovec8@gmail.com.",
   },
 
   contactPage: {

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Salad } from "lucide-react";
+import { ArrowRight, Salad, Scale } from "lucide-react";
 import { PILLARS, type PillarId } from "../../data/pillars";
 import { useI18n } from "../../i18n/I18nContext";
 import { fadeUp, staggerContainer } from "../../lib/motion";
@@ -28,7 +28,7 @@ export function WizardStart({ onChoose }: { onChoose: (id: PillarId) => void }) 
         variants={staggerContainer}
         initial="hidden"
         animate="show"
-        className="mt-6 grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-4"
+        className="mt-6 grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-3"
       >
         {PILLARS.map(({ id, icon: Icon }) => (
           <motion.button
@@ -56,6 +56,30 @@ export function WizardStart({ onChoose }: { onChoose: (id: PillarId) => void }) 
             </span>
           </motion.button>
         ))}
+
+        <motion.div variants={fadeUp}>
+          <Link
+            to="/weight-loss"
+            className="group flex h-full flex-col items-start gap-3 rounded-2xl border border-ink/10 bg-paper p-5 text-left shadow-sm transition-shadow hover:shadow-md"
+          >
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cream-dark text-ink">
+              <Scale size={20} />
+            </div>
+            <div>
+              <p className="font-serif font-semibold text-ink">
+                {t.weightLossPage.cardTitle}
+              </p>
+              <p className="mt-1 text-sm text-ink-soft">{t.weightLossPage.cardShort}</p>
+            </div>
+            <span className="mt-1 flex items-center gap-1 text-sm font-medium text-gold">
+              {t.wizard.choose}
+              <ArrowRight
+                size={15}
+                className="transition-transform group-hover:translate-x-1"
+              />
+            </span>
+          </Link>
+        </motion.div>
 
         <motion.div variants={fadeUp}>
           <Link

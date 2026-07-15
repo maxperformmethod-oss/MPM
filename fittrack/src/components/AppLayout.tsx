@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { Suspense, useEffect } from "react";
 import { Eye, Mail } from "lucide-react";
 import { Header } from "./Header";
+import { ContactWidget } from "./ContactWidget";
 import { InstagramIcon } from "./ui/InstagramIcon";
 import { TrustSealsRow } from "./ui/TrustSealsRow";
 import { useI18n } from "../i18n/I18nContext";
@@ -127,6 +128,8 @@ export function AppLayout() {
           </div>
         </div>
       </footer>
+
+      <ContactWidget />
 
       {preview && (
         <div className="fixed bottom-4 left-4 z-50 flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 text-[11px] font-semibold tracking-wide text-cream shadow-lg">

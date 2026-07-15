@@ -5,7 +5,7 @@ export const en = {
     findYourPath: "Train With Us",
     assessment: "Assessment",
     results: "Results",
-    research: "What Actually Works",
+    research: "FAQ",
     nutrition: "Nutrition",
     contact: "Contact",
     bookAssessment: "Booking",
@@ -91,19 +91,22 @@ export const en = {
   pillars: {
     "performance-coaching": {
       title: "Performance Coaching",
-      short: "Train with structure. Progress with data.",
+      short:
+        "Individual strength and conditioning guided by assessment data. For athletes and active people who want measurable progress.",
       description:
         "Individual strength and performance coaching built on assessment data — for athletes and active people who want measurable progress. Specifically for hockey and tennis: explosiveness, change of direction and rotational power — not generic strength training.",
     },
     "return-to-sport": {
       title: "Pain",
-      short: "Come back from injury or surgery with confidence, not guesswork.",
+      short:
+        "A structured return to training after injury, surgery or recurring pain. For anyone whose pain is holding back their movement or sport.",
       description:
         "A structured return-to-sport process after injury or surgery — from pain-free movement, through progressive rehabilitation, to full training load, guided by objective retesting. Including return after ACL reconstruction — most often with hockey and tennis players, where returning to full speed and explosiveness without compromise is a must.",
     },
     ltad: {
       title: "Youth Athlete Development",
-      short: "Build movement foundations systematically, not randomly.",
+      short:
+        "Long-term development of coordination, speed and strength matched to age and sensitive periods. For kids and teens who want to grow systematically, not randomly.",
       description:
         "Long-term, structured development of movement foundations — strength, coordination, speed and stability built systematically, not randomly. Built on the LTAD (Long-Term Athlete Development) model.",
     },
@@ -361,8 +364,8 @@ export const en = {
   },
 
   researchPage: {
-    eyebrow: "RESEARCH",
-    title: "Evidence, explained.",
+    eyebrow: "FAQ",
+    title: "Answers to your questions.",
     lead: "Practical breakdowns of the research that shapes the MPM™ process — written for athletes, not academics.",
     comingSoon: "Article coming soon",
     draftLabel: "DRAFT — admin preview only",
@@ -392,6 +395,9 @@ export const en = {
     takeawayTitle: "Practical takeaway",
     referencesTitle: "References",
     readCta: "Read the research",
+    searchPlaceholder: "Type your problem or question — e.g. “back pain when lifting”",
+    searchNoResults:
+      "We don't have an answer for that here yet — try different words, or send me a message and I'll reply directly.",
     disclaimer:
       "The content on this page is educational and does not replace medical diagnosis, treatment or individual advice. If you have health problems, consult a doctor.",
     items: [
@@ -764,6 +770,52 @@ export const en = {
       confirmationBody:
         "Check your email client and send the prepared message. Maxim will get back to you within 48 hours with next steps.",
     },
+  },
+
+  weightLossPage: {
+    cardTitle: "Body Composition Optimization",
+    cardShort:
+      "An individual approach to body weight — whether you need to reduce, gain or optimize your body composition healthily.",
+    eyebrow: "BODY COMPOSITION OPTIMIZATION",
+    title: "A body in balance. Healthily, for good.",
+    lead: "An individual approach to body weight — whether you need to reduce, gain or optimize your body composition. Built on a meal plan and sustainable habits, with no extremes or quick-fix promises.",
+    points: [
+      {
+        title: "Individual meal plan",
+        body: "A meal plan built from foods you actually like — based on your goal (reduction, gain or maintenance), preferences and allergies from the questionnaire.",
+      },
+      {
+        title: "A healthy pace",
+        body: "No extreme deficits or crash bulking — gradual, sustainable change your body can handle and you can keep after the program ends.",
+      },
+      {
+        title: "Measurable progress",
+        body: "Regular check-ins and plan adjustments based on how your body responds — data decides, not guesswork.",
+      },
+    ],
+    disclaimer:
+      "This program is not a substitute for medical or professional dietary care. If you have health problems, an eating disorder, are undernourished, are pregnant or have a chronic condition, consult a doctor before starting. Health data from the questionnaire is processed only with your consent, in line with the Privacy Policy.",
+    cta: "Fill out the questionnaire",
+    ctaNote: "The questionnaire covers your goals, preferences and health details — your individual plan is built from them.",
+  },
+
+  contactWidget: {
+    buttonLabel: "Open contact",
+    title: "Contact",
+    welcome: "Hi! Send me a message and I'll get back to you — even after you leave the site.",
+    quickDiagnostics: "I want an assessment",
+    quickHow: "How it works",
+    formTitle: "Send a message",
+    name: "Name",
+    email: "Email",
+    message: "Message",
+    send: "Send",
+    sending: "Sending…",
+    mailSubject: "Message from the MPM™ website (widget)",
+    mailtoNote: "The message is sent through your email app.",
+    successTitle: "Thank you!",
+    success: "Your message has been sent — I'll get back to you as soon as I can.",
+    error: "Sending failed. Try again or email me directly at maximmalovec8@gmail.com.",
   },
 
   contactPage: {

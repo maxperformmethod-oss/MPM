@@ -57,7 +57,7 @@ export function WeightLoss() {
         </motion.div>
 
         <div className="mt-10 text-center">
-          <ButtonLink to="/nutrition-questionnaire" className="!inline-flex">
+          <ButtonLink to="/weight-questionnaire" className="!inline-flex">
             {s.cta}
             <ArrowRight size={15} />
           </ButtonLink>

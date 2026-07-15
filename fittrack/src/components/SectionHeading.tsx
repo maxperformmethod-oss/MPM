@@ -32,12 +32,12 @@ export function SectionHeading({
         </span>
         {centered && <span className="h-px w-8 bg-gold" />}
       </div>
-      <h2 className="mt-4 font-serif text-3xl font-bold text-ink sm:text-4xl">
+      <h2 className="mt-4 font-serif text-4xl font-bold leading-[1.1] text-ink sm:text-5xl">
         {title}
       </h2>
       {lead && (
         <p
-          className={`mt-4 max-w-xl text-sm text-ink-soft sm:text-base ${
+          className={`mt-5 max-w-xl text-base text-ink-soft sm:text-lg ${
             centered ? "mx-auto" : ""
           }`}
         >

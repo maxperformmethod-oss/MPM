@@ -27,7 +27,7 @@ export function Hero() {
 
         <motion.h1
           variants={fadeUp}
-          className="font-serif text-4xl font-bold leading-[1.1] text-ink sm:text-5xl lg:text-[3.4rem]"
+          className="font-serif text-5xl font-bold leading-[1.05] text-ink sm:text-6xl lg:text-[4rem]"
         >
           {t.hero.titleLines.map((line) => (
             <span key={line} className="block">

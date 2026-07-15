@@ -397,9 +397,8 @@ export const sk: Dict = {
     takeawayTitle: "Praktický záver",
     referencesTitle: "Referencie",
     readCta: "Prečítať výskum",
-    searchPlaceholder: "Napíš svoj problém alebo otázku — napr. „bolesť chrbta pri cvičení“",
-    searchNoResults:
-      "Na túto otázku tu zatiaľ odpoveď nemáme — skús iné slová, alebo mi napíš cez kontakt a odpoviem priamo.",
+    expand: "Zobraziť viac",
+    collapse: "Skryť",
     disclaimer:
       "Obsah tejto stránky má vzdelávací charakter a nenahrádza lekársku diagnostiku, liečbu ani individuálne poradenstvo. Pri zdravotných ťažkostiach sa poraď s lekárom.",
     items: [
@@ -800,6 +799,81 @@ export const sk: Dict = {
       "Program nie je náhradou lekárskej ani odbornej výživovej starostlivosti. Pri zdravotných ťažkostiach, poruchách príjmu potravy, podvýžive, tehotenstve alebo chronických ochoreniach sa pred začatím poraď s lekárom. Zdravotné údaje z dotazníka sa spracúvajú len s tvojím súhlasom v súlade s Ochranou osobných údajov.",
     cta: "Vyplniť dotazník",
     ctaNote: "Dotazník zisťuje tvoje ciele, preferencie a zdravotné údaje — na ich základe dostaneš individuálny plán.",
+  },
+
+  weightQuestionnaire: {
+    stepLabels: {
+      goal: "Cieľ",
+      basics: "Údaje",
+      health: "Zdravie",
+      payment: "Platba",
+    },
+    back: "Späť",
+    startOver: "Začať odznova",
+
+    goal: {
+      title: "Aký je tvoj cieľ?",
+      lead: "Program funguje oboma smermi — vyber, čo najlepšie sedí tvojej situácii.",
+      reduce: "Zredukovať hmotnosť",
+      reduceNote: "Schudnúť zdravo a udržateľne.",
+      gain: "Nabrať hmotnosť",
+      gainNote: "Pribrať na váhe alebo svalovej hmote.",
+      maintain: "Optimalizovať zloženie",
+      maintainNote: "Udržať váhu, zmeniť pomer svalov a tuku.",
+    },
+
+    basics: {
+      title: "Pár základných údajov.",
+      lead: "Slúžia ako východisko pre nastavenie tvojho plánu.",
+      firstName: "Meno",
+      lastName: "Priezvisko",
+      email: "E-mail",
+      age: "Vek",
+      gender: "Pohlavie",
+      genderMale: "Muž",
+      genderFemale: "Žena",
+      height: "Výška (cm)",
+      weight: "Hmotnosť (kg)",
+      activity: "Úroveň pohybovej aktivity",
+      activityLow: "Nízka (prevažne sedavá)",
+      activityMedium: "Stredná (2–4× týždenne)",
+      activityHigh: "Vysoká (5+× týždenne / šport)",
+      continue: "Pokračovať",
+    },
+
+    health: {
+      title: "Zdravotné okolnosti.",
+      lead: "Tieto údaje vidí len Maxim a slúžia na bezpečné nastavenie programu.",
+      conditions: "Zdravotné ťažkosti, diagnózy alebo lieky",
+      conditionsPlaceholder: "Napr. štítna žľaza, cukrovka, lieky, ktoré užívaš… (nepovinné)",
+      notes: "Ďalšie poznámky",
+      notesPlaceholder: "Čokoľvek, čo by som mal vedieť (nepovinné).",
+      disclaimer:
+        "Program nie je náhradou lekárskej ani odbornej výživovej starostlivosti a nestanovuje extrémne ciele. Pri poruchách príjmu potravy, tehotenstve, podvýžive alebo chronických ochoreniach sa pred začatím poraď s lekárom.",
+      consentLabel:
+        "Súhlasím so spracovaním zdravotných údajov v súlade s Ochranou osobných údajov a Obchodnými podmienkami.",
+      consentRequired: "Pred pokračovaním je potrebný súhlas so spracovaním zdravotných údajov.",
+      continue: "Pokračovať",
+    },
+
+    payment: {
+      title: "Skontroluj a spusti program.",
+      summaryLabel: "Zhrnutie",
+      goalLabel: "Cieľ",
+      priceLabel: "Orientačná cena",
+      pricePlaceholder: "DOPLNIŤ",
+      priceNote: "Cena je zatiaľ len orientačná — finálna suma bude potvrdená pred platbou.",
+      payCta: "Spustiť môj program",
+      comingSoonNote: "Platobná brána sa ešte pripravuje — táto možnosť bude aktívna čoskoro.",
+      interimTitle: "Zatiaľ bez online platby",
+      interimBody:
+        "Kým nie je platobná brána pripojená, odošli dotazník priamo Maximovi e-mailom — ozve sa ti s ďalším postupom.",
+      interimCta: "Odoslať dotazník Maximovi",
+      mailSubject: "Dotazník — Optimalizácia telesnej hmotnosti",
+      confirmationTitle: "Ďakujeme!",
+      confirmationBody:
+        "Skontroluj si e-mailového klienta a odošli pripravenú správu. Maxim sa ti ozve do 48 hodín s ďalším postupom.",
+    },
   },
 
   contactWidget: {

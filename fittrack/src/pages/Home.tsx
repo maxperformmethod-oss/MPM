@@ -7,7 +7,6 @@ import {
   FileText,
   Gauge,
   RefreshCcw,
-  Star,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -18,9 +17,9 @@ import { PillarCard } from "../components/PillarCard";
 import { StatCounter } from "../components/StatCounter";
 import { SectionDivider } from "../components/SectionDivider";
 import { DiagnosticsChart } from "../components/DiagnosticsChart";
+import { ReviewsCarousel } from "../components/ReviewsCarousel";
 import { ButtonLink } from "../components/ui/Button";
 import { PILLARS } from "../data/pillars";
-import { REVIEWS } from "../data/reviews";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
@@ -227,58 +226,17 @@ function AssessmentHighlightSection() {
   );
 }
 
-function ReviewStars({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-0.5" aria-label={`${rating}/5`}>
-      {[1, 2, 3, 4, 5].map((i) => (
-        <Star
-          key={i}
-          size={14}
-          className={i <= rating ? "fill-gold text-gold" : "fill-ink/10 text-ink/10"}
-        />
-      ))}
-    </div>
-  );
-}
-
 function TestimonialsSection() {
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   const s = t.home.testimonials;
 
   return (
     <section className="bg-paper">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading eyebrow={s.eyebrow} title={s.title} align="center" />
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
-          className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {REVIEWS.map((review) => (
-            <motion.article
-              key={review.id}
-              variants={fadeUp}
-              className="flex flex-col gap-3 rounded-2xl border border-ink/10 bg-cream p-6 shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  aria-hidden="true"
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${review.tone} text-sm font-semibold text-cream`}
-                >
-                  {review.initials}
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-ink">{review.name}</p>
-                  <p className="text-xs text-ink-soft">{review.context[lang]}</p>
-                </div>
-              </div>
-              <ReviewStars rating={review.rating} />
-              <p className="text-sm leading-relaxed text-ink-soft">{review.text[lang]}</p>
-            </motion.article>
-          ))}
-        </motion.div>
+        <div className="mt-12">
+          <ReviewsCarousel ariaLabel={s.title} />
+        </div>
         <div className="mt-8 text-center">
           <Link
             to="/results"

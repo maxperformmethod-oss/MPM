@@ -395,9 +395,8 @@ export const en = {
     takeawayTitle: "Practical takeaway",
     referencesTitle: "References",
     readCta: "Read the research",
-    searchPlaceholder: "Type your problem or question — e.g. “back pain when lifting”",
-    searchNoResults:
-      "We don't have an answer for that here yet — try different words, or send me a message and I'll reply directly.",
+    expand: "Show more",
+    collapse: "Hide",
     disclaimer:
       "The content on this page is educational and does not replace medical diagnosis, treatment or individual advice. If you have health problems, consult a doctor.",
     items: [
@@ -797,6 +796,81 @@ export const en = {
       "This program is not a substitute for medical or professional dietary care. If you have health problems, an eating disorder, are undernourished, are pregnant or have a chronic condition, consult a doctor before starting. Health data from the questionnaire is processed only with your consent, in line with the Privacy Policy.",
     cta: "Fill out the questionnaire",
     ctaNote: "The questionnaire covers your goals, preferences and health details — your individual plan is built from them.",
+  },
+
+  weightQuestionnaire: {
+    stepLabels: {
+      goal: "Goal",
+      basics: "Details",
+      health: "Health",
+      payment: "Payment",
+    },
+    back: "Back",
+    startOver: "Start over",
+
+    goal: {
+      title: "What's your goal?",
+      lead: "The program works both ways — pick what fits your situation best.",
+      reduce: "Reduce weight",
+      reduceNote: "Lose weight healthily and sustainably.",
+      gain: "Gain weight",
+      gainNote: "Put on weight or muscle mass.",
+      maintain: "Optimize composition",
+      maintainNote: "Keep your weight, shift the muscle-to-fat ratio.",
+    },
+
+    basics: {
+      title: "A few basic details.",
+      lead: "They serve as the baseline for setting up your plan.",
+      firstName: "First name",
+      lastName: "Last name",
+      email: "Email",
+      age: "Age",
+      gender: "Gender",
+      genderMale: "Male",
+      genderFemale: "Female",
+      height: "Height (cm)",
+      weight: "Weight (kg)",
+      activity: "Physical activity level",
+      activityLow: "Low (mostly sedentary)",
+      activityMedium: "Medium (2–4× a week)",
+      activityHigh: "High (5+× a week / sport)",
+      continue: "Continue",
+    },
+
+    health: {
+      title: "Health circumstances.",
+      lead: "Only Maxim sees this data — it's used to set up the program safely.",
+      conditions: "Health issues, diagnoses or medications",
+      conditionsPlaceholder: "E.g. thyroid, diabetes, medications you take… (optional)",
+      notes: "Additional notes",
+      notesPlaceholder: "Anything I should know (optional).",
+      disclaimer:
+        "This program is not a substitute for medical or professional dietary care and does not set extreme goals. If you have an eating disorder, are pregnant, undernourished or have a chronic condition, consult a doctor before starting.",
+      consentLabel:
+        "I agree to the processing of health data in accordance with the Privacy Policy and Terms & Conditions.",
+      consentRequired: "Consent to process health data is required before continuing.",
+      continue: "Continue",
+    },
+
+    payment: {
+      title: "Review and start your program.",
+      summaryLabel: "Summary",
+      goalLabel: "Goal",
+      priceLabel: "Indicative price",
+      pricePlaceholder: "TBD",
+      priceNote: "The price is indicative only — the final amount will be confirmed before payment.",
+      payCta: "Start my program",
+      comingSoonNote: "The payment gateway is still being set up — this option will be active soon.",
+      interimTitle: "No online payment yet",
+      interimBody:
+        "Until the payment gateway is connected, send the questionnaire directly to Maxim by email — he'll get back to you with next steps.",
+      interimCta: "Send questionnaire to Maxim",
+      mailSubject: "Questionnaire — Body Composition Optimization",
+      confirmationTitle: "Thank you!",
+      confirmationBody:
+        "Check your email client and send the prepared message. Maxim will get back to you within 48 hours with next steps.",
+    },
   },
 
   contactWidget: {

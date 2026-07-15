@@ -40,7 +40,7 @@ export function Terms() {
             <h2>1. Prevádzkovateľ</h2>
             <p>
               Max Perform Method (MPM™), Maxim Malovec, IČO: [DOPLNIŤ], sídlo/miesto podnikania:
-              [DOPLNIŤ], kontakt: maximmalovec8@gmail.com. [DOPLNIŤ — či je platca DPH]
+              [DOPLNIŤ], kontakt: maxperformmethod@gmail.com. [DOPLNIŤ — či je platca DPH]
             </p>
 
             <h2>2. Objednávka a uzavretie zmluvy</h2>
@@ -100,7 +100,7 @@ export function Terms() {
             <h2>1. Operator</h2>
             <p>
               Max Perform Method (MPM™), Maxim Malovec, Business ID: [TO BE ADDED], registered
-              address/place of business: [TO BE ADDED], contact: maximmalovec8@gmail.com. [TO BE
+              address/place of business: [TO BE ADDED], contact: maxperformmethod@gmail.com. [TO BE
               ADDED — whether VAT-registered]
             </p>
 

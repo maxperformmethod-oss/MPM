@@ -39,7 +39,7 @@ export function Privacy() {
           <>
             <p>
               Prevádzkovateľ: Maxim Malovec, Max Perform Method, [DOPLNIŤ adresa],
-              maximmalovec8@gmail.com
+              maxperformmethod@gmail.com
             </p>
 
             <h2>Aké údaje spracúvame</h2>
@@ -89,7 +89,7 @@ export function Privacy() {
           <>
             <p>
               Operator: Maxim Malovec, Max Perform Method, [TO BE ADDED — address],
-              maximmalovec8@gmail.com
+              maxperformmethod@gmail.com
             </p>
 
             <h2>What data we process</h2>

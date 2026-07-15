@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ClipboardCheck, Search, Map, Users, RefreshCcw } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { CTABand } from "../components/CTABand";
+import { PackagesSection } from "../components/PackagesSection";
 import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
@@ -88,6 +89,8 @@ export function Approach() {
           <p className="mt-5 text-sm text-ink-soft sm:text-base">{s.bridge.body}</p>
         </motion.div>
       </section>
+
+      <PackagesSection />
 
       <CTABand />
     </>

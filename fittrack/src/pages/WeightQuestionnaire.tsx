@@ -2,8 +2,6 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  CheckCircle2,
-  Mail,
   RotateCcw,
   TrendingDown,
   TrendingUp,
@@ -11,8 +9,8 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import { Button } from "../components/ui/Button";
+import { PaymentPlaceholder } from "../components/PaymentPlaceholder";
 import { useI18n } from "../i18n/I18nContext";
-import { CONTACT_EMAIL } from "../data/site";
 
 // Self-contained questionnaire for the body-composition program — deliberately
 // NOT linked to the nutrition/meal-plan wizard. Collects goal + basics + health
@@ -70,7 +68,6 @@ export function WeightQuestionnaire() {
   const [stepId, setStepId] = useState<StepId>("goal");
   const [data, setData] = useState<FormData>(INITIAL);
   const [consentError, setConsentError] = useState(false);
-  const [sent, setSent] = useState(false);
 
   const currentIndex = STEPS.indexOf(stepId);
 
@@ -81,7 +78,6 @@ export function WeightQuestionnaire() {
     setStepId("goal");
     setData(INITIAL);
     setConsentError(false);
-    setSent(false);
   }
   function back() {
     if (currentIndex > 0) setStepId(STEPS[currentIndex - 1]);
@@ -104,25 +100,18 @@ export function WeightQuestionnaire() {
     setStepId("payment");
   }
 
-  function sendToMaxim() {
-    const goalLabel = data.goal ? s.goal[data.goal] : "";
-    const lines = [
-      `${s.payment.goalLabel}: ${goalLabel}`,
-      `${s.basics.firstName}: ${data.firstName} ${data.lastName}`,
-      `${s.basics.email}: ${data.email}`,
-      `${s.basics.age}: ${data.age}`,
-      `${s.basics.gender}: ${data.gender ?? ""}`,
-      `${s.basics.height}: ${data.height}`,
-      `${s.basics.weight}: ${data.weight}`,
-      `${s.basics.activity}: ${data.activity ?? ""}`,
-      `${s.health.conditions}: ${data.conditions}`,
-      `${s.health.notes}: ${data.notes}`,
-    ];
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      s.payment.mailSubject,
-    )}&body=${encodeURIComponent(lines.join("\n"))}`;
-    setSent(true);
-  }
+  const orderFields: Record<string, string> = {
+    [s.payment.goalLabel]: data.goal ? s.goal[data.goal] : "",
+    [s.basics.firstName]: `${data.firstName} ${data.lastName}`,
+    [s.basics.email]: data.email,
+    [s.basics.age]: data.age,
+    [s.basics.gender]: data.gender ?? "",
+    [s.basics.height]: data.height,
+    [s.basics.weight]: data.weight,
+    [s.basics.activity]: data.activity ?? "",
+    [s.health.conditions]: data.conditions,
+    [s.health.notes]: data.notes,
+  };
 
   return (
     <div className="bg-cream">
@@ -154,13 +143,13 @@ export function WeightQuestionnaire() {
       </p>
 
       <motion.div
-        key={sent ? "sent" : stepId}
+        key={stepId}
         initial={{ opacity: 0, x: 24 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
         {/* ---- GOAL ---- */}
-        {stepId === "goal" && !sent && (
+        {stepId === "goal" && (
           <div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6">
             <h1 className="font-serif text-3xl font-bold text-ink sm:text-4xl">{s.goal.title}</h1>
             <p className="mx-auto mt-3 max-w-lg text-sm text-ink-soft sm:text-base">{s.goal.lead}</p>
@@ -186,7 +175,7 @@ export function WeightQuestionnaire() {
         )}
 
         {/* ---- BASICS ---- */}
-        {stepId === "basics" && !sent && (
+        {stepId === "basics" && (
           <form onSubmit={submitBasics} className="mx-auto max-w-xl px-4 py-14 sm:px-6">
             <BackButton onClick={back} label={s.back} />
             <h1 className="font-serif text-3xl font-bold text-ink sm:text-4xl">{s.basics.title}</h1>
@@ -254,7 +243,7 @@ export function WeightQuestionnaire() {
         )}
 
         {/* ---- HEALTH ---- */}
-        {stepId === "health" && !sent && (
+        {stepId === "health" && (
           <form onSubmit={submitHealth} className="mx-auto max-w-xl px-4 py-14 sm:px-6">
             <BackButton onClick={back} label={s.back} />
             <h1 className="font-serif text-3xl font-bold text-ink sm:text-4xl">{s.health.title}</h1>
@@ -306,8 +295,8 @@ export function WeightQuestionnaire() {
           </form>
         )}
 
-        {/* ---- PAYMENT ---- */}
-        {stepId === "payment" && !sent && (
+        {/* ---- PAYMENT (off — emails order via Formspree) ---- */}
+        {stepId === "payment" && (
           <div className="mx-auto max-w-xl px-4 py-14 text-center sm:px-6">
             <BackButton onClick={back} label={s.back} center />
             <h1 className="font-serif text-3xl font-bold text-ink sm:text-4xl">{s.payment.title}</h1>
@@ -331,39 +320,8 @@ export function WeightQuestionnaire() {
             </div>
             <p className="mx-auto mt-3 max-w-sm text-xs text-ink-soft">{s.payment.priceNote}</p>
 
-            <div className="mt-8">
-              <Button disabled className="w-full sm:w-auto">
-                {s.payment.payCta}
-              </Button>
-              <p className="mx-auto mt-3 max-w-sm text-xs text-ink-soft">{s.payment.comingSoonNote}</p>
-            </div>
+            <PaymentPlaceholder subject={s.payment.mailSubject} fields={orderFields} />
 
-            <div className="mx-auto mt-8 max-w-sm rounded-2xl border border-ink/10 bg-paper p-5">
-              <p className="font-serif font-semibold text-ink">{s.payment.interimTitle}</p>
-              <p className="mt-1.5 text-sm text-ink-soft">{s.payment.interimBody}</p>
-              <button
-                onClick={sendToMaxim}
-                className="mx-auto mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-ink/85"
-              >
-                <Mail size={16} />
-                {s.payment.interimCta}
-              </button>
-            </div>
-
-            <RestartButton onClick={reset} label={s.startOver} />
-          </div>
-        )}
-
-        {/* ---- CONFIRMATION ---- */}
-        {sent && (
-          <div className="mx-auto max-w-xl px-4 py-16 text-center sm:px-6">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold">
-              <CheckCircle2 size={28} />
-            </div>
-            <h1 className="mt-5 font-serif text-3xl font-bold text-ink sm:text-4xl">
-              {s.payment.confirmationTitle}
-            </h1>
-            <p className="mx-auto mt-3 max-w-sm text-sm text-ink-soft">{s.payment.confirmationBody}</p>
             <RestartButton onClick={reset} label={s.startOver} />
           </div>
         )}

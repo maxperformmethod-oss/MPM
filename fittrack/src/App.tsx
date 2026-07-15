@@ -20,6 +20,8 @@ const WeightLoss = lazy(() => import("./pages/WeightLoss").then((m) => ({ defaul
 const WeightQuestionnaire = lazy(() =>
   import("./pages/WeightQuestionnaire").then((m) => ({ default: m.WeightQuestionnaire })),
 );
+const Pregnancy = lazy(() => import("./pages/Pregnancy").then((m) => ({ default: m.Pregnancy })));
+const Start = lazy(() => import("./pages/Start").then((m) => ({ default: m.Start })));
 const NutritionQuestionnaire = lazy(() =>
   import("./pages/NutritionQuestionnaire").then((m) => ({ default: m.NutritionQuestionnaire })),
 );
@@ -44,6 +46,8 @@ function App() {
               <Route path="nutrition" element={<Nutrition />} />
               <Route path="weight-loss" element={<WeightLoss />} />
               <Route path="weight-questionnaire" element={<WeightQuestionnaire />} />
+              <Route path="pregnancy" element={<Pregnancy />} />
+              <Route path="start" element={<Start />} />
               <Route path="nutrition-questionnaire" element={<NutritionQuestionnaire />} />
               <Route path="contact" element={<Contact />} />
               <Route path="terms" element={<Terms />} />

@@ -1,11 +1,18 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
+import { Mail, Phone } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { InstagramIcon } from "../components/ui/InstagramIcon";
 import { Button } from "../components/ui/Button";
 import { Photo } from "../components/ui/Photo";
 import { useI18n } from "../i18n/I18nContext";
-import { CONTACT_EMAIL, INSTAGRAM_URL, INSTAGRAM_HANDLE } from "../data/site";
+import {
+  CONTACT_EMAIL,
+  INSTAGRAM_URL,
+  INSTAGRAM_HANDLE,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+} from "../data/site";
 import { fadeUp, viewportOnce } from "../lib/motion";
 
 export function Contact() {
@@ -39,6 +46,45 @@ export function Contact() {
         lead={t.contactPage.lead}
         align="center"
       />
+
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        className="mx-auto mt-10 flex max-w-md flex-col gap-3"
+      >
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          className="group flex items-center gap-3 rounded-xl border border-ink/10 bg-paper px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-gold"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cream-dark text-ink transition-colors group-hover:text-gold">
+            <Mail size={16} />
+          </span>
+          {CONTACT_EMAIL}
+        </a>
+        <a
+          href={`tel:${PHONE_TEL}`}
+          className="group flex items-center gap-3 rounded-xl border border-ink/10 bg-paper px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-gold"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cream-dark text-ink transition-colors group-hover:text-gold">
+            <Phone size={16} />
+          </span>
+          <span aria-hidden="true" className="text-base leading-none">🇸🇰</span>
+          {PHONE_DISPLAY}
+        </a>
+        <a
+          href={INSTAGRAM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-3 rounded-xl border border-ink/10 bg-paper px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-gold"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cream-dark text-ink transition-colors group-hover:text-gold">
+            <InstagramIcon size={16} />
+          </span>
+          {INSTAGRAM_HANDLE}
+        </a>
+      </motion.div>
 
       <div className="mx-auto mt-12 grid max-w-4xl gap-10 lg:grid-cols-2 lg:items-center">
         <motion.div

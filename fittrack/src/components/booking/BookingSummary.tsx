@@ -1,16 +1,14 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, RotateCcw, ArrowLeft } from "lucide-react";
-import { Button } from "../ui/Button";
 import { useI18n } from "../../i18n/I18nContext";
-import {
-  PAYMENT_LINKS,
-  paymentLinkKey,
-  type AgeCategory,
-  type BookingArea as BookingAreaId,
-  type BookingFormat as BookingFormatId,
-  type CoachingSport,
-  type LtadStage,
-  type TimeSinceOption,
+import { PaymentPlaceholder } from "../PaymentPlaceholder";
+import type {
+  AgeCategory,
+  BookingArea as BookingAreaId,
+  BookingFormat as BookingFormatId,
+  CoachingSport,
+  LtadStage,
+  TimeSinceOption,
 } from "../../data/booking";
 import type { PillarId } from "../../data/pillars";
 
@@ -39,8 +37,6 @@ export function BookingSummary({
 }) {
   const { t } = useI18n();
   const s = t.booking;
-  const paymentLink = PAYMENT_LINKS[paymentLinkKey(pillarId, format, area)] ?? "";
-  const isConnected = Boolean(paymentLink);
 
   const detailParts = [
     area ? s.areas[area] : null,
@@ -48,6 +44,10 @@ export function BookingSummary({
     ageCategory ? s.ages[ageCategory] : null,
     ltadStage ? s.ltadStages[ltadStage].range : null,
   ].filter(Boolean);
+
+  const summaryLine = `${t.pillars[pillarId].title}${detailParts
+    .map((part) => ` · ${part}`)
+    .join("")} · ${s.formats[format]}`;
 
   return (
     <motion.div
@@ -100,28 +100,16 @@ export function BookingSummary({
       </div>
       <p className="mx-auto mt-3 max-w-sm text-xs text-ink-soft">{s.priceNote}</p>
 
-      <div className="mt-8">
-        {isConnected ? (
-          <>
-            <a
-              href={paymentLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-ink/85"
-            >
-              {s.payCta}
-            </a>
-            <p className="mx-auto mt-3 max-w-sm text-xs text-ink-soft">{s.testModeNote}</p>
-          </>
-        ) : (
-          <>
-            <Button disabled className="w-full sm:w-auto">
-              {s.payCta}
-            </Button>
-            <p className="mx-auto mt-3 max-w-sm text-xs text-ink-soft">{s.comingSoonNote}</p>
-          </>
-        )}
-      </div>
+      <PaymentPlaceholder
+        subject={`${t.wizard.eyebrow} — ${t.pillars[pillarId].title}`}
+        fields={{
+          [s.summaryLabel]: summaryLine,
+          ...(hasPain !== null
+            ? { [t.intake.painQuestion]: hasPain ? t.intake.painYes : t.intake.painNo }
+            : {}),
+          ...(timeSince ? { [t.intake.timeQuestion]: t.intake.timeOptions[timeSince] } : {}),
+        }}
+      />
 
       <button
         onClick={onRestart}

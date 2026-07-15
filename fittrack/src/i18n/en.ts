@@ -911,6 +911,7 @@ export const en = {
     priceSoon: "Price coming soon",
     interestCta: "I'm interested",
     featured: "Most popular",
+    freeNutrition: "Nutrition included free",
     note: "Pricing is being finalized. Click “I'm interested” and I'll get back to you with the current offer.",
   },
 

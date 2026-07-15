@@ -17,6 +17,8 @@ export type TrainingPackage = {
   price: number | null;
   /** true = show a subtle "best value" highlight. */
   featured: boolean;
+  /** true = nutrition guidance included free (only 10- and 20-packs). */
+  freeNutrition: boolean;
   title: { sk: string; en: string };
   description: { sk: string; en: string };
   // TODO: stripePriceId?: string;  // fill when Stripe is connected
@@ -28,6 +30,7 @@ export const TRAINING_PACKAGES: TrainingPackage[] = [
     sessions: 1,
     price: null,
     featured: false,
+    freeNutrition: false,
     title: { sk: "Jednorazový tréning", en: "Single session" },
     description: {
       sk: "Ideálne na vyskúšanie prístupu alebo jednorazovú konzultáciu.",
@@ -35,10 +38,23 @@ export const TRAINING_PACKAGES: TrainingPackage[] = [
     },
   },
   {
+    id: "pack-5",
+    sessions: 5,
+    price: null,
+    featured: false,
+    freeNutrition: false,
+    title: { sk: "Balík 5 tréningov", en: "5-session package" },
+    description: {
+      sk: "Prvý ucelený blok na naštartovanie zmeny.",
+      en: "A first complete block to kick-start the change.",
+    },
+  },
+  {
     id: "pack-10",
     sessions: 10,
     price: null,
     featured: true,
+    freeNutrition: true,
     title: { sk: "Balík 10 tréningov", en: "10-session package" },
     description: {
       sk: "Zvýhodnený balík na rozbehnutie procesu s pravidelnou kontrolou.",
@@ -50,6 +66,7 @@ export const TRAINING_PACKAGES: TrainingPackage[] = [
     sessions: 20,
     price: null,
     featured: false,
+    freeNutrition: true,
     title: { sk: "Balík 20 tréningov", en: "20-session package" },
     description: {
       sk: "Pre dlhodobú spoluprácu a najlepšiu cenu za tréning.",

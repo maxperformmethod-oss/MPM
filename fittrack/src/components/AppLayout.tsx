@@ -1,13 +1,19 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { Suspense, useEffect } from "react";
-import { Eye, Mail } from "lucide-react";
+import { Eye, Mail, Phone } from "lucide-react";
 import { Header } from "./Header";
 import { ContactWidget } from "./ContactWidget";
 import { InstagramIcon } from "./ui/InstagramIcon";
 import { TrustSealsRow } from "./ui/TrustSealsRow";
 import { useI18n } from "../i18n/I18nContext";
 import { usePreview } from "../lib/usePreview";
-import { CONTACT_EMAIL, INSTAGRAM_URL, INSTAGRAM_HANDLE } from "../data/site";
+import {
+  CONTACT_EMAIL,
+  INSTAGRAM_URL,
+  INSTAGRAM_HANDLE,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+} from "../data/site";
 
 function PageFallback() {
   return (
@@ -92,6 +98,18 @@ export function AppLayout() {
                     <Mail size={15} />
                   </span>
                   {CONTACT_EMAIL}
+                </a>
+                <a
+                  href={`tel:${PHONE_TEL}`}
+                  className="group flex items-center gap-3 text-sm text-cream/70 transition-colors hover:text-cream"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cream/15 transition-colors group-hover:border-gold group-hover:text-gold">
+                    <Phone size={15} />
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span aria-hidden="true" className="text-base leading-none">🇸🇰</span>
+                    {PHONE_DISPLAY}
+                  </span>
                 </a>
                 <a
                   href={INSTAGRAM_URL}

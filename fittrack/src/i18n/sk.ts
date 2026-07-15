@@ -914,6 +914,7 @@ export const sk: Dict = {
     priceSoon: "Cena čoskoro",
     interestCta: "Mám záujem",
     featured: "Najobľúbenejšie",
+    freeNutrition: "Výživa zdarma",
     note: "Ceny sú vo finalizácii. Klikni „Mám záujem“ a ozvem sa ti s aktuálnou ponukou.",
   },
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 type Variant = "primary" | "secondary" | "ghost" | "inverse" | "inverseOutline";
 
 const BASE_CLASSES =
-  "inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-colors disabled:opacity-40 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[0.9375rem] font-semibold transition-colors disabled:opacity-40 disabled:pointer-events-none";
 
 const VARIANT_CLASSES: Record<Variant, string> = {
   primary: "bg-ink text-cream hover:bg-ink/85 active:bg-ink/90",

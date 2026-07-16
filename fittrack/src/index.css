@@ -18,6 +18,13 @@
   color-scheme: light;
 }
 
+/* Global mild size bump (16px → 17px base): every rem-based size (text,
+   buttons, inputs, spacing) scales ~6% for better readability on all
+   devices while keeping layout proportions intact. */
+html {
+  font-size: 106.25%;
+}
+
 html,
 body,
 #root {

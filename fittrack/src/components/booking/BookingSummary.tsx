@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, RotateCcw, ArrowLeft } from "lucide-react";
 import { useI18n } from "../../i18n/I18nContext";
+import { PackagesSection } from "../PackagesSection";
 import { PaymentPlaceholder } from "../PaymentPlaceholder";
 import type {
   AgeCategory,
@@ -50,6 +51,7 @@ export function BookingSummary({
     .join("")} · ${s.formats[format]}`;
 
   return (
+    <>
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -119,5 +121,9 @@ export function BookingSummary({
         {t.wizard.startOver}
       </button>
     </motion.div>
+
+    {/* Pick a session bundle right after choosing the program. */}
+    <PackagesSection />
+    </>
   );
 }

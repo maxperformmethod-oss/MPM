@@ -2,9 +2,11 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, HeartHandshake, Send, Stethoscope, TriangleAlert } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
+import { PackagesSection } from "../components/PackagesSection";
 import { Button } from "../components/ui/Button";
 import { useI18n } from "../i18n/I18nContext";
 import { submitToFormspree } from "../lib/submitForm";
+import { AGE_RANGE, inRange } from "../lib/validate";
 import { fadeUp, viewportOnce } from "../lib/motion";
 
 type Stage = "pregnant" | "postpartum";
@@ -37,17 +39,23 @@ export function Pregnancy() {
   );
   const [consent, setConsent] = useState(false);
   const [consentError, setConsentError] = useState(false);
+  const [ageError, setAgeError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const inputClasses =
-    "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink-soft/50 focus:border-gold focus:outline-none";
+    "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-base text-ink placeholder:text-ink-soft/50 focus:border-gold focus:outline-none";
 
   function set(key: FieldKey, value: string) {
     setData((prev) => ({ ...prev, [key]: value }));
+    if (key === "age") setAgeError(null);
   }
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    if (data.age && !inRange(data.age, ...AGE_RANGE)) {
+      setAgeError(t.validation.age);
+      return;
+    }
     if (!consent) {
       setConsentError(true);
       return;
@@ -74,7 +82,8 @@ export function Pregnancy() {
   }
 
   return (
-    <section className="mx-auto max-w-2xl px-4 pb-20 pt-14 sm:px-6 sm:pt-20">
+    <>
+      <section className="mx-auto max-w-2xl px-4 pb-20 pt-14 sm:px-6 sm:pt-20">
       <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} align="center" />
 
       <div className="mx-auto mt-8 flex max-w-md items-center justify-center gap-2 text-ink-soft">
@@ -126,11 +135,15 @@ export function Pregnancy() {
               />
             ) : (
               <input
+                inputMode={f.key === "age" ? "numeric" : undefined}
                 value={data[f.key]}
                 onChange={(e) => set(f.key, e.target.value)}
                 placeholder={s.fields[`${f.key}Placeholder` as keyof typeof s.fields]}
-                className={inputClasses}
+                className={`${inputClasses} ${f.key === "age" && ageError ? "!border-terracotta" : ""}`}
               />
+            )}
+            {f.key === "age" && ageError && (
+              <span className="text-xs font-normal text-terracotta">{ageError}</span>
             )}
           </label>
         ))}
@@ -175,6 +188,9 @@ export function Pregnancy() {
           {status === "error" && <p className="mt-3 text-xs text-terracotta">{s.error}</p>}
         </div>
       </motion.form>
-    </section>
+      </section>
+
+      <PackagesSection />
+    </>
   );
 }

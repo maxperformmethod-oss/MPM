@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { useI18n } from "../../i18n/I18nContext";
 import { Button } from "../ui/Button";
+import { HEIGHT_RANGE, WEIGHT_RANGE, inRange } from "../../lib/validate";
 import type { NutritionFormData } from "./NutritionWizard";
 
 const inputClasses =
-  "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink-soft/60 focus:border-gold focus:outline-none";
+  "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-base text-ink placeholder:text-ink-soft/60 focus:border-gold focus:outline-none";
 
 export function NutritionBody({
   data,
@@ -19,6 +21,8 @@ export function NutritionBody({
 }) {
   const { t } = useI18n();
   const s = t.nutritionQuestionnaire.body;
+  const [weightError, setWeightError] = useState<string | null>(null);
+  const [heightError, setHeightError] = useState<string | null>(null);
 
   const canContinue =
     data.dob !== "" &&
@@ -26,6 +30,19 @@ export function NutritionBody({
     data.weight.trim() !== "" &&
     data.height.trim() !== "" &&
     (data.calorieMode === "calculated" || data.calorieValue.trim() !== "");
+
+  function handleContinue() {
+    let ok = true;
+    if (!inRange(data.weight, ...WEIGHT_RANGE)) {
+      setWeightError(t.validation.weight);
+      ok = false;
+    }
+    if (!inRange(data.height, ...HEIGHT_RANGE)) {
+      setHeightError(t.validation.height);
+      ok = false;
+    }
+    if (ok) onContinue();
+  }
 
   return (
     <div className="mx-auto max-w-xl px-4 py-16 sm:px-6">
@@ -85,9 +102,13 @@ export function NutritionBody({
               inputMode="decimal"
               required
               value={data.weight}
-              onChange={(e) => onUpdate({ weight: e.target.value })}
-              className={inputClasses}
+              onChange={(e) => {
+                onUpdate({ weight: e.target.value });
+                if (weightError) setWeightError(null);
+              }}
+              className={`${inputClasses} ${weightError ? "!border-terracotta" : ""}`}
             />
+            {weightError && <span className="text-xs font-normal text-terracotta">{weightError}</span>}
           </label>
           <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
             {s.height} *
@@ -96,9 +117,13 @@ export function NutritionBody({
               inputMode="decimal"
               required
               value={data.height}
-              onChange={(e) => onUpdate({ height: e.target.value })}
-              className={inputClasses}
+              onChange={(e) => {
+                onUpdate({ height: e.target.value });
+                if (heightError) setHeightError(null);
+              }}
+              className={`${inputClasses} ${heightError ? "!border-terracotta" : ""}`}
             />
+            {heightError && <span className="text-xs font-normal text-terracotta">{heightError}</span>}
           </label>
           <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
             {s.bodyFat}
@@ -161,7 +186,7 @@ export function NutritionBody({
           )}
         </div>
 
-        <Button onClick={onContinue} disabled={!canContinue} className="mt-3">
+        <Button onClick={handleContinue} disabled={!canContinue} className="mt-3">
           {s.continue}
         </Button>
       </div>

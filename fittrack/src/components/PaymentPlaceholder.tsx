@@ -40,25 +40,23 @@ export function PaymentPlaceholder({
   }
 
   return (
-    <div className="mx-auto mt-6 max-w-sm rounded-2xl border border-ink/10 bg-paper p-5 text-center">
-      <p className="inline-block rounded-full bg-cream-dark px-3 py-1 text-xs font-semibold text-ink-soft">
-        {s.comingSoon}
-      </p>
-      <p className="mt-3 text-sm font-medium text-ink">{s.priceNote}</p>
-      <p className="mt-2 text-sm text-ink-soft">{s.comingSoonNote}</p>
+    <div className="mx-auto mt-8 max-w-md rounded-3xl border border-ink/10 bg-paper px-6 py-8 text-center shadow-sm sm:px-10">
+      <h3 className="font-serif text-2xl font-bold text-ink sm:text-3xl">{s.comingSoon}</h3>
+      <p className="mt-3 text-base font-medium text-ink">{s.priceNote}</p>
+      <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.comingSoonNote}</p>
       <button
         onClick={send}
         disabled={status === "sending"}
-        className="mx-auto mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-ink/85 disabled:opacity-50"
+        className="mx-auto mt-6 inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-ink px-8 py-4 text-base font-semibold text-cream transition-colors hover:bg-ink/85 disabled:opacity-50 sm:w-auto"
       >
         {status === "sending" ? (
-          <span className="h-4 w-4 animate-spin rounded-full border-2 border-cream/30 border-t-cream" />
+          <span className="h-5 w-5 animate-spin rounded-full border-2 border-cream/30 border-t-cream" />
         ) : (
-          <Send size={15} />
+          <Send size={17} />
         )}
         {status === "sending" ? s.sending : s.sendRequest}
       </button>
-      {status === "error" && <p className="mt-3 text-xs text-terracotta">{s.error}</p>}
+      {status === "error" && <p className="mt-3 text-sm text-terracotta">{s.error}</p>}
     </div>
   );
 }

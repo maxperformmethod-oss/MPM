@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2, Check, Send } from "lucide-react";
 import { Button } from "../components/ui/Button";
 import { useI18n } from "../i18n/I18nContext";
 import { submitToFormspree } from "../lib/submitForm";
+import { AGE_RANGE, inRange, isEmail, isPhone } from "../lib/validate";
 import { fadeUp, staggerContainer } from "../lib/motion";
 
 // Standalone Instagram-bio / ad landing at /start — works on its own, no nav
@@ -67,20 +68,37 @@ export function Start() {
   const s = t.startPage;
   const [stepIndex, setStepIndex] = useState(0);
   const [data, setData] = useState<Record<FieldKey, string>>(EMPTY);
+  const [errors, setErrors] = useState<Partial<Record<FieldKey, string>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const step = STEPS[stepIndex];
   const isLast = stepIndex === STEPS.length - 1;
 
+  // Format/range checks on top of native `required` — invalid values block
+  // the step. Optional fields are only validated when filled in.
+  function validateStep(): boolean {
+    const next: Partial<Record<FieldKey, string>> = {};
+    for (const { key } of step.fields) {
+      const value = data[key].trim();
+      if (key === "email" && value && !isEmail(value)) next[key] = t.validation.email;
+      if (key === "phone" && value && !isPhone(value)) next[key] = t.validation.phone;
+      if (key === "age" && value && !inRange(value, ...AGE_RANGE)) next[key] = t.validation.age;
+    }
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  }
+
   const inputClasses =
-    "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink-soft/50 focus:border-gold focus:outline-none";
+    "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-base text-ink placeholder:text-ink-soft/50 focus:border-gold focus:outline-none";
 
   function set(key: FieldKey, value: string) {
     setData((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => (prev[key] ? { ...prev, [key]: undefined } : prev));
   }
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    if (!validateStep()) return;
     if (!isLast) {
       setStepIndex((i) => i + 1);
       return;
@@ -182,7 +200,7 @@ export function Start() {
           {step.fields.map((f) => (
             <label
               key={f.key}
-              className={`flex flex-col gap-1.5 text-sm font-medium text-ink ${
+              className={`flex flex-col gap-1.5 text-[0.95rem] font-medium text-ink ${
                 f.half ? "" : "sm:col-span-2"
               }`}
             >
@@ -199,11 +217,20 @@ export function Start() {
               ) : (
                 <input
                   required={REQUIRED.includes(f.key)}
-                  type={f.key === "email" ? "email" : "text"}
+                  type="text"
+                  inputMode={
+                    f.key === "age" ? "numeric" : f.key === "phone" ? "tel" : f.key === "email" ? "email" : undefined
+                  }
+                  autoComplete={
+                    f.key === "email" ? "email" : f.key === "phone" ? "tel" : f.key === "name" ? "name" : undefined
+                  }
                   value={data[f.key]}
                   onChange={(e) => set(f.key, e.target.value)}
-                  className={inputClasses}
+                  className={`${inputClasses} ${errors[f.key] ? "!border-terracotta" : ""}`}
                 />
+              )}
+              {errors[f.key] && (
+                <span className="text-xs font-normal text-terracotta">{errors[f.key]}</span>
               )}
             </label>
           ))}

@@ -10,6 +10,7 @@ export const sk: Dict = {
     research: "Časté otázky",
     nutrition: "Výživa",
     contact: "Kontakt",
+    start: "Osobný formulár",
     bookAssessment: "Rezervácia",
   },
 
@@ -350,9 +351,10 @@ export const sk: Dict = {
       "3 roky praxe priamo so športovcami — hokej, tenis, návrat po zranení",
     ],
     story: [
+      "Hokeju som sa venoval 12 rokov, vrátane reprezentačných výberov. Vlastné skúsenosti so športom, tréningom, zraneniami a návratom k výkonu ma priviedli k vytvoreniu MPM — poznám z prvej ruky, aké je vrátiť sa po zranení späť do hry.",
       "Tri roky pracujem priamo v teréne so športovcami, ktorí si prešli tým najnáročnejším — rekonštrukciou ACL, dlhými rehabilitáciami, neistotou, či sa vôbec vrátia na pôvodnú úroveň. Najviac skúseností mám s hokejistami a tenistami, kde je návrat k plnému výkonu bez kompromisu na rýchlosti, sile a explozivite absolútna nutnosť — nie len „bez bolesti“.",
       "MPM™ vzniklo z jednoduchého pozorovania: príliš veľa športovcov uviazne v medzere medzi fyzioterapiou a skutočným výkonom. Prepustení, ale nie pripravení. Bez bolesti, ale bez istoty.",
-      "Max Perform Method existuje preto, aby túto medzeru uzavrel — spája štruktúrovanú diagnostiku, rehabilitačné myslenie a prax silového a kondičného tréningu do jedného súvislého, merateľného procesu.",
+      "Mojím cieľom je pomáhať najmä mladým športovcom a aktívnym ľuďom vrátiť sa po zranení silnejší a lepšie pripravení. Max Perform Method túto medzeru uzatvára — spája štruktúrovanú diagnostiku, rehabilitačné myslenie a prax silového a kondičného tréningu do jedného súvislého, merateľného procesu.",
     ],
     philosophyTitle: "Filozofia",
     philosophy:
@@ -556,17 +558,17 @@ export const sk: Dict = {
   nutritionPage: {
     eyebrow: "VÝŽIVA",
     title: "Palivo pre proces.",
-    lead: "Výživa je v MPM™ podporný pilier — praktické vedenie v službách tvojich rehabilitačných a výkonnostných cieľov, nie samostatný diétny program.",
+    lead: "Každý jedálniček je zostavený individuálne pre konkrétneho klienta — na mieru tvojim cieľom, chutiam a životnému štýlu. Žiadne generické šablóny, žiadne dve rovnaké.",
     whoNote:
       "Jedálničky zostavené v súlade s odporúčaniami a klasifikáciami Svetovej zdravotníckej organizácie (WHO).",
     points: [
       {
-        title: "Najprv regenerácia",
-        body: "Základy, ktoré podporujú hojenie tkanív a adaptáciu — bielkoviny, dostupnosť energie a konzistentnosť pred suplementmi.",
+        title: "Individuálne pre teba",
+        body: "Jedálniček stavaný od nuly na tvoje ciele, preferencie, alergie a denný režim — nie prevzatá šablóna.",
       },
       {
         title: "Postavené okolo tréningu",
-        body: "Jednoduché stratégie dopĺňania energie prispôsobené tvojim tréningovým fázam — žiadne generické jedálničky.",
+        body: "Stratégie dopĺňania energie prispôsobené tvojim tréningovým fázam a regenerácii.",
       },
       {
         title: "Udržateľné",
@@ -895,6 +897,15 @@ export const sk: Dict = {
     error: "Nepodarilo sa odoslať. Skús to znova alebo napíš priamo na maxperformmethod@gmail.com.",
   },
 
+  validation: {
+    email: "Zadaj platný e-mail.",
+    phone: "Zadaj platné telefónne číslo.",
+    emailOrPhone: "Zadaj platný e-mail alebo telefón.",
+    age: "Zadaj vek v rozsahu 5 – 100.",
+    height: "Zadaj výšku v cm (100 – 230).",
+    weight: "Zadaj hmotnosť v kg (25 – 250).",
+  },
+
   payments: {
     comingSoon: "Online platba už čoskoro",
     priceNote: "Cena sa určí po konzultácii — program pripravujem na mieru tvojim cieľom.",
@@ -915,6 +926,11 @@ export const sk: Dict = {
     interestCta: "Mám záujem",
     featured: "Najobľúbenejšie",
     freeNutrition: "Výživa zdarma",
+    durationNote: "Odporúčaná dĺžka programu: 2–3 mesiace — podľa cieľa a východiska.",
+    addonTitle: "Individuálny jedálniček",
+    addonBody:
+      "Možnosť dokúpiť ku ktorémukoľvek tréningu či balíku — zostavený individuálne presne pre teba.",
+    addonFreeNote: "Pri balíkoch 10 a 20 tréningov je jedálniček zdarma.",
     note: "Ceny sú vo finalizácii. Klikni „Mám záujem“ a ozvem sa ti s aktuálnou ponukou.",
   },
 

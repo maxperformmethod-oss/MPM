@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Salad, HeartPulse, LineChart, ArrowRight, TriangleAlert } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { CTABand } from "../components/CTABand";
+import { PackagesSection } from "../components/PackagesSection";
 import { ButtonLink } from "../components/ui/Button";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
@@ -64,6 +65,8 @@ export function WeightLoss() {
           <p className="mx-auto mt-3 max-w-md text-xs text-ink-soft">{s.ctaNote}</p>
         </div>
       </section>
+
+      <PackagesSection />
 
       <CTABand />
     </>

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Salad, Star } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
-import { TRAINING_PACKAGES } from "../data/packages";
+import { MEAL_PLAN_ADDON, TRAINING_PACKAGES } from "../data/packages";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
@@ -69,7 +69,31 @@ export function PackagesSection() {
           ))}
         </motion.div>
 
-        <p className="mx-auto mt-8 max-w-xl text-center text-xs text-ink-soft">{s.note}</p>
+        {/* Meal-plan add-on — the only published price on the site (~50 €). */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 rounded-2xl border border-sage/30 bg-sage/10 p-6 text-center sm:flex-row sm:text-left"
+        >
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sage/15 text-sage">
+            <Salad size={22} />
+          </div>
+          <div className="flex-1">
+            <p className="font-serif text-lg font-bold text-ink">
+              {s.addonTitle}{" "}
+              <span className="whitespace-nowrap text-gold">{MEAL_PLAN_ADDON.priceApprox}</span>
+            </p>
+            <p className="mt-1 text-sm text-ink-soft">{s.addonBody}</p>
+            <p className="mt-1 text-sm font-medium text-sage">{s.addonFreeNote}</p>
+          </div>
+        </motion.div>
+
+        <p className="mx-auto mt-6 max-w-xl text-center text-sm font-medium text-ink-soft">
+          {s.durationNote}
+        </p>
+        <p className="mx-auto mt-2 max-w-xl text-center text-xs text-ink-soft">{s.note}</p>
       </div>
     </section>
   );

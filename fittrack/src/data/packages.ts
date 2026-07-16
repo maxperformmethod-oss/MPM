@@ -24,6 +24,14 @@ export type TrainingPackage = {
   // TODO: stripePriceId?: string;  // fill when Stripe is connected
 };
 
+// Individual meal-plan add-on — the ONLY published price on the site
+// (intentionally approximate: "~50 €"). Free with the 10- and 20-packs.
+// TODO (Stripe go-live): add a stripePriceId here as well.
+export const MEAL_PLAN_ADDON = {
+  id: "meal-plan",
+  priceApprox: "~50 €",
+} as const;
+
 export const TRAINING_PACKAGES: TrainingPackage[] = [
   {
     id: "single",

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, MessageCircle, Send, X } from "lucide-react";
 import { useI18n } from "../i18n/I18nContext";
 import { CONTACT_EMAIL, CONTACT_FORM_ENDPOINT } from "../data/site";
+import { isEmail } from "../lib/validate";
 
 // Floating contact widget — a chat-styled FORM, deliberately not an AI bot.
 // With CONTACT_FORM_ENDPOINT set (Formspree) it submits asynchronously;
@@ -16,6 +17,7 @@ export function ContactWidget() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const quickLinks = [
@@ -25,6 +27,11 @@ export function ContactWidget() {
 
   async function submit(event: FormEvent) {
     event.preventDefault();
+
+    if (!isEmail(email)) {
+      setEmailError(t.validation.email);
+      return;
+    }
 
     if (!CONTACT_FORM_ENDPOINT) {
       const body = [`${s.name}: ${name}`, `${s.email}: ${email}`, "", message].join("\n");
@@ -108,11 +115,15 @@ export function ContactWidget() {
                     required
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (emailError) setEmailError(null);
+                    }}
                     placeholder={s.email}
                     aria-label={s.email}
-                    className={inputClasses}
+                    className={`${inputClasses} ${emailError ? "!border-terracotta" : ""}`}
                   />
+                  {emailError && <p className="-mt-1 text-xs text-terracotta">{emailError}</p>}
                   <textarea
                     required
                     rows={3}

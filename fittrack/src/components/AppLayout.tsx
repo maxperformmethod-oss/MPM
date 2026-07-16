@@ -82,11 +82,8 @@ export function AppLayout() {
                 MAX PERFORM METHOD
               </p>
 
-              <div className="mt-6 flex sm:justify-end">
-                <TrustSealsRow compact />
-              </div>
-
-              <p className="mt-10 text-[11px] font-semibold tracking-[0.18em] text-cream/40">
+              {/* Contacts sit ABOVE the partner seals. */}
+              <p className="mt-6 text-[11px] font-semibold tracking-[0.18em] text-cream/40">
                 {t.footer.contactTitle.toUpperCase()}
               </p>
               <div className="mt-4 flex flex-col gap-2.5 sm:items-end">
@@ -123,7 +120,12 @@ export function AppLayout() {
                   {INSTAGRAM_HANDLE}
                 </a>
               </div>
-              <p className="mt-5 text-xs leading-relaxed text-cream/40">
+
+              <div className="mt-8 flex sm:justify-end">
+                <TrustSealsRow compact />
+              </div>
+
+              <p className="mt-6 text-xs leading-relaxed text-cream/40">
                 {t.footer.credentials}
               </p>
             </div>

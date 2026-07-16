@@ -11,6 +11,7 @@ import {
 import { Button } from "../components/ui/Button";
 import { PaymentPlaceholder } from "../components/PaymentPlaceholder";
 import { useI18n } from "../i18n/I18nContext";
+import { AGE_RANGE, HEIGHT_RANGE, WEIGHT_RANGE, inRange, isEmail } from "../lib/validate";
 
 // Self-contained questionnaire for the body-composition program — deliberately
 // NOT linked to the nutrition/meal-plan wizard. Collects goal + basics + health
@@ -60,7 +61,7 @@ const GOAL_ICONS: Record<Goal, typeof Scale> = {
 };
 
 const inputClasses =
-  "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink-soft/50 focus:border-gold focus:outline-none";
+  "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-base text-ink placeholder:text-ink-soft/50 focus:border-gold focus:outline-none";
 
 export function WeightQuestionnaire() {
   const { t } = useI18n();
@@ -68,11 +69,17 @@ export function WeightQuestionnaire() {
   const [stepId, setStepId] = useState<StepId>("goal");
   const [data, setData] = useState<FormData>(INITIAL);
   const [consentError, setConsentError] = useState(false);
+  const [errors, setErrors] = useState<Partial<Record<"email" | "age" | "height" | "weight", string>>>({});
 
   const currentIndex = STEPS.indexOf(stepId);
 
   function update(patch: Partial<FormData>) {
     setData((prev) => ({ ...prev, ...patch }));
+    setErrors((prev) => {
+      const cleared = { ...prev };
+      for (const key of Object.keys(patch)) delete cleared[key as keyof typeof cleared];
+      return cleared;
+    });
   }
   function reset() {
     setStepId("goal");
@@ -89,6 +96,13 @@ export function WeightQuestionnaire() {
   }
   function submitBasics(e: FormEvent) {
     e.preventDefault();
+    const next: typeof errors = {};
+    if (!isEmail(data.email)) next.email = t.validation.email;
+    if (!inRange(data.age, ...AGE_RANGE)) next.age = t.validation.age;
+    if (!inRange(data.height, ...HEIGHT_RANGE)) next.height = t.validation.height;
+    if (!inRange(data.weight, ...WEIGHT_RANGE)) next.weight = t.validation.weight;
+    setErrors(next);
+    if (Object.keys(next).length > 0) return;
     setStepId("health");
   }
   function submitHealth(e: FormEvent) {
@@ -187,11 +201,11 @@ export function WeightQuestionnaire() {
               <Field label={s.basics.lastName}>
                 <input required value={data.lastName} onChange={(e) => update({ lastName: e.target.value })} className={inputClasses} />
               </Field>
-              <Field label={s.basics.email} full>
-                <input required type="email" value={data.email} onChange={(e) => update({ email: e.target.value })} className={inputClasses} />
+              <Field label={s.basics.email} full error={errors.email}>
+                <input required type="text" inputMode="email" autoComplete="email" value={data.email} onChange={(e) => update({ email: e.target.value })} className={`${inputClasses} ${errors.email ? "!border-terracotta" : ""}`} />
               </Field>
-              <Field label={s.basics.age}>
-                <input required inputMode="numeric" value={data.age} onChange={(e) => update({ age: e.target.value })} className={inputClasses} />
+              <Field label={s.basics.age} error={errors.age}>
+                <input required inputMode="numeric" value={data.age} onChange={(e) => update({ age: e.target.value })} className={`${inputClasses} ${errors.age ? "!border-terracotta" : ""}`} />
               </Field>
               <Field label={s.basics.gender}>
                 <div className="flex gap-2">
@@ -211,11 +225,11 @@ export function WeightQuestionnaire() {
                   ))}
                 </div>
               </Field>
-              <Field label={s.basics.height}>
-                <input required inputMode="numeric" value={data.height} onChange={(e) => update({ height: e.target.value })} className={inputClasses} />
+              <Field label={s.basics.height} error={errors.height}>
+                <input required inputMode="numeric" value={data.height} onChange={(e) => update({ height: e.target.value })} className={`${inputClasses} ${errors.height ? "!border-terracotta" : ""}`} />
               </Field>
-              <Field label={s.basics.weight}>
-                <input required inputMode="numeric" value={data.weight} onChange={(e) => update({ weight: e.target.value })} className={inputClasses} />
+              <Field label={s.basics.weight} error={errors.weight}>
+                <input required inputMode="numeric" value={data.weight} onChange={(e) => update({ weight: e.target.value })} className={`${inputClasses} ${errors.weight ? "!border-terracotta" : ""}`} />
               </Field>
               <Field label={s.basics.activity} full>
                 <div className="grid gap-2 sm:grid-cols-3">
@@ -330,11 +344,22 @@ export function WeightQuestionnaire() {
   );
 }
 
-function Field({ label, full, children }: { label: string; full?: boolean; children: React.ReactNode }) {
+function Field({
+  label,
+  full,
+  error,
+  children,
+}: {
+  label: string;
+  full?: boolean;
+  error?: string;
+  children: React.ReactNode;
+}) {
   return (
-    <label className={`flex flex-col gap-1.5 text-sm font-medium text-ink ${full ? "sm:col-span-2" : ""}`}>
+    <label className={`flex flex-col gap-1.5 text-[0.95rem] font-medium text-ink ${full ? "sm:col-span-2" : ""}`}>
       {label}
       {children}
+      {error && <span className="text-xs font-normal text-terracotta">{error}</span>}
     </label>
   );
 }

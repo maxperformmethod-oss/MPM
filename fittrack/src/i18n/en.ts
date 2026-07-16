@@ -8,6 +8,7 @@ export const en = {
     research: "FAQ",
     nutrition: "Nutrition",
     contact: "Contact",
+    start: "Personal Form",
     bookAssessment: "Booking",
   },
 
@@ -348,9 +349,10 @@ export const en = {
       "3 years of hands-on practice with athletes — hockey, tennis, return from injury",
     ],
     story: [
+      "I played hockey for 12 years, including national team selections. My own experience with sport, training, injuries and returning to performance is what led me to create MPM — I know first-hand what it takes to come back from injury and get back in the game.",
       "For three years I've worked directly in the field with athletes who have been through the hardest part — ACL reconstruction, long rehabilitations, and the uncertainty of whether they'd ever return to their previous level. Most of my experience is with hockey and tennis players, where returning to full performance without compromising speed, strength and explosiveness is an absolute necessity — not just being “pain-free”.",
       "MPM™ grew out of a simple observation: too many athletes get stuck in the gap between physiotherapy and real performance. Discharged, but not ready. Pain-free, but not confident.",
-      "The Max Perform Method exists to close that gap — combining structured assessment, rehabilitation thinking and strength & conditioning practice into one continuous, measurable process.",
+      "My goal is to help mainly young athletes and active people return from injury stronger and better prepared. The Max Perform Method closes that gap — combining structured assessment, rehabilitation thinking and strength & conditioning practice into one continuous, measurable process.",
     ],
     philosophyTitle: "Philosophy",
     philosophy:
@@ -554,17 +556,17 @@ export const en = {
   nutritionPage: {
     eyebrow: "NUTRITION",
     title: "Fuel the process.",
-    lead: "Nutrition at MPM™ is a supporting pillar — practical guidance that serves your rehabilitation and performance goals, not a standalone diet program.",
+    lead: "Every meal plan is built individually for the specific client — tailored to your goals, tastes and lifestyle. No generic templates, no two the same.",
     whoNote:
       "Meal plans are built in line with the recommendations and classifications of the World Health Organization (WHO).",
     points: [
       {
-        title: "Recovery-first",
-        body: "Fundamentals that support tissue healing and adaptation — protein, energy availability and consistency before supplements.",
+        title: "Individual to you",
+        body: "A meal plan built from scratch around your goals, preferences, allergies and daily routine — not a recycled template.",
       },
       {
         title: "Built around training",
-        body: "Simple fueling strategies matched to your training phases — no generic meal plans.",
+        body: "Fueling strategies matched to your training phases and recovery.",
       },
       {
         title: "Sustainable",
@@ -892,6 +894,15 @@ export const en = {
     error: "Sending failed. Try again or email me directly at maxperformmethod@gmail.com.",
   },
 
+  validation: {
+    email: "Enter a valid email.",
+    phone: "Enter a valid phone number.",
+    emailOrPhone: "Enter a valid email or phone.",
+    age: "Enter an age between 5 and 100.",
+    height: "Enter height in cm (100 – 230).",
+    weight: "Enter weight in kg (25 – 250).",
+  },
+
   payments: {
     comingSoon: "Online payment coming soon",
     priceNote: "The price is set after a consultation — I build the program around your goals.",
@@ -912,6 +923,11 @@ export const en = {
     interestCta: "I'm interested",
     featured: "Most popular",
     freeNutrition: "Nutrition included free",
+    durationNote: "Recommended program length: 2–3 months — depending on your goal and starting point.",
+    addonTitle: "Individual meal plan",
+    addonBody:
+      "Available as an add-on to any session or package — built individually, just for you.",
+    addonFreeNote: "Free with the 10- and 20-session packages.",
     note: "Pricing is being finalized. Click “I'm interested” and I'll get back to you with the current offer.",
   },
 

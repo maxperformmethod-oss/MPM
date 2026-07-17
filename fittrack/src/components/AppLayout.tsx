@@ -52,9 +52,9 @@ export function AppLayout() {
       </main>
 
       <footer className="bg-ink text-cream">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          {/* Top: navigation (left) + contacts (right). */}
-          <div className="flex flex-col gap-12 sm:flex-row sm:justify-between sm:gap-10">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
+          {/* Navigation (left) + everything else stacked compactly on the right. */}
+          <div className="flex flex-col gap-10 sm:flex-row sm:justify-between sm:gap-10">
             <nav aria-label={t.footer.navTitle}>
               <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
                 {t.footer.navTitle.toUpperCase()}
@@ -73,62 +73,65 @@ export function AppLayout() {
               </ul>
             </nav>
 
-            <div className="sm:text-right">
-              <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
-                {t.footer.contactTitle.toUpperCase()}
-              </p>
-              <div className="mt-4 flex flex-col gap-2.5 sm:items-end">
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="group flex items-center gap-3 text-sm text-cream/70 transition-colors hover:text-cream"
-                >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cream/15 transition-colors group-hover:border-gold group-hover:text-gold">
-                    <Mail size={15} />
-                  </span>
-                  {CONTACT_EMAIL}
-                </a>
-                <a
-                  href={`tel:${PHONE_TEL}`}
-                  className="group flex items-center gap-3 text-sm text-cream/70 transition-colors hover:text-cream"
-                >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cream/15 transition-colors group-hover:border-gold group-hover:text-gold">
-                    <Phone size={15} />
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span aria-hidden="true" className="text-base leading-none">🇸🇰</span>
-                    {PHONE_DISPLAY}
-                  </span>
-                </a>
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-sm text-cream/70 transition-colors hover:text-cream"
-                >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cream/15 transition-colors group-hover:border-gold group-hover:text-gold">
-                    <InstagramIcon size={15} />
-                  </span>
-                  {INSTAGRAM_HANDLE}
-                </a>
+            <div className="flex flex-col gap-8 sm:items-end">
+              {/* Contacts */}
+              <div className="sm:text-right">
+                <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
+                  {t.footer.contactTitle.toUpperCase()}
+                </p>
+                <div className="mt-4 flex flex-col gap-2.5 sm:items-end">
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="group flex items-center gap-3 text-sm text-cream/70 transition-colors hover:text-cream"
+                  >
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cream/15 transition-colors group-hover:border-gold group-hover:text-gold">
+                      <Mail size={15} />
+                    </span>
+                    {CONTACT_EMAIL}
+                  </a>
+                  <a
+                    href={`tel:${PHONE_TEL}`}
+                    className="group flex items-center gap-3 text-sm text-cream/70 transition-colors hover:text-cream"
+                  >
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cream/15 transition-colors group-hover:border-gold group-hover:text-gold">
+                      <Phone size={15} />
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <span aria-hidden="true" className="text-base leading-none">🇸🇰</span>
+                      {PHONE_DISPLAY}
+                    </span>
+                  </a>
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 text-sm text-cream/70 transition-colors hover:text-cream"
+                  >
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cream/15 transition-colors group-hover:border-gold group-hover:text-gold">
+                      <InstagramIcon size={15} />
+                    </span>
+                    {INSTAGRAM_HANDLE}
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
 
-          {/* Bottom: partner seals (left) + MPM brand (right). */}
-          <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <TrustSealsRow compact />
-            </div>
-            <div className="sm:text-right">
-              <p className="font-serif text-2xl font-bold text-cream">
-                MPM<sup className="text-[0.5em]">™</sup>
-              </p>
-              <p className="mt-1.5 text-[10px] font-semibold tracking-[0.22em] text-gold">
-                MAX PERFORM METHOD
-              </p>
-              <p className="mt-3 text-xs leading-relaxed text-cream/40">
-                {t.footer.credentials}
-              </p>
+              {/* Partner seals — moved to the right, under the contacts. */}
+              <div className="flex sm:justify-end">
+                <TrustSealsRow compact />
+              </div>
+
+              {/* MPM brand */}
+              <div className="sm:text-right">
+                <p className="font-serif text-2xl font-bold text-cream">
+                  MPM<sup className="text-[0.5em]">™</sup>
+                </p>
+                <p className="mt-1.5 text-[10px] font-semibold tracking-[0.22em] text-gold">
+                  MAX PERFORM METHOD
+                </p>
+                <p className="mt-3 text-xs leading-relaxed text-cream/40">
+                  {t.footer.credentials}
+                </p>
+              </div>
             </div>
           </div>
         </div>

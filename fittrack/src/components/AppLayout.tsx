@@ -55,23 +55,28 @@ export function AppLayout() {
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
           {/* Navigation (left) + everything else stacked compactly on the right. */}
           <div className="flex flex-col gap-10 sm:flex-row sm:justify-between sm:gap-10">
-            <nav aria-label={t.footer.navTitle}>
-              <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
-                {t.footer.navTitle.toUpperCase()}
+            <div>
+              <nav aria-label={t.footer.navTitle}>
+                <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
+                  {t.footer.navTitle.toUpperCase()}
+                </p>
+                <ul className="mt-4 flex flex-col gap-2.5">
+                  {FOOTER_LINKS.map(({ to, key }) => (
+                    <li key={to}>
+                      <Link
+                        to={to}
+                        className="text-sm text-cream/70 transition-colors hover:text-cream"
+                      >
+                        {t.nav[key]}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <p className="mt-8 max-w-xs text-xs leading-relaxed text-cream/40">
+                {t.footer.credentials}
               </p>
-              <ul className="mt-4 flex flex-col gap-2.5">
-                {FOOTER_LINKS.map(({ to, key }) => (
-                  <li key={to}>
-                    <Link
-                      to={to}
-                      className="text-sm text-cream/70 transition-colors hover:text-cream"
-                    >
-                      {t.nav[key]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            </div>
 
             <div className="flex flex-col gap-8 sm:items-end">
               {/* Contacts */}
@@ -127,9 +132,6 @@ export function AppLayout() {
                 </p>
                 <p className="mt-1.5 text-[10px] font-semibold tracking-[0.22em] text-gold">
                   MAX PERFORM METHOD
-                </p>
-                <p className="mt-3 text-xs leading-relaxed text-cream/40">
-                  {t.footer.credentials}
                 </p>
               </div>
             </div>

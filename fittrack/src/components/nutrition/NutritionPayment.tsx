@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Mail, RotateCcw } from "lucide-react";
 import { useI18n } from "../../i18n/I18nContext";
 import { Button } from "../ui/Button";
-import { buildNutritionMailto } from "../../lib/nutritionEmail";
+import { buildNutritionSubmission } from "../../lib/nutritionEmail";
+import { submitToFormspree } from "../../lib/submitForm";
 import type { NutritionFormData } from "./NutritionWizard";
 
 export function NutritionPayment({
@@ -18,10 +19,18 @@ export function NutritionPayment({
   const { t } = useI18n();
   const s = t.nutritionQuestionnaire.payment;
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
-  function handleSendToMaxim() {
-    window.location.href = buildNutritionMailto(data, t);
-    setSent(true);
+  // Sends via Formspree — never opens an external email app.
+  async function handleSendToMaxim() {
+    setSending(true);
+    setError(false);
+    const { subject, fields } = buildNutritionSubmission(data, t);
+    const ok = await submitToFormspree(subject, fields);
+    setSending(false);
+    if (ok) setSent(true);
+    else setError(true);
   }
 
   if (sent) {
@@ -101,11 +110,17 @@ export function NutritionPayment({
         <p className="mt-1.5 text-sm text-ink-soft">{s.interimBody}</p>
         <button
           onClick={handleSendToMaxim}
-          className="mx-auto mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-ink/85"
+          disabled={sending}
+          className="mx-auto mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-ink px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-ink/85 disabled:opacity-50"
         >
-          <Mail size={16} />
+          {sending ? (
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-cream/30 border-t-cream" />
+          ) : (
+            <Mail size={16} />
+          )}
           {s.interimCta}
         </button>
+        {error && <p className="mt-3 text-xs text-terracotta">{t.payments.error}</p>}
       </div>
 
       <button

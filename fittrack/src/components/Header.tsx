@@ -6,11 +6,11 @@ import { useI18n, type Lang } from "../i18n/I18nContext";
 
 const NAV_ITEMS = [
   { to: "/find-your-path", key: "findYourPath" },
-  { to: "/start", key: "start" },
   { to: "/approach", key: "approach" },
   { to: "/nutrition", key: "nutrition" },
-  { to: "/research", key: "research" },
   { to: "/about", key: "about" },
+  { to: "/research", key: "research" },
+  { to: "/start", key: "start" },
   { to: "/contact", key: "contact" },
 ] as const;
 
@@ -46,15 +46,15 @@ export function Header() {
           className="flex shrink-0 flex-col leading-none"
           onClick={() => setOpen(false)}
         >
-          <span className="font-serif text-xl font-bold tracking-tight text-ink">
+          <span className="font-serif text-2xl font-bold tracking-tight text-ink sm:text-[1.7rem]">
             MPM<sup className="text-[0.5em]">™</sup>
           </span>
-          <span className="mt-0.5 text-[9px] font-semibold tracking-[0.18em] text-ink-soft">
+          <span className="mt-0.5 text-[11px] font-semibold tracking-[0.18em] text-ink-soft">
             MAX PERFORM METHOD
           </span>
         </NavLink>
 
-        <nav className="hidden items-center gap-5 xl:gap-6 lg:flex">
+        <nav className="hidden items-center gap-4 xl:flex">
           {NAV_ITEMS.map(({ to, key }) => (
             <NavLink
               key={to}
@@ -72,14 +72,14 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <ButtonLink to="/find-your-path" className="!px-5 !py-2.5 whitespace-nowrap">
             {t.nav.bookAssessment}
           </ButtonLink>
           <LangToggle />
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <LangToggle />
           <button
             className="rounded-lg p-2 text-ink"
@@ -93,7 +93,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-ink/10 px-4 pb-4 lg:hidden">
+        <div className="border-t border-ink/10 px-4 pb-4 xl:hidden">
           <nav className="flex flex-col gap-1 pt-2">
             {NAV_ITEMS.map(({ to, key }) => (
               <NavLink

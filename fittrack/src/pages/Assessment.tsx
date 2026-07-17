@@ -89,7 +89,7 @@ export function Assessment() {
         </div>
       </section>
 
-      <CTABand />
+      <CTABand to="/start" label={t.startPage.cta} />
     </>
   );
 }

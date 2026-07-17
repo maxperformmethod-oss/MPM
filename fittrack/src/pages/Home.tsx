@@ -18,6 +18,7 @@ import { StatCounter } from "../components/StatCounter";
 import { SectionDivider } from "../components/SectionDivider";
 import { DiagnosticsChart } from "../components/DiagnosticsChart";
 import { ReviewsCarousel } from "../components/ReviewsCarousel";
+import { Photo } from "../components/ui/Photo";
 import { ButtonLink } from "../components/ui/Button";
 import { PILLARS } from "../data/pillars";
 import { useI18n } from "../i18n/I18nContext";
@@ -28,7 +29,7 @@ function CredentialsStrip() {
   const items = t.home.credentialsStrip;
 
   return (
-    <div className="border-y border-ink/10 bg-paper">
+    <div className="border-y border-gold/15 bg-gold/[0.06]">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-2 gap-y-2 px-4 py-5 sm:px-6">
         {items.map((item, i) => (
           <span key={item} className="flex items-center gap-2">
@@ -126,7 +127,7 @@ function MethodTeaserSection() {
   const s = t.home.method;
 
   return (
-    <section className="bg-paper">
+    <section className="bg-cream-dark/40">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} />
@@ -217,7 +218,8 @@ function AssessmentHighlightSection() {
         <MetricTile icon={FileText} text={s.metrics[4].text} pending={s.metrics[4].pending} />
       </div>
       <DiagnosticsChart />
-      <div className="mt-10 text-center">
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <ButtonLink to="/start">{t.startPage.cta}</ButtonLink>
         <ButtonLink to="/assessment" variant="secondary">
           {s.cta}
         </ButtonLink>
@@ -231,7 +233,7 @@ function TestimonialsSection() {
   const s = t.home.testimonials;
 
   return (
-    <section className="bg-paper">
+    <section className="bg-sage/[0.07]">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading eyebrow={s.eyebrow} title={s.title} align="center" />
         <div className="mt-12">
@@ -246,6 +248,49 @@ function TestimonialsSection() {
             <ArrowRight size={15} />
           </Link>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function CoachContactSection() {
+  const { t } = useI18n();
+  const s = t.home.coach;
+
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <div className="mx-auto grid max-w-4xl gap-8 rounded-3xl border border-gold/25 bg-gradient-to-br from-paper to-gold/[0.05] p-6 shadow-sm sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl border border-ink/10 shadow-sm"
+        >
+          <Photo
+            name="about"
+            alt="Maxim Malovec, hlavný tréner a majiteľ MPM™."
+            className="h-full w-full object-cover"
+            sizes="(min-width: 1024px) 320px, 100vw"
+          />
+        </motion.div>
+
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportOnce}>
+          <div className="flex items-center gap-2">
+            <span className="h-px w-8 bg-gold" />
+            <span className="text-xs font-semibold tracking-[0.18em] text-gold">{s.eyebrow}</span>
+          </div>
+          <h2 className="mt-4 font-serif text-3xl font-bold text-ink sm:text-4xl">Maxim Malovec</h2>
+          <p className="mt-1 text-sm font-semibold tracking-wide text-gold">{s.role}</p>
+          <p className="mt-4 max-w-md text-base text-ink-soft">{s.bio}</p>
+          <p className="mt-3 max-w-md text-base text-ink-soft">{s.lead}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <ButtonLink to="/contact">{s.cta}</ButtonLink>
+            <ButtonLink to="/about" variant="secondary">
+              {s.moreCta}
+            </ButtonLink>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -266,6 +311,8 @@ export function Home() {
       <AssessmentHighlightSection />
       <SectionDivider />
       <TestimonialsSection />
+      <SectionDivider />
+      <CoachContactSection />
     </>
   );
 }

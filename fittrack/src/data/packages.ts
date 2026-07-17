@@ -1,84 +1,57 @@
-// Training-session packages — structure prepared for future online payments.
+// Pricing data. IN-PERSON prices are CONFIRMED (Update 21). ONLINE tier
+// prices are PROPOSALS pending Maxim's confirmation — each carries verify:true
+// and the UI shows an [overiť] tag next to it. Do NOT remove the [overiť]
+// tags until confirmed. The 8-week online "Pain" program (149 €) is confirmed.
 //
-// ⚠️ Prices and Stripe checkout are intentionally NOT live yet. Until then:
-//   - `price` stays null → the UI shows "Čoskoro" instead of a number
-//   - the CTA is "Mám záujem" → sends an email enquiry (no payment)
-//
-// TODO (when going live with Stripe):
-//   1. Fill `price` (in EUR) + `pricePerSession` for each package.
-//   2. Add a `stripePriceId` / Payment Link field per package here.
-//   3. Swap the "Mám záujem" enquiry CTA for a real checkout button that
-//      opens the Stripe Payment Link / Checkout session.
-//   4. Optionally add `discountNote` for bundle savings.
-export type TrainingPackage = {
+// TODO (Stripe go-live): add a stripePriceId per row and swap the email
+// enquiry CTA for real checkout.
+
+export type InPersonPackage = {
   id: string;
   sessions: number;
-  /** null until pricing is finalized — UI must render "Čoskoro" while null. */
-  price: number | null;
-  /** true = show a subtle "best value" highlight. */
+  /** € per session (confirmed). */
+  perSession: number;
+  /** € total for the package (confirmed). */
+  total: number;
   featured: boolean;
-  /** true = nutrition guidance included free (only 10- and 20-packs). */
   freeNutrition: boolean;
-  title: { sk: string; en: string };
-  description: { sk: string; en: string };
-  // TODO: stripePriceId?: string;  // fill when Stripe is connected
 };
 
-// Individual meal-plan add-on — the ONLY published price on the site
-// (intentionally approximate: "~50 €"). Free with the 10- and 20-packs.
-// TODO (Stripe go-live): add a stripePriceId here as well.
+// Reference single-session rate — used to show the strikethrough "full" price
+// and the savings on multi-session packages.
+export const BASE_PER_SESSION = 50;
+
+export const IN_PERSON_PACKAGES: InPersonPackage[] = [
+  { id: "single", sessions: 1, perSession: 50, total: 50, featured: false, freeNutrition: false },
+  { id: "pack-5", sessions: 5, perSession: 45, total: 225, featured: false, freeNutrition: false },
+  { id: "pack-10", sessions: 10, perSession: 40, total: 400, featured: true, freeNutrition: true },
+  { id: "pack-20", sessions: 20, perSession: 38, total: 760, featured: false, freeNutrition: true },
+];
+
+export type OnlineTier = {
+  id: string;
+  /** € price. */
+  price: number;
+  /** true = proposal awaiting confirmation → UI shows [overiť]. */
+  verify: boolean;
+};
+
+// Online coaching = time-based programs (1/2/3/6 months), not session packs.
+// ⚠️ ALL [overiť] until confirmed. UI shows an "indicative prices" note.
+export const ONLINE_TIERS: OnlineTier[] = [
+  { id: "1m", price: 179, verify: true },
+  { id: "2m", price: 329, verify: true },
+  { id: "3m", price: 449, verify: true },
+  { id: "6m", price: 799, verify: true },
+];
+
+// Dedicated online "Pain / Rehab" program — a standalone 8-week package.
+// CONFIRMED "from 149 €".
+export const ONLINE_PAIN = { weeks: 8, price: 149, verify: false } as const;
+
+// Individual meal-plan add-on — free with the 10- and 20-session packs.
+// CONFIRMED at ~50 € (deliberately approximate).
 export const MEAL_PLAN_ADDON = {
   id: "meal-plan",
   priceApprox: "~50 €",
 } as const;
-
-export const TRAINING_PACKAGES: TrainingPackage[] = [
-  {
-    id: "single",
-    sessions: 1,
-    price: null,
-    featured: false,
-    freeNutrition: false,
-    title: { sk: "Jednorazový tréning", en: "Single session" },
-    description: {
-      sk: "Ideálne na vyskúšanie prístupu alebo jednorazovú konzultáciu.",
-      en: "Ideal for trying the approach or a one-off consultation.",
-    },
-  },
-  {
-    id: "pack-5",
-    sessions: 5,
-    price: null,
-    featured: false,
-    freeNutrition: false,
-    title: { sk: "Balík 5 tréningov", en: "5-session package" },
-    description: {
-      sk: "Prvý ucelený blok na naštartovanie zmeny.",
-      en: "A first complete block to kick-start the change.",
-    },
-  },
-  {
-    id: "pack-10",
-    sessions: 10,
-    price: null,
-    featured: true,
-    freeNutrition: true,
-    title: { sk: "Balík 10 tréningov", en: "10-session package" },
-    description: {
-      sk: "Zvýhodnený balík na rozbehnutie procesu s pravidelnou kontrolou.",
-      en: "A discounted bundle to get the process going with regular check-ins.",
-    },
-  },
-  {
-    id: "pack-20",
-    sessions: 20,
-    price: null,
-    featured: false,
-    freeNutrition: true,
-    title: { sk: "Balík 20 tréningov", en: "20-session package" },
-    description: {
-      sk: "Pre dlhodobú spoluprácu a najlepšiu cenu za tréning.",
-      en: "For long-term work and the best per-session value.",
-    },
-  },
-];

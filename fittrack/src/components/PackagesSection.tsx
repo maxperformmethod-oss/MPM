@@ -1,20 +1,34 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Salad, Star } from "lucide-react";
+import { ArrowRight, Info, MessageCircle, Salad, Star, User, Wifi } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
-import { MEAL_PLAN_ADDON, TRAINING_PACKAGES } from "../data/packages";
+import {
+  BASE_PER_SESSION,
+  IN_PERSON_PACKAGES,
+  MEAL_PLAN_ADDON,
+  ONLINE_PAIN,
+  ONLINE_TIERS,
+} from "../data/packages";
 import { useI18n } from "../i18n/I18nContext";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/motion";
 
-// Visual preview of the training packages. Prices are intentionally hidden
-// ("Cena čoskoro") and there is NO checkout button yet — the CTA is a plain
-// email enquiry. See src/data/packages.ts for the Stripe/pricing TODO.
+function VerifyTag({ label }: { label: string }) {
+  return (
+    <span className="ml-1 align-middle text-[9px] font-bold uppercase tracking-wide text-terracotta">
+      [{label}]
+    </span>
+  );
+}
+
+// Pricing comparison — in-person (confirmed) vs online ([overiť] tiers), side
+// by side. Prices come from src/data/packages.ts. Payments are still off:
+// the CTA registers interest (→ contact section), no checkout.
 export function PackagesSection() {
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   const s = t.packagesSection;
 
   return (
-    <section className="bg-paper">
+    <section className="bg-cream-dark/40">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
         <SectionHeading eyebrow={s.eyebrow} title={s.title} lead={s.lead} align="center" />
 
@@ -23,77 +37,164 @@ export function PackagesSection() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          className="mx-auto mt-12 grid max-w-4xl gap-6 lg:grid-cols-2 lg:items-start"
         >
-          {TRAINING_PACKAGES.map((pkg) => (
-            <motion.div
-              key={pkg.id}
-              variants={fadeUp}
-              className={`relative flex flex-col rounded-2xl border bg-cream p-6 shadow-sm ${
-                pkg.featured ? "border-gold" : "border-ink/10"
-              }`}
-            >
-              {pkg.featured && (
-                <span className="absolute -top-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-gold px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-cream">
-                  <Star size={11} className="fill-cream" />
-                  {s.featured}
-                </span>
-              )}
-              <p className="font-serif text-xl font-bold text-ink">{pkg.title[lang]}</p>
-              <p className="mt-1 text-3xl font-bold text-gold">{pkg.sessions}×</p>
-              <p className="mt-3 text-sm text-ink-soft">{pkg.description[lang]}</p>
+          {/* ---------- IN-PERSON ---------- */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col rounded-3xl border border-ink/10 bg-cream p-6 shadow-sm sm:p-8"
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-cream">
+                <User size={20} />
+              </span>
+              <div>
+                <h3 className="font-serif text-xl font-bold text-ink">{s.inPersonTitle}</h3>
+                <p className="text-sm text-ink-soft">{s.inPersonSubtitle}</p>
+              </div>
+            </div>
 
-              {/* Free-nutrition benefit — only on the 10- and 20-session packs. */}
-              {pkg.freeNutrition && (
-                <p className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-sage/15 px-2.5 py-1 text-xs font-semibold text-sage">
-                  <Salad size={13} />
-                  {s.freeNutrition}
+            <ul className="mt-6 flex flex-col gap-3">
+              {IN_PERSON_PACKAGES.map((pkg) => {
+                const fullPrice = pkg.sessions * BASE_PER_SESSION;
+                const saving = fullPrice - pkg.total;
+                return (
+                  <li
+                    key={pkg.id}
+                    className={`rounded-2xl border p-4 ${
+                      pkg.featured ? "border-gold bg-gold/5" : "border-ink/10 bg-paper"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="min-w-0 font-semibold text-ink">
+                        {pkg.sessions === 1 ? s.singleLabel : `${pkg.sessions} ${s.sessionsLabel}`}
+                        {pkg.featured && (
+                          <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-gold px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-cream">
+                            <Star size={9} className="fill-cream" />
+                            {s.featured}
+                          </span>
+                        )}
+                      </p>
+                      <p className="shrink-0 text-right font-serif text-lg font-bold leading-tight text-ink">
+                        {pkg.perSession} €
+                        <span className="block text-[10px] font-normal text-ink-soft">
+                          / {s.perSession}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-soft">
+                      <span>
+                        {s.totalLabel}:{" "}
+                        {saving > 0 && (
+                          <span className="text-ink-soft/60 line-through">{fullPrice} €</span>
+                        )}{" "}
+                        <span className="font-semibold text-ink">{pkg.total} €</span>
+                      </span>
+                      {saving > 0 && (
+                        <span className="rounded-full bg-sage/15 px-2 py-0.5 font-semibold text-sage">
+                          {s.saveLabel} {saving} €
+                        </span>
+                      )}
+                      {pkg.freeNutrition && (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-sage/15 px-2 py-0.5 font-semibold text-sage">
+                          <Salad size={11} />
+                          {s.freeNutrition}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.div>
+
+          {/* ---------- ONLINE ---------- */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col rounded-3xl border border-ink/10 bg-cream p-6 shadow-sm sm:p-8"
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold text-cream">
+                <Wifi size={20} />
+              </span>
+              <div>
+                <h3 className="font-serif text-xl font-bold text-ink">{s.onlineTitle}</h3>
+                <p className="text-sm text-ink-soft">{s.onlineSubtitle}</p>
+              </div>
+            </div>
+
+            <ul className="mt-6 grid grid-cols-2 gap-3">
+              {ONLINE_TIERS.map((tier) => (
+                <li key={tier.id} className="rounded-2xl border border-ink/10 bg-paper p-4 text-center">
+                  <p className="text-sm font-medium text-ink-soft">
+                    {s.onlineTiers[tier.id as keyof typeof s.onlineTiers]}
+                  </p>
+                  <p className="mt-1 font-serif text-xl font-bold text-ink">
+                    {tier.price} €{tier.verify && <VerifyTag label={s.verifyTag} />}
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-3 flex items-start gap-2 text-xs text-ink-soft">
+              <Info size={13} className="mt-0.5 shrink-0 text-gold" />
+              {s.onlineNote}
+            </p>
+
+            <div className="mt-3 rounded-2xl border border-gold/30 bg-gold/10 p-4">
+              <div className="flex items-baseline justify-between gap-3">
+                <p className="font-semibold text-ink">{s.onlinePainTitle}</p>
+                <p className="whitespace-nowrap font-serif text-lg font-bold text-ink">
+                  {s.fromLabel} {ONLINE_PAIN.price} €
                 </p>
-              )}
-
-              <div className="flex-1" />
-
-              {/* Price hidden until finalized (packages.ts price === null). */}
-              <p className="mt-5 rounded-lg border border-dashed border-ink/25 py-2 text-center text-sm font-semibold text-ink-soft">
-                {s.priceSoon}
-              </p>
-
-              <Link
-                to="/contact"
-                className="mt-3 inline-flex items-center justify-center gap-1.5 rounded-lg bg-ink px-4 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-ink/85"
-              >
-                {s.interestCta}
-                <ArrowRight size={14} />
-              </Link>
-            </motion.div>
-          ))}
+              </div>
+              <p className="mt-1 text-xs text-ink-soft">{s.onlinePainDesc}</p>
+            </div>
+          </motion.div>
         </motion.div>
 
-        {/* Meal-plan add-on — the only published price on the site (~50 €). */}
+        {/* Meal-plan add-on + process explanation */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 rounded-2xl border border-sage/30 bg-sage/10 p-6 text-center sm:flex-row sm:text-left"
+          className="mx-auto mt-6 max-w-4xl rounded-2xl border border-sage/30 bg-sage/10 p-6"
         >
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sage/15 text-sage">
-            <Salad size={22} />
+          <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sage/15 text-sage">
+              <Salad size={22} />
+            </div>
+            <div>
+              <p className="font-serif text-lg font-bold text-ink">
+                {s.addonTitle}{" "}
+                <span className="whitespace-nowrap text-gold">{MEAL_PLAN_ADDON.priceApprox}</span>
+              </p>
+              <p className="mt-1 text-sm text-ink-soft">{s.addonBody}</p>
+              <p className="mt-1 text-sm font-medium text-sage">{s.addonFreeNote}</p>
+            </div>
           </div>
-          <div className="flex-1">
-            <p className="font-serif text-lg font-bold text-ink">
-              {s.addonTitle}{" "}
-              <span className="whitespace-nowrap text-gold">{MEAL_PLAN_ADDON.priceApprox}</span>
-            </p>
-            <p className="mt-1 text-sm text-ink-soft">{s.addonBody}</p>
-            <p className="mt-1 text-sm font-medium text-sage">{s.addonFreeNote}</p>
-          </div>
+          <p className="mt-4 border-t border-sage/20 pt-4 text-sm text-ink-soft">{s.addonProcess}</p>
         </motion.div>
 
-        <p className="mx-auto mt-6 max-w-xl text-center text-sm font-medium text-ink-soft">
-          {s.durationNote}
-        </p>
-        <p className="mx-auto mt-2 max-w-xl text-center text-xs text-ink-soft">{s.note}</p>
+        <div className="mx-auto mt-8 flex max-w-4xl flex-col items-center gap-4">
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-ink px-8 py-4 text-base font-semibold text-cream transition-colors hover:bg-ink/85"
+          >
+            {s.interestCta}
+            <ArrowRight size={16} />
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-gold"
+          >
+            <MessageCircle size={15} />
+            {s.questionCta}
+          </Link>
+          <p className="mt-1 text-center text-xs text-ink-soft">{s.durationNote}</p>
+          <p className="max-w-xl text-center text-xs text-ink-soft">{s.note}</p>
+        </div>
       </div>
     </section>
   );

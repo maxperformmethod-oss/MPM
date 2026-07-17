@@ -17,26 +17,14 @@ type FieldKey =
   | "workType" | "workDays" | "workHours" | "sitting" | "sleep" | "stress"
   | "availability" | "expectations" | "anythingElse";
 
-type StepId = "about" | "goal" | "life" | "training";
+type StepId = "life" | "goal" | "training" | "about";
 
+// Order is intentional: warm, natural questions about the person first
+// (work, routine, movement, sleep, stress → goals & injuries → training
+// preferences), and the contact details (name/email/phone/age) LAST — feels
+// more personal and less off-putting. Contact fields are validated in that
+// final step before submit.
 const STEPS: { id: StepId; fields: { key: FieldKey; area?: boolean; half?: boolean }[] }[] = [
-  {
-    id: "about",
-    fields: [
-      { key: "name", half: true },
-      { key: "email", half: true },
-      { key: "phone", half: true },
-      { key: "age", half: true },
-    ],
-  },
-  {
-    id: "goal",
-    fields: [
-      { key: "goal", area: true },
-      { key: "struggles", area: true },
-      { key: "experience", area: true },
-    ],
-  },
   {
     id: "life",
     fields: [
@@ -49,11 +37,28 @@ const STEPS: { id: StepId; fields: { key: FieldKey; area?: boolean; half?: boole
     ],
   },
   {
+    id: "goal",
+    fields: [
+      { key: "goal", area: true },
+      { key: "struggles", area: true },
+      { key: "experience", area: true },
+    ],
+  },
+  {
     id: "training",
     fields: [
       { key: "availability", area: true },
       { key: "expectations", area: true },
       { key: "anythingElse", area: true },
+    ],
+  },
+  {
+    id: "about",
+    fields: [
+      { key: "name", half: true },
+      { key: "email", half: true },
+      { key: "phone", half: true },
+      { key: "age", half: true },
     ],
   },
 ];

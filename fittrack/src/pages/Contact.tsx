@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone } from "lucide-react";
+import { CheckCircle2, Mail, Phone } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { InstagramIcon } from "../components/ui/InstagramIcon";
 import { Button } from "../components/ui/Button";
@@ -13,6 +13,7 @@ import {
   PHONE_DISPLAY,
   PHONE_TEL,
 } from "../data/site";
+import { submitToFormspree } from "../lib/submitForm";
 import { isEmailOrPhone } from "../lib/validate";
 import { fadeUp, viewportOnce } from "../lib/motion";
 
@@ -23,22 +24,22 @@ export function Contact() {
   const [contact, setContact] = useState("");
   const [message, setMessage] = useState("");
   const [contactError, setContactError] = useState<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  // Isolated on purpose — swap this function for an API call or Calendly later.
-  function submitMessage(event: FormEvent) {
+  // Sends via Formspree — never opens an external email app.
+  async function submitMessage(event: FormEvent) {
     event.preventDefault();
     if (!isEmailOrPhone(contact)) {
       setContactError(t.validation.emailOrPhone);
       return;
     }
-    const lines = [
-      `${t.contactPage.form.name}: ${name}`,
-      `${t.contactPage.form.contact}: ${contact}`,
-      message ? `${t.contactPage.form.message}: ${message}` : null,
-    ].filter(Boolean);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      t.contactPage.mailSubject,
-    )}&body=${encodeURIComponent(lines.join("\n"))}`;
+    setStatus("sending");
+    const ok = await submitToFormspree(t.contactPage.mailSubject, {
+      [t.contactPage.form.name]: name,
+      [t.contactPage.form.contact]: contact,
+      [t.contactPage.form.message]: message,
+    });
+    setStatus(ok ? "sent" : "error");
   }
 
   const inputClasses =
@@ -144,10 +145,25 @@ export function Contact() {
               className={`${inputClasses} resize-none`}
             />
           </label>
-          <Button type="submit" className="mt-2 w-full">
-            {t.contactPage.form.submit}
-          </Button>
-          <p className="text-center text-xs text-ink-soft">{t.contactPage.form.note}</p>
+          {status === "sent" ? (
+            <div className="mt-2 rounded-xl border border-gold/30 bg-gold/10 p-5 text-center">
+              <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-gold/20 text-gold">
+                <CheckCircle2 size={22} />
+              </div>
+              <p className="mt-3 font-serif font-semibold text-ink">{t.contactPage.successTitle}</p>
+              <p className="mt-1 text-sm text-ink-soft">{t.contactPage.successBody}</p>
+            </div>
+          ) : (
+            <>
+              <Button type="submit" disabled={status === "sending"} className="mt-2 w-full">
+                {status === "sending" ? t.contactPage.form.sending : t.contactPage.form.submit}
+              </Button>
+              {status === "error" && (
+                <p className="text-center text-xs text-terracotta">{t.contactPage.error}</p>
+              )}
+              <p className="text-center text-xs text-ink-soft">{t.contactPage.form.note}</p>
+            </>
+          )}
         </motion.form>
       </div>
     </section>

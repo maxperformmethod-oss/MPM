@@ -53,37 +53,28 @@ export function AppLayout() {
 
       <footer className="bg-ink text-cream">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+          {/* Top: navigation (left) + contacts (right). */}
           <div className="flex flex-col gap-12 sm:flex-row sm:justify-between sm:gap-10">
-            <div>
-              <nav aria-label={t.footer.navTitle}>
-                <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
-                  {t.footer.navTitle.toUpperCase()}
-                </p>
-                <ul className="mt-4 flex flex-col gap-2.5">
-                  {FOOTER_LINKS.map(({ to, key }) => (
-                    <li key={to}>
-                      <Link
-                        to={to}
-                        className="text-sm text-cream/70 transition-colors hover:text-cream"
-                      >
-                        {t.nav[key]}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
+            <nav aria-label={t.footer.navTitle}>
+              <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
+                {t.footer.navTitle.toUpperCase()}
+              </p>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {FOOTER_LINKS.map(({ to, key }) => (
+                  <li key={to}>
+                    <Link
+                      to={to}
+                      className="text-sm text-cream/70 transition-colors hover:text-cream"
+                    >
+                      {t.nav[key]}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
             <div className="sm:text-right">
-              <p className="font-serif text-2xl font-bold text-cream">
-                MPM<sup className="text-[0.5em]">™</sup>
-              </p>
-              <p className="mt-1.5 text-[10px] font-semibold tracking-[0.22em] text-gold">
-                MAX PERFORM METHOD
-              </p>
-
-              {/* Contacts sit ABOVE the partner seals. */}
-              <p className="mt-6 text-[11px] font-semibold tracking-[0.18em] text-cream/40">
+              <p className="text-[11px] font-semibold tracking-[0.18em] text-cream/40">
                 {t.footer.contactTitle.toUpperCase()}
               </p>
               <div className="mt-4 flex flex-col gap-2.5 sm:items-end">
@@ -120,12 +111,22 @@ export function AppLayout() {
                   {INSTAGRAM_HANDLE}
                 </a>
               </div>
+            </div>
+          </div>
 
-              <div className="mt-8 flex sm:justify-end">
-                <TrustSealsRow compact />
-              </div>
-
-              <p className="mt-6 text-xs leading-relaxed text-cream/40">
+          {/* Bottom: partner seals (left) + MPM brand (right). */}
+          <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <TrustSealsRow compact />
+            </div>
+            <div className="sm:text-right">
+              <p className="font-serif text-2xl font-bold text-cream">
+                MPM<sup className="text-[0.5em]">™</sup>
+              </p>
+              <p className="mt-1.5 text-[10px] font-semibold tracking-[0.22em] text-gold">
+                MAX PERFORM METHOD
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-cream/40">
                 {t.footer.credentials}
               </p>
             </div>

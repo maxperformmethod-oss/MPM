@@ -89,6 +89,14 @@ export const sk: Dict = {
       title: "Čo hovoria klienti.",
       cta: "Všetky výsledky",
     },
+    coach: {
+      eyebrow: "TVOJ TRÉNER",
+      role: "Hlavný tréner a majiteľ MPM™",
+      bio: "Hokeju som sa venoval 12 rokov vrátane reprezentačných výberov. Vlastné skúsenosti so športom, zraneniami a návratom k výkonu ma priviedli k vytvoreniu MPM — pomáham najmä mladým športovcom a aktívnym ľuďom vrátiť sa po zranení silnejší a lepšie pripravení.",
+      lead: "Za MPM stojím osobne. Máš otázku alebo chceš začať? Napíš mi — odpoviem do 24 hodín.",
+      cta: "Kontaktuj ma",
+      moreCta: "Viac o mne",
+    },
   },
 
   pillars: {
@@ -772,7 +780,7 @@ export const sk: Dict = {
       interimCta: "Odoslať dotazník Maximovi",
       confirmationTitle: "Ďakujeme!",
       confirmationBody:
-        "Skontroluj si e-mailového klienta a odošli pripravenú správu. Maxim sa ti ozve do 48 hodín s ďalším postupom.",
+        "Skontroluj si e-mailového klienta a odošli pripravenú správu. Maxim sa ti ozve do 24 hodín s ďalším postupom.",
     },
   },
 
@@ -874,7 +882,7 @@ export const sk: Dict = {
       mailSubject: "Dotazník — Optimalizácia telesnej hmotnosti",
       confirmationTitle: "Ďakujeme!",
       confirmationBody:
-        "Skontroluj si e-mailového klienta a odošli pripravenú správu. Maxim sa ti ozve do 48 hodín s ďalším postupom.",
+        "Skontroluj si e-mailového klienta a odošli pripravenú správu. Maxim sa ti ozve do 24 hodín s ďalším postupom.",
     },
   },
 
@@ -919,19 +927,44 @@ export const sk: Dict = {
   },
 
   packagesSection: {
-    eyebrow: "BALÍČKY",
-    title: "Zvýhodnené balíčky tréningov.",
-    lead: "Čím dlhšia spolupráca, tým lepšia cena za tréning. Ceny a online platba sa pripravujú.",
-    priceSoon: "Cena čoskoro",
+    eyebrow: "CENNÍK",
+    title: "Osobné a online — vyber si, čo ti sadne.",
+    lead: "Osobné tréningy naživo, alebo dostupnejšia online spolupráca. Obe možnosti, prehľadne vedľa seba.",
     interestCta: "Mám záujem",
     featured: "Najobľúbenejšie",
     freeNutrition: "Výživa zdarma",
-    durationNote: "Odporúčaná dĺžka programu: 2–3 mesiace — podľa cieľa a východiska.",
+
+    inPersonTitle: "Osobné tréningy",
+    inPersonSubtitle: "Tréning naživo, jeden na jedného.",
+    perSession: "za tréning",
+    totalLabel: "spolu",
+    saveLabel: "ušetríš",
+    sessionsLabel: "tréningov",
+    singleLabel: "1 tréning",
+
+    onlineTitle: "Online spolupráca",
+    onlineSubtitle: "Časové programy na diaľku — dostupnejšia cena.",
+    onlineTiers: {
+      "1m": "1 mesiac",
+      "2m": "2 mesiace",
+      "3m": "3 mesiace",
+      "6m": "6 mesiacov",
+    },
+    onlineNote: "Orientačné ceny — môžu sa upraviť podľa náročnosti klienta a rozsahu spolupráce.",
+    fromLabel: "od",
+    onlinePainTitle: "Online program „Bolesť / Rehabilitácia“",
+    onlinePainDesc: "Samostatný 8-týždňový program zameraný na návrat z bolesti.",
+    verifyTag: "overiť",
+
+    durationNote: "Odporúčaná dĺžka spolupráce: 2–3 mesiace — podľa cieľa a východiska.",
     addonTitle: "Individuálny jedálniček",
     addonBody:
       "Možnosť dokúpiť ku ktorémukoľvek tréningu či balíku — zostavený individuálne presne pre teba.",
     addonFreeNote: "Pri balíkoch 10 a 20 tréningov je jedálniček zdarma.",
-    note: "Ceny sú vo finalizácii. Klikni „Mám záujem“ a ozvem sa ti s aktuálnou ponukou.",
+    addonProcess:
+      "Dotazník slúži len na získanie základných informácií. Po jeho vyplnení nasleduje osobná konzultácia alebo e-mailová komunikácia — podľa toho, čo ti vyhovuje — aby bol jedálniček zostavený naozaj individuálne.",
+    note: "Online platba už čoskoro — zatiaľ stačí prejaviť záujem a ozvem sa ti s ďalším postupom.",
+    questionCta: "Máš otázku?",
   },
 
   startPage: {
@@ -941,7 +974,7 @@ export const sk: Dict = {
     benefits: [
       "Osobný prístup postavený na diagnostike",
       "Jasný plán, nie generická šablóna",
-      "Odpoveď do 48 hodín",
+      "Odpoveď do 24 hodín",
     ],
     cta: "Vyplniť formulár",
     stepLabels: {
@@ -984,7 +1017,7 @@ export const sk: Dict = {
     sending: "Odosielam…",
     mailSubject: "Vstupný formulár z webu MPM™",
     successTitle: "Ďakujem!",
-    successBody: "Tvoj formulár je odoslaný. Ozvem sa ti do 48 hodín s ďalším postupom.",
+    successBody: "Tvoj formulár je odoslaný. Ozvem sa ti do 24 hodín s ďalším postupom.",
     error: "Nepodarilo sa odoslať. Skús to znova alebo napíš priamo na maxperformmethod@gmail.com.",
     startOver: "Vyplniť znova",
   },
@@ -1048,8 +1081,12 @@ export const sk: Dict = {
       message: "Správa",
       submit: "Odoslať správu",
       note: "Odpoviem do 24 hodín na e-mail alebo telefón, ktorý uvedieš.",
+      sending: "Odosielam…",
     },
     mailSubject: "Otázka cez web MPM™",
+    successTitle: "Ďakujem!",
+    successBody: "Správa je odoslaná — odpoviem do 24 hodín.",
+    error: "Nepodarilo sa odoslať. Skús to znova alebo napíš priamo na maxperformmethod@gmail.com.",
   },
 
   ctaBand: {

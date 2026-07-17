@@ -87,6 +87,14 @@ export const en = {
       title: "What clients say.",
       cta: "See all results",
     },
+    coach: {
+      eyebrow: "YOUR COACH",
+      role: "Head coach & owner of MPM™",
+      bio: "I played hockey for 12 years, including national team selections. My own experience with sport, injuries and returning to performance led me to create MPM — I help mainly young athletes and active people come back from injury stronger and better prepared.",
+      lead: "I'm personally behind MPM. Have a question or want to start? Message me — I'll reply within 24 hours.",
+      cta: "Get in touch",
+      moreCta: "More about me",
+    },
   },
 
   pillars: {
@@ -769,7 +777,7 @@ export const en = {
       interimCta: "Send questionnaire to Maxim",
       confirmationTitle: "Thank you!",
       confirmationBody:
-        "Check your email client and send the prepared message. Maxim will get back to you within 48 hours with next steps.",
+        "Check your email client and send the prepared message. Maxim will get back to you within 24 hours with next steps.",
     },
   },
 
@@ -871,7 +879,7 @@ export const en = {
       mailSubject: "Questionnaire — Body Composition Optimization",
       confirmationTitle: "Thank you!",
       confirmationBody:
-        "Check your email client and send the prepared message. Maxim will get back to you within 48 hours with next steps.",
+        "Check your email client and send the prepared message. Maxim will get back to you within 24 hours with next steps.",
     },
   },
 
@@ -916,19 +924,44 @@ export const en = {
   },
 
   packagesSection: {
-    eyebrow: "PACKAGES",
-    title: "Discounted session packages.",
-    lead: "The longer we work together, the better the per-session price. Pricing and online payment are being finalized.",
-    priceSoon: "Price coming soon",
+    eyebrow: "PRICING",
+    title: "In-person and online — pick what fits.",
+    lead: "Live in-person sessions, or more accessible online coaching. Both options, clearly side by side.",
     interestCta: "I'm interested",
     featured: "Most popular",
     freeNutrition: "Nutrition included free",
-    durationNote: "Recommended program length: 2–3 months — depending on your goal and starting point.",
+
+    inPersonTitle: "In-person training",
+    inPersonSubtitle: "Live, one-on-one sessions.",
+    perSession: "per session",
+    totalLabel: "total",
+    saveLabel: "you save",
+    sessionsLabel: "sessions",
+    singleLabel: "1 session",
+
+    onlineTitle: "Online coaching",
+    onlineSubtitle: "Remote time-based programs — a more accessible price.",
+    onlineTiers: {
+      "1m": "1 month",
+      "2m": "2 months",
+      "3m": "3 months",
+      "6m": "6 months",
+    },
+    onlineNote: "Indicative prices — may be adjusted to the client's needs and the scope of the collaboration.",
+    fromLabel: "from",
+    onlinePainTitle: "Online “Pain / Rehab” program",
+    onlinePainDesc: "A standalone 8-week program focused on returning from pain.",
+    verifyTag: "verify",
+
+    durationNote: "Recommended length: 2–3 months — depending on your goal and starting point.",
     addonTitle: "Individual meal plan",
     addonBody:
       "Available as an add-on to any session or package — built individually, just for you.",
     addonFreeNote: "Free with the 10- and 20-session packages.",
-    note: "Pricing is being finalized. Click “I'm interested” and I'll get back to you with the current offer.",
+    addonProcess:
+      "The questionnaire only gathers the basics. After you fill it in, we follow up with a personal consultation or by email — whichever you prefer — so the meal plan is built truly individually.",
+    note: "Online payment coming soon — for now just register your interest and I'll get back to you with next steps.",
+    questionCta: "Have a question?",
   },
 
   startPage: {
@@ -938,7 +971,7 @@ export const en = {
     benefits: [
       "A personal, assessment-based approach",
       "A clear plan, not a generic template",
-      "A reply within 48 hours",
+      "A reply within 24 hours",
     ],
     cta: "Fill out the form",
     stepLabels: {
@@ -981,7 +1014,7 @@ export const en = {
     sending: "Sending…",
     mailSubject: "Intake form from the MPM™ website",
     successTitle: "Thank you!",
-    successBody: "Your form has been sent. I'll get back to you within 48 hours with next steps.",
+    successBody: "Your form has been sent. I'll get back to you within 24 hours with next steps.",
     error: "Sending failed. Try again or email me directly at maxperformmethod@gmail.com.",
     startOver: "Fill out again",
   },
@@ -1045,8 +1078,12 @@ export const en = {
       message: "Message",
       submit: "Send message",
       note: "I'll reply within 24 hours to the email or phone you provide.",
+      sending: "Sending…",
     },
     mailSubject: "Question via MPM™ website",
+    successTitle: "Thank you!",
+    successBody: "Your message has been sent — I'll reply within 24 hours.",
+    error: "Sending failed. Try again or email me directly at maxperformmethod@gmail.com.",
   },
 
   ctaBand: {

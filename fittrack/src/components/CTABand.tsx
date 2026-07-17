@@ -4,7 +4,7 @@ import { useI18n } from "../i18n/I18nContext";
 import { ButtonLink } from "./ui/Button";
 import { Photo } from "./ui/Photo";
 
-export function CTABand() {
+export function CTABand({ to = "/find-your-path", label }: { to?: string; label?: string } = {}) {
   const { t } = useI18n();
 
   return (
@@ -30,8 +30,8 @@ export function CTABand() {
           {t.ctaBand.lead}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <ButtonLink to="/find-your-path" variant="inverse">
-            {t.ctaBand.primary}
+          <ButtonLink to={to} variant="inverse">
+            {label ?? t.ctaBand.primary}
           </ButtonLink>
         </div>
       </motion.div>

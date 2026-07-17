@@ -1,9 +1,12 @@
 import { FOOD_CATEGORIES } from "../data/nutritionPreferences";
-import { CONTACT_EMAIL } from "../data/site";
 import type { Dict } from "../i18n/en";
 import type { NutritionFormData } from "../components/nutrition/NutritionWizard";
 
-export function buildNutritionMailto(data: NutritionFormData, t: Dict): string {
+// Builds the questionnaire summary for a Formspree submission (no email app).
+export function buildNutritionSubmission(
+  data: NutritionFormData,
+  t: Dict,
+): { subject: string; fields: Record<string, string> } {
   const q = t.nutritionQuestionnaire;
   const lines: string[] = [];
 
@@ -58,7 +61,12 @@ export function buildNutritionMailto(data: NutritionFormData, t: Dict): string {
   lines.push(`${q.health.notes}: ${data.notes || "—"}`);
 
   const subject = `${q.eyebrow} — ${data.firstName} ${data.lastName}`.trim();
-  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-    lines.join("\n"),
-  )}`;
+  return {
+    subject,
+    fields: {
+      [q.basics.email]: data.email,
+      [q.basics.phone]: data.phone,
+      [q.cardTitle]: lines.join("\n"),
+    },
+  };
 }

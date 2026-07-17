@@ -1096,6 +1096,7 @@ export const en = {
     navTitle: "Navigation",
     contactTitle: "Contact",
     credentials: "Mgr. FTVŠ UK · Registered Sports Specialist",
+    backToTop: "Back to top",
     rights: "All rights reserved.",
     termsLink: "Terms & Conditions",
     privacyLink: "Privacy Policy",

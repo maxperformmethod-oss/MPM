@@ -5,6 +5,7 @@ import { Header } from "./Header";
 import { ContactWidget } from "./ContactWidget";
 import { InstagramIcon } from "./ui/InstagramIcon";
 import { TrustSealsRow } from "./ui/TrustSealsRow";
+import { BackToTop } from "./ui/BackToTop";
 import { useI18n } from "../i18n/I18nContext";
 import { usePreview } from "../lib/usePreview";
 import {
@@ -155,6 +156,7 @@ export function AppLayout() {
         </div>
       </footer>
 
+      <BackToTop />
       <ContactWidget />
 
       {preview && (

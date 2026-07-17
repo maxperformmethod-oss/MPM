@@ -1099,6 +1099,7 @@ export const sk: Dict = {
     navTitle: "Navigácia",
     contactTitle: "Kontakt",
     credentials: "Mgr. FTVŠ UK · Registrovaný športový odborník",
+    backToTop: "Späť hore",
     rights: "Všetky práva vyhradené.",
     termsLink: "Obchodné podmienky",
     privacyLink: "Ochrana osobných údajov",

@@ -44,7 +44,11 @@ export function Header() {
         <NavLink
           to="/"
           className="flex shrink-0 flex-col leading-none"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            setOpen(false);
+            // Also scroll to top when already on the homepage (no route change).
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
         >
           <span className="font-serif text-2xl font-bold tracking-tight text-ink sm:text-[1.7rem]">
             MPM<sup className="text-[0.5em]">™</sup>

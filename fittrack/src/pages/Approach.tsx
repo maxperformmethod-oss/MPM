@@ -21,12 +21,12 @@ export function Approach() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto aspect-[21/9] w-full max-w-4xl overflow-hidden rounded-[2rem] border border-ink/10 shadow-sm"
+          className="mx-auto aspect-[16/10] w-full max-w-4xl overflow-hidden rounded-[2rem] border border-ink/10 shadow-sm"
         >
           <Photo
             name="approach"
             alt="Kouč vedie klienta cez pohybové cvičenie pri stene s piatimi krokmi MPM metódy."
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
             sizes="(min-width: 1024px) 896px, 100vw"
           />
         </motion.div>

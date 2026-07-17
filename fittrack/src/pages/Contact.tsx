@@ -70,7 +70,7 @@ export function Contact() {
         >
           <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-ink/10 shadow-sm">
             <Photo
-              name="results"
+              name="contact"
               alt="Kouč Maxim Malovec vedie klienta pri tréningu v priestore MPM."
               className="h-full w-full object-cover"
               sizes="(min-width: 1024px) 420px, 100vw"
